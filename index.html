@@ -3,168 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabharish Raaja | Data & Systems Architect</title>
+    <title>SABHARISH RAAJA — SYSTEMS & DATA ARCHITECT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Outfit:wght@300;400;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Syne:wght@800&display=swap');
         
-        :root { --accent: #ff5e00; --secondary: #0072ff; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #020202; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
-
-        /* Animated Background Orbs */
-        .orb {
-            position: fixed; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.4;
-            animation: move 20s infinite alternate;
+        :root { --accent: #ff4d00; --bg: #080808; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; margin: 0; }
+        
+        /* Grainy Texture Overlay (Lempens Style) */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url(https://grainy-gradients.vercel.app/noise.svg);
+            opacity: 0.04; pointer-events: none; z-index: 999;
         }
-        .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -10%; left: -10%; }
-        .orb-2 { width: 400px; height: 400px; background: var(--secondary); bottom: -10%; right: -10%; animation-delay: -5s; }
 
-        @keyframes move { from { transform: translate(0,0); } to { transform: translate(100px, 100px); } }
-
-        .hero-text { font-family: 'Syncopate', sans-serif; text-transform: uppercase; line-height: 0.9; letter-spacing: -0.05em; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px; }
-        .card-hover:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(255,94,0,0.1); transition: all 0.4s ease; }
+        .huge-text { font-family: 'Syne', sans-serif; font-size: clamp(4rem, 15vw, 18rem); line-height: 0.8; letter-spacing: -0.05em; text-transform: uppercase; }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
         
-        .section-num { font-size: 8rem; font-weight: 900; opacity: 0.05; position: absolute; top: -2rem; left: 2rem; }
+        section { min-height: 100vh; padding: 100px 5%; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.08); transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        .glass-panel:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent); }
+
+        .reveal { opacity: 0; transform: translateY(80px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .image-container { position: relative; overflow: hidden; border-radius: 5px; filter: grayscale(100%); transition: 0.8s; }
+        .image-container:hover { filter: grayscale(0%); transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <nav class="fixed top-0 w-full z-50 flex justify-between items-center p-8 glass m-4 w-[calc(100%-2rem)] rounded-2xl">
-        <div class="text-2xl font-black tracking-tighter uppercase">SR<span class="text-orange-500">.</span></div>
-        <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[0.3em]">
-            <a href="#about" class="hover:text-orange-500">History</a>
-            <a href="#skills" class="hover:text-orange-500">Matrix</a>
-            <a href="#automation" class="hover:text-orange-500">Automation</a>
-            <a href="#analytics" class="hover:text-orange-500">Analytics</a>
-            <a href="#engineering" class="hover:text-orange-500">Hardware</a>
-            <a href="#contact" class="bg-orange-600 px-4 py-2 rounded-lg">Hire Me</a>
+    <nav class="fixed top-0 w-full z-[100] p-10 flex justify-between items-baseline mix-blend-difference">
+        <div class="text-2xl font-bold tracking-tighter">SABHARISH<span class="text-orange-600">©</span></div>
+        <div class="flex gap-8 text-[10px] uppercase tracking-[0.5em] font-bold">
+            <a href="#about" class="hover:text-orange-600">History</a>
+            <a href="#analytics" class="hover:text-orange-600">Work</a>
+            <a href="#contact" class="hover:text-orange-600 italic">Contact</a>
         </div>
     </nav>
 
-    <section id="home" class="h-screen flex flex-col justify-center items-center text-center px-4 pt-20">
-        <span class="text-orange-500 font-bold tracking-[0.4em] mb-4 uppercase text-sm animate-pulse">Available for Global Roles</span>
-        <h1 class="hero-text text-[12vw] md:text-[8vw] font-black">Data <br><span class="text-transparent" style="-webkit-text-stroke: 2px #fff">Architect</span></h1>
-        <p class="mt-8 text-gray-400 max-w-xl text-lg font-light leading-relaxed">
-            I synthesize **Electronics Engineering** with **Advanced Data Analytics** to build automated systems that drive multi-million dollar decisions.
-        </p>
-        <a href="#about" class="mt-12 animate-bounce text-orange-500"><i class="fas fa-chevron-down text-3xl"></i></a>
-    </section>
-
-    <section id="about" class="py-32 px-10 relative">
-        <span class="section-num text-orange-500">01</span>
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div class="glass p-10 card-hover">
-                <h2 class="text-4xl font-black mb-6 uppercase">The Story</h2>
-                <p class="text-gray-400 leading-relaxed text-lg mb-4">
-                    My engineering foundation in **ECE** allows me to see data as more than just rows—I see it as a stream of signals. I treat data cleaning like signal processing and dashboards like mission control.
-                </p>
-                <div class="flex gap-4 mt-8">
-                    <div class="text-center bg-white/5 p-4 rounded-xl flex-1">
-                        <div class="text-2xl font-bold text-orange-500">52M+</div>
-                        <div class="text-[10px] uppercase tracking-widest">Records</div>
-                    </div>
-                    <div class="text-center bg-white/5 p-4 rounded-xl flex-1">
-                        <div class="text-2xl font-bold text-blue-500">2M+</div>
-                        <div class="text-[10px] uppercase tracking-widest">Revenue</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-right">
-                <h3 class="text-5xl font-black opacity-20 uppercase mb-4">Integrity</h3>
-                <h3 class="text-5xl font-black opacity-50 uppercase mb-4">Precision</h3>
-                <h3 class="text-5xl font-black text-orange-500 uppercase">Automation</h3>
-            </div>
+    <section id="home">
+        <span class="text-orange-600 font-bold tracking-[0.8em] mb-10 block text-xs reveal">TAMIL NADU, INDIA</span>
+        <h1 class="huge-text reveal">DATA<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">SYSTEMS</span></h1>
+        <div class="mt-20 flex flex-col md:flex-row gap-10 items-start reveal">
+            <div class="h-[2px] w-40 bg-orange-600 mt-4"></div>
+            <p class="text-2xl md:text-4xl font-light max-w-3xl leading-tight">
+                An Engineer decoding the friction between <span class="italic">physical hardware</span> and <span class="text-orange-600 font-bold underline">digital intelligence.</span>
+            </p>
         </div>
     </section>
 
-    <section id="automation" class="py-32 px-10 bg-white/5 relative">
-        <span class="section-num text-blue-500">02</span>
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black mb-16 uppercase italic"><i class="fas fa-bolt text-orange-500 mr-4"></i>Automation Hub</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-8 card-hover">
-                    <i class="fab fa-python text-4xl mb-6 text-yellow-400"></i>
-                    <h4 class="text-xl font-bold mb-4">Python ETL Pipelines</h4>
-                    <p class="text-gray-400 text-sm">Automated data extraction and cleaning for Swiggy and Amazon datasets, reducing manual prep time by 80%.</p>
-                </div>
-                <div class="glass p-8 card-hover">
-                    <i class="fas fa-brain text-4xl mb-6 text-purple-400"></i>
-                    <h4 class="text-xl font-bold mb-4">AI Data Imputation</h4>
-                    <p class="text-gray-400 text-sm">Implementing logic-based AI scripts to fill missing data points in geological sensor streams with 95% accuracy.</p>
-                </div>
-                <div class="glass p-8 card-hover">
-                    <i class="fas fa-terminal text-4xl mb-6 text-green-400"></i>
-                    <h4 class="text-xl font-bold mb-4">Streamlit Viz</h4>
-                    <p class="text-gray-400 text-sm">Building real-time Python web apps to visualize IoT data from ESP32 sensors directly in the browser.</p>
+    <section id="about" class="bg-[#0c0c0c]">
+        <div class="grid md:grid-cols-12 gap-10 reveal">
+            <div class="md:col-span-4">
+                <span class="text-orange-600 font-bold text-xs tracking-widest uppercase">The Perspective</span>
+            </div>
+            <div class="md:col-span-8">
+                <h2 class="text-5xl md:text-7xl font-bold mb-12 uppercase leading-none">Engineering the <br>Invisible.</h2>
+                <div class="text-gray-400 text-xl md:text-2xl leading-relaxed space-y-6 max-w-4xl">
+                    <p>My foundation as an Electronics and Communication Engineer provides me with a rare forensic understanding of data; I don’t just observe metrics, I visualize the sensor logic and electrical signals that birth them. This technical lineage allows me to bridge the gap between messy, real-world IoT environments and high-fidelity business intelligence dashboards.</p>
+                    <p>I specialize in transforming massive, fragmented datasets into streamlined narratives, utilizing Python-driven automation to ensure that every insight is built on a foundation of absolute structural integrity. By treating every data pipeline as a mission-critical circuit, I eliminate noise and amplify the signals that matter most to revenue and operational growth.</p>
+                    <p>Whether I am architecting a 52M record sales engine or designing safety-critical SOS response systems, my focus remains on creating high-impact, automated solutions that solve complex human problems through the power of statistics.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="analytics" class="py-32 px-10 relative">
-        <span class="section-num">03</span>
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-black mb-20 text-center uppercase tracking-widest">Analytics Case Studies</h2>
-            <div class="grid md:grid-cols-2 gap-16">
-                <div class="glass overflow-hidden card-hover">
-                    <img src="1000239452.jpg" class="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4">Swiggy Sales Engine</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Analyzing 52.12M in transaction volume to optimize restaurant partner ratings and logistics.</p>
-                        <div class="flex gap-2">
-                            <span class="bg-orange-600/20 text-orange-500 px-3 py-1 rounded-full text-[10px] font-bold">POWER BI</span>
-                            <span class="bg-blue-600/20 text-blue-500 px-3 py-1 rounded-full text-[10px] font-bold">DAX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass overflow-hidden card-hover">
-                    <img src="1000227044.jpg" class="w-full h-64 object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4">Amazon Store Financials</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed mb-6">Built a comprehensive $2M revenue tracker isolating shipment delays and profitability margins.</p>
-                        <div class="flex gap-2">
-                            <span class="bg-yellow-600/20 text-yellow-500 px-3 py-1 rounded-full text-[10px] font-bold">SQL</span>
-                            <span class="bg-green-600/20 text-green-500 px-3 py-1 rounded-full text-[10px] font-bold">EXCEL</span>
-                        </div>
-                    </div>
-                </div>
+    <section id="skills">
+        <h2 class="huge-text opacity-10 absolute left-0 -z-10">MATRIX</h2>
+        <div class="grid md:grid-cols-3 gap-1 px-4">
+            <div class="glass-panel p-16 reveal">
+                <span class="text-orange-600 font-bold">01 — ANALYTICS</span>
+                <h3 class="text-3xl font-bold mt-6 mb-6">POWER BI / DAX</h3>
+                <p class="text-gray-500 leading-relaxed">Developing enterprise-level visualization architectures that track multi-million dollar revenue streams with real-time drill-down capabilities.</p>
+            </div>
+            <div class="glass-panel p-16 reveal" style="transition-delay: 0.2s;">
+                <span class="text-orange-600 font-bold">02 — AUTOMATION</span>
+                <h3 class="text-3xl font-bold mt-6 mb-6">PYTHON / ETL</h3>
+                <p class="text-gray-500 leading-relaxed">Crafting automated Python scripts for high-speed data cleaning, AI-based imputation, and streamlining fragmented datasets into SQL ready formats.</p>
+            </div>
+            <div class="glass-panel p-16 reveal" style="transition-delay: 0.4s;">
+                <span class="text-orange-600 font-bold">03 — SYSTEMS</span>
+                <h3 class="text-3xl font-bold mt-6 mb-6">IOT / EMBEDDED</h3>
+                <p class="text-gray-500 leading-relaxed">Designing hardware logic for ESP32 and Arduino, integrating GPS/GSM modules to solve real-world safety and environmental monitoring challenges.</p>
             </div>
         </div>
     </section>
 
-    <section id="engineering" class="py-32 px-10 bg-white/5 relative">
-        <span class="section-num">04</span>
-        <div class="max-w-4xl mx-auto glass p-12 card-hover">
-            <h2 class="text-3xl font-black mb-10 italic">Academic Research & IoT</h2>
-            <div class="space-y-12">
-                <div class="border-l-4 border-orange-500 pl-8">
-                    <h4 class="text-xl font-bold mb-2 uppercase tracking-tighter">Landslide Correlation System</h4>
-                    <p class="text-gray-400 text-sm">Utilizing ESP32 and SMS gateways to deploy a 70% threshold moisture alert system for disaster prevention.</p>
+    <section id="analytics" class="space-y-40">
+        <div class="flex justify-between items-end border-b border-white/10 pb-10 reveal">
+            <h2 class="text-8xl font-bold uppercase tracking-tighter italic">Featured<br>Projects</h2>
+            <span class="text-gray-500 font-mono">SELECTED WORKS 2024-2026</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-20 items-center reveal">
+            <div class="image-container">
+                <img src="1000239452.jpg" class="w-full grayscale hover:grayscale-0 transition duration-700">
+            </div>
+            <div>
+                <h3 class="text-6xl font-bold mb-6 italic text-orange-600">SWIGGY</h3>
+                <p class="text-2xl text-gray-400 mb-8 leading-snug">Processing a staggering <span class="text-white">52.12 Million Sales Records</span>. I engineered a dashboard that allows for surgical precision in cuisine and city-wise performance analysis.</p>
+                <div class="h-[1px] w-full bg-white/20 mb-8"></div>
+                <div class="flex gap-10 uppercase text-[10px] font-bold tracking-[0.2em]">
+                    <span>Analysis</span> <span>Business Intelligence</span> <span>Automation</span>
                 </div>
-                <div class="border-l-4 border-blue-500 pl-8">
-                    <h4 class="text-xl font-bold mb-2 uppercase tracking-tighter">Smart SOS Response</h4>
-                    <p class="text-gray-400 text-sm">Low-latency GPS coordinate transmission (Neo-6M) via SIM800L GSM modules for elderly safety.</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-20 items-center flex-row-reverse reveal">
+            <div class="order-2 md:order-1">
+                <h3 class="text-6xl font-bold mb-6 italic text-blue-500">AMAZON</h3>
+                <p class="text-2xl text-gray-400 mb-8 leading-snug">Financial modeling of <span class="text-white">$2 Million Revenue</span>. Implementation of DAX logic to isolate shipment efficiency and regional profitability clusters.</p>
+                <div class="h-[1px] w-full bg-white/20 mb-8"></div>
+                <div class="flex gap-10 uppercase text-[10px] font-bold tracking-[0.2em]">
+                    <span>Finance</span> <span>Visual Modeling</span> <span>Optimization</span>
                 </div>
+            </div>
+            <div class="image-container order-1 md:order-2">
+                <img src="1000227044.jpg" class="w-full grayscale hover:grayscale-0 transition duration-700">
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-32 px-10 text-center relative overflow-hidden">
-        <h2 class="text-6xl md:text-[10rem] font-black opacity-10 absolute bottom-0 left-1/2 -translate-x-1/2 -z-10 tracking-tighter">CONTACT</h2>
-        <h3 class="text-4xl font-black mb-8">Let's build the <span class="text-orange-500">future.</span></h3>
-        <div class="flex justify-center gap-12 text-3xl mb-12">
-            <a href="https://github.com/sabharish14" class="hover:text-orange-500 transition"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sabharishraaja" class="hover:text-blue-500 transition"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:psabharish14@gmail.com" class="hover:text-red-500 transition"><i class="fas fa-envelope"></i></a>
+    <section id="engineering" class="bg-white text-black p-0 overflow-hidden">
+        <div class="grid md:grid-cols-2 h-full">
+            <div class="p-20 border-r border-black/10 flex flex-col justify-center">
+                <span class="font-bold text-xs uppercase tracking-[0.4em] mb-10">System 01</span>
+                <h4 class="text-5xl font-bold mb-6 uppercase tracking-tighter leading-none">Landslide IoT Monitor</h4>
+                <p class="text-xl leading-relaxed">An ESP32-based emergency system utilizing Firebase. Automated SMS triggers execute when soil moisture levels hit the critical 70% threshold.</p>
+            </div>
+            <div class="p-20 flex flex-col justify-center bg-orange-600 text-white">
+                <span class="font-bold text-xs uppercase tracking-[0.4em] mb-10">System 02</span>
+                <h4 class="text-5xl font-bold mb-6 uppercase tracking-tighter leading-none">Smart SOS Response</h4>
+                <p class="text-xl leading-relaxed">GPS/GSM integration (Neo-6M) via Arduino. Designed a low-latency transmission protocol for elderly safety and coordinate broadcasting.</p>
+            </div>
         </div>
-        <p class="text-gray-600 text-[10px] uppercase tracking-[0.5em]">Sabharish Raaja | Chennai, TN | 2026</p>
-    </footer>
+    </section>
 
+    <section id="contact" class="text-center h-screen">
+        <h2 class="huge-text mb-20 reveal">SAY<br>HELLO</h2>
+        <div class="flex flex-wrap justify-center gap-20 reveal">
+            <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="group">
+                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">LinkedIn</span>
+                <span class="text-2xl font-bold group-hover:text-orange-600 transition">@sabharishraaja</span>
+            </a>
+            <a href="mailto:psabharish14@gmail.com" class="group">
+                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">Email</span>
+                <span class="text-2xl font-bold group-hover:text-orange-600 transition">Reach Out</span>
+            </a>
+            <a href="https://github.com/sabharish14" target="_blank" class="group">
+                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">GitHub</span>
+                <span class="text-2xl font-bold group-hover:text-orange-600 transition">Source Code</span>
+            </a>
+        </div>
+        <p class="mt-40 text-[10px] uppercase tracking-[0.8em] opacity-30">© 2024 SABHARISH RAAJA / CHENNAI</p>
+    </section>
+
+    <script>
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add("active");
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Initial call
+    </script>
 </body>
 </html>
