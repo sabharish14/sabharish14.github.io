@@ -14,40 +14,55 @@
         .bg-layer {
             position: fixed; inset: 0;
             background-size: cover; background-position: center;
-            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), opacity 1s;
+            transition: transform 1.5s ease-out, opacity 1s;
             z-index: -1; opacity: 0;
         }
-        .bg-layer.active { opacity: 0.6; transform: scale(1.05); }
+        .bg-layer.active { opacity: 0.5; transform: scale(1.1); }
 
-        /* Real Action Backgrounds */
-        #bg1 { background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000'); opacity: 0.8; } /* Stadium Empty */
-        #bg2 { background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000'); } /* Bowler Action */
-        #bg3 { background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000'); } /* Batsman Action */
-        #bg4 { background-image: url('https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=2000'); } /* Field View */
-        #bg5 { background-image: url('https://images.unsplash.com/photo-1474169904144-bf24f09d8bd9?q=80&w=2000'); } /* Celebration */
+        #bg1 { background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000'); opacity: 0.7; }
+        #bg2 { background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000'); }
+        #bg3 { background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000'); }
+        #bg4 { background-image: url('https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=2000'); }
+        /* Final Celebration Background */
+        #bg5 { background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000'); opacity: 0.3; }
 
-        .overlay { position: fixed; inset: 0; background: radial-gradient(circle, transparent 20%, #000 150%); z-index: 0; }
+        .overlay { position: fixed; inset: 0; background: radial-gradient(circle, transparent 10%, #000 160%); z-index: 0; }
 
         .slide {
             position: absolute; inset: 0; display: none;
             flex-direction: column; justify-content: center; padding: 0 10%; z-index: 10;
         }
-        .slide.active { display: flex; animation: slideUp 1s forwards; }
+        .slide.active { display: flex; animation: slideUp 0.8s forwards; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; }
-        .title { font-family: 'Syne'; font-size: 8vw; line-height: 0.8; text-transform: uppercase; margin-bottom: 20px; }
-        .accent { color: #ff4d00; }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; }
         
-        .project-img { width: 100%; border-radius: 10px; border: 1px solid #444; margin-bottom: 15px; }
+        /* Final SIXER Text Effect */
+        .sixer-text {
+            font-family: 'Syne';
+            font-size: 15vw;
+            line-height: 0.8;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 20px #ff4d00, 0 0 40px #ff4d00;
+            animation: shake 0.5s infinite alternate;
+        }
+
+        @keyframes shake {
+            0% { transform: skewX(-5deg); }
+            100% { transform: skewX(5deg); text-shadow: 0 0 50px #ff4d00, 0 0 100px #ff4d00; }
+        }
+
+        .project-img { width: 100%; border-radius: 15px; border: 2px solid rgba(255,255,255,0.1); margin-bottom: 15px; }
         
         #action-btn {
             position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
-            z-index: 100; border: 2px solid #fff; padding: 15px 40px; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 4px; transition: 0.3s;
+            z-index: 100; background: transparent; border: 1px solid #fff; padding: 12px 35px; 
+            font-weight: 900; text-transform: uppercase; letter-spacing: 5px; transition: 0.4s;
+            border-radius: 50px;
         }
-        #action-btn:hover { background: #fff; color: #000; }
+        #action-btn:hover { background: #ff4d00; border-color: #ff4d00; box-shadow: 0 0 30px #ff4d00; }
     </style>
 </head>
 <body>
@@ -61,46 +76,55 @@
     <div id="bg5" class="bg-layer"></div>
 
     <div class="slide active" id="s1">
-        <h1 class="title">Sabharish<br><span class="accent">Raaja</span></h1>
-        <p class="text-2xl tracking-[1em] opacity-50">DATA ANALYST // ENGINEER</p>
+        <h1 class="font-['Syne'] text-[10vw] leading-none uppercase">Sabharish<br><span class="text-[#ff4d00]">Raaja</span></h1>
+        <p class="text-xl tracking-[0.8em] opacity-40 mt-4 uppercase">Data Analytics // Engineering</p>
     </div>
 
     <div class="slide" id="s2">
         <div class="max-w-3xl glass">
-            <h2 class="text-orange-500 text-3xl font-black mb-6 italic uppercase">The Player Profile</h2>
-            <p class="text-xl leading-relaxed">
-                I am an **Electronics and Communication Engineer (ECE)** who has strategically pivoted into the world of **Data Analytics**. My engineering training allows me to approach data with mathematical precision and technical depth. During my **internship**, I successfully mastered extracting insights from complex datasets to solve real-world business problems. I am now fully dedicated to my journey as a Data Analyst, utilizing my ECE discipline to build cleaner, more efficient data models that help organizations hit their targets with 100% accuracy.
+            <h2 class="text-[#ff4d00] text-3xl font-black mb-6 italic uppercase">The Player Profile</h2>
+            <p class="text-xl leading-relaxed font-light">
+                I am an **Electronics and Communication Engineer (ECE)** who has strategically pivoted into the world of **Data Analytics**. During my **internship**, I mastered extracting insights from complex datasets to solve real-world business problems. I am now fully dedicated to building cleaner, more efficient data models that help organizations hit their targets with 100% accuracy.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s3">
-        <div class="max-w-xl glass border-l-4 border-orange-600">
-            <h2 class="text-4xl font-black mb-4 uppercase">ETL Automation</h2>
-            <p class="text-gray-300">
-                I designed a realistic, Python-based automation engine that cleans datasets at the speed of a fast-bowler's delivery. Handling nulls, outliers, and normalization automatically.
+        <div class="max-w-xl glass border-r-4 border-[#ff4d00] text-right ml-auto">
+            <h2 class="text-4xl font-black mb-4 uppercase">ETL Engine</h2>
+            <p class="text-gray-400 text-lg">
+                Custom Python-based automation that cleans data at the speed of a 150km/h delivery. Perfectly prepared for the strike.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s4">
-        <div class="grid grid-cols-2 gap-10">
+        <div class="grid grid-cols-2 gap-8">
             <div class="glass">
                 <img src="1000239452.jpg" class="project-img">
-                <h3 class="font-bold text-xl uppercase">Swiggy Sales</h3>
+                <h3 class="font-bold text-xl uppercase tracking-widest">Swiggy Analysis</h3>
             </div>
             <div class="glass">
                 <img src="1000227044.jpg" class="project-img">
-                <h3 class="font-bold text-xl uppercase">Amazon Profits</h3>
+                <h3 class="font-bold text-xl uppercase tracking-widest">Amazon Tracker</h3>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s5">
-        <h1 class="title text-center accent">SIXER!</h1>
-        <div class="glass text-center max-w-xl mx-auto">
-            <p class="text-2xl font-black mb-4">psabharish14@gmail.com</p>
-            <p class="text-4xl font-black">+91 75501 49526</p>
+        <div class="text-center">
+            <h1 class="sixer-text">SIXER!</h1>
+            <div class="mt-10 glass inline-block px-20">
+                <p class="text-[#ff4d00] tracking-[0.5em] font-bold uppercase mb-4">Match Official: Data Analyst</p>
+                <div class="h-[1px] bg-white/20 w-full mb-6"></div>
+                <a href="mailto:psabharish14@gmail.com" class="text-3xl font-black block hover:text-[#ff4d00] transition-colors mb-2">PSABHARISH14@GMAIL.COM</a>
+                <a href="tel:7550149526" class="text-5xl font-black block tracking-tighter hover:scale-105 transition-transform">+91 75501 49526</a>
+                <div class="mt-8 flex justify-center gap-6">
+                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">PYTHON</span>
+                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">SQL</span>
+                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">POWER BI</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -108,28 +132,20 @@
 
     <script>
         let current = 1;
-        const total = 5;
-
         function nextPhase() {
-            // Remove active classes
             document.querySelectorAll('.slide, .bg-layer').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.slide').forEach(el => el.style.display = 'none');
 
-            current = current < total ? current + 1 : 1;
+            current = current < 5 ? current + 1 : 1;
 
-            // Activate new layers
             document.getElementById('bg' + current).classList.add('active');
             const slide = document.getElementById('s' + current);
             slide.style.display = 'flex';
             setTimeout(() => slide.classList.add('active'), 50);
 
-            // Button Text logic
             const btn = document.getElementById('action-btn');
-            if(current === 1) btn.innerText = "Enter Pitch";
-            else if(current === 2) btn.innerText = "Bowler Runs In";
-            else if(current === 3) btn.innerText = "The Strike";
-            else if(current === 4) btn.innerText = "Match Results";
-            else btn.innerText = "New Match";
+            const steps = ["", "Start Match", "The Run Up", "Big Strike", "Scorecard", "New Match"];
+            btn.innerText = steps[current];
         }
     </script>
 </body>
