@@ -3,163 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABHARISH RAAJA — SYSTEMS & DATA ARCHITECT</title>
+    <title>SABHARISH RAAJA — DATA ANALYST</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Syne:wght@800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;400;900&display=swap');
         
-        :root { --accent: #ff4d00; --bg: #080808; }
-        body { background-color: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; margin: 0; }
+        :root { --accent: #ff4d00; --bg: #050505; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; margin: 0; }
         
-        /* Grainy Texture Overlay (Lempens Style) */
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url(https://grainy-gradients.vercel.app/noise.svg);
-            opacity: 0.04; pointer-events: none; z-index: 999;
+        /* Immersive Cricket Stadium Background */
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)), 
+                        url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop'); 
+            background-size: cover; background-position: center;
+            z-index: -2; opacity: 0.4; filter: grayscale(40%);
         }
 
-        .huge-text { font-family: 'Syne', sans-serif; font-size: clamp(4rem, 15vw, 18rem); line-height: 0.8; letter-spacing: -0.05em; text-transform: uppercase; }
-        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
-        
-        section { min-height: 100vh; padding: 100px 5%; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        
-        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); border: 1px solid rgba(255,255,255,0.08); transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
-        .glass-panel:hover { background: rgba(255, 255, 255, 0.05); border-color: var(--accent); }
+        .grain {
+            position: fixed; inset: 0; width: 100%; height: 100%;
+            background: url(https://grainy-gradients.vercel.app/noise.svg);
+            opacity: 0.05; pointer-events: none; z-index: -1;
+        }
 
-        .reveal { opacity: 0; transform: translateY(80px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+        .huge-title { font-family: 'Syne', sans-serif; font-size: clamp(4rem, 12vw, 15rem); line-height: 0.8; letter-spacing: -0.06em; text-transform: uppercase; }
+        
+        section { min-height: 100vh; padding: 120px 8%; display: flex; flex-direction: column; justify-content: center; }
+        
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 40px; transition: 0.5s; }
+        .glass-panel:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.06); transform: translateY(-10px); }
+
+        .reveal { opacity: 0; transform: translateY(60px); transition: 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .image-container { position: relative; overflow: hidden; border-radius: 5px; filter: grayscale(100%); transition: 0.8s; }
-        .image-container:hover { filter: grayscale(0%); transform: scale(1.02); }
+        .contact-btn { transition: all 0.4s; border-bottom: 2px solid transparent; }
+        .contact-btn:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-[100] p-10 flex justify-between items-baseline mix-blend-difference">
-        <div class="text-2xl font-bold tracking-tighter">SABHARISH<span class="text-orange-600">©</span></div>
-        <div class="flex gap-8 text-[10px] uppercase tracking-[0.5em] font-bold">
-            <a href="#about" class="hover:text-orange-600">History</a>
-            <a href="#analytics" class="hover:text-orange-600">Work</a>
-            <a href="#contact" class="hover:text-orange-600 italic">Contact</a>
+    <div class="bg-overlay"></div>
+    <div class="grain"></div>
+
+    <nav class="fixed top-0 w-full z-[100] p-8 flex justify-between items-center mix-blend-difference">
+        <div class="text-xl font-black uppercase tracking-tighter">SABHARISH<span class="text-orange-600">.</span></div>
+        <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.4em]">
+            <a href="#about" class="hover:text-orange-500">Identity</a>
+            <a href="#analytics" class="hover:text-orange-500">Analytics</a>
+            <a href="#automation" class="hover:text-orange-500">Logic</a>
+            <a href="#contact" class="hover:text-orange-500">Contact</a>
         </div>
     </nav>
 
     <section id="home">
-        <span class="text-orange-600 font-bold tracking-[0.8em] mb-10 block text-xs reveal">TAMIL NADU, INDIA</span>
-        <h1 class="huge-text reveal">DATA<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">SYSTEMS</span></h1>
-        <div class="mt-20 flex flex-col md:flex-row gap-10 items-start reveal">
-            <div class="h-[2px] w-40 bg-orange-600 mt-4"></div>
-            <p class="text-2xl md:text-4xl font-light max-w-3xl leading-tight">
-                An Engineer decoding the friction between <span class="italic">physical hardware</span> and <span class="text-orange-600 font-bold underline">digital intelligence.</span>
+        <span class="text-orange-500 font-bold tracking-[0.6em] mb-6 block text-xs reveal">CHENNAI, TAMIL NADU</span>
+        <h1 class="huge-title reveal">DATA<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">ANALYST.</span></h1>
+        <div class="mt-16 flex flex-col md:flex-row gap-12 items-start reveal">
+            <div class="h-[1px] w-32 bg-orange-600 mt-4"></div>
+            <p class="text-2xl md:text-3xl font-light max-w-2xl text-gray-300 leading-tight">
+                Architecting <span class="italic text-white">high-performance</span> data environments. Combining ECE precision with modern business intelligence.
             </p>
         </div>
     </section>
 
-    <section id="about" class="bg-[#0c0c0c]">
-        <div class="grid md:grid-cols-12 gap-10 reveal">
-            <div class="md:col-span-4">
-                <span class="text-orange-600 font-bold text-xs tracking-widest uppercase">The Perspective</span>
+    <section id="about" class="bg-white/5">
+        <div class="grid md:grid-cols-2 gap-20 items-center reveal">
+            <div>
+                <span class="text-orange-500 uppercase font-black tracking-widest text-[10px]">The Professional Pivot</span>
+                <h2 class="text-6xl font-black mt-4 mb-10 uppercase leading-none">Strategy <br>Driven by <br>Engineering.</h2>
             </div>
-            <div class="md:col-span-8">
-                <h2 class="text-5xl md:text-7xl font-bold mb-12 uppercase leading-none">Engineering the <br>Invisible.</h2>
-                <div class="text-gray-400 text-xl md:text-2xl leading-relaxed space-y-6 max-w-4xl">
-                    <p>My foundation as an Electronics and Communication Engineer provides me with a rare forensic understanding of data; I don’t just observe metrics, I visualize the sensor logic and electrical signals that birth them. This technical lineage allows me to bridge the gap between messy, real-world IoT environments and high-fidelity business intelligence dashboards.</p>
-                    <p>I specialize in transforming massive, fragmented datasets into streamlined narratives, utilizing Python-driven automation to ensure that every insight is built on a foundation of absolute structural integrity. By treating every data pipeline as a mission-critical circuit, I eliminate noise and amplify the signals that matter most to revenue and operational growth.</p>
-                    <p>Whether I am architecting a 52M record sales engine or designing safety-critical SOS response systems, my focus remains on creating high-impact, automated solutions that solve complex human problems through the power of statistics.</p>
-                </div>
+            <div class="text-gray-300 text-xl leading-relaxed space-y-6">
+                <p>
+                    I am an **Electronics and Communication Engineer (ECE)** who has pivoted my entire focus and career path toward the field of **Data Analysis**. My technical engineering background gives me a distinct advantage in understanding the "how" and "why" behind data generation, particularly in IoT and hardware-driven systems. However, my passion lies in the storytelling and strategic value that raw numbers can provide when cleaned and visualized correctly. I am now **fully dedicated to Data Analytics**, specializing in SQL, Power BI, and Python to solve high-stake business problems. By treating data like a mission-critical circuit, I ensure my analysis is always accurate, automated, and ready to drive revenue.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="skills">
-        <h2 class="huge-text opacity-10 absolute left-0 -z-10">MATRIX</h2>
-        <div class="grid md:grid-cols-3 gap-1 px-4">
-            <div class="glass-panel p-16 reveal">
-                <span class="text-orange-600 font-bold">01 — ANALYTICS</span>
-                <h3 class="text-3xl font-bold mt-6 mb-6">POWER BI / DAX</h3>
-                <p class="text-gray-500 leading-relaxed">Developing enterprise-level visualization architectures that track multi-million dollar revenue streams with real-time drill-down capabilities.</p>
-            </div>
-            <div class="glass-panel p-16 reveal" style="transition-delay: 0.2s;">
-                <span class="text-orange-600 font-bold">02 — AUTOMATION</span>
-                <h3 class="text-3xl font-bold mt-6 mb-6">PYTHON / ETL</h3>
-                <p class="text-gray-500 leading-relaxed">Crafting automated Python scripts for high-speed data cleaning, AI-based imputation, and streamlining fragmented datasets into SQL ready formats.</p>
-            </div>
-            <div class="glass-panel p-16 reveal" style="transition-delay: 0.4s;">
-                <span class="text-orange-600 font-bold">03 — SYSTEMS</span>
-                <h3 class="text-3xl font-bold mt-6 mb-6">IOT / EMBEDDED</h3>
-                <p class="text-gray-500 leading-relaxed">Designing hardware logic for ESP32 and Arduino, integrating GPS/GSM modules to solve real-world safety and environmental monitoring challenges.</p>
+    <section id="automation">
+        <h2 class="huge-title opacity-5 absolute left-0 -z-10">AUTOMATE</h2>
+        <div class="max-w-4xl mx-auto glass-panel p-16 reveal">
+            <h3 class="text-4xl font-black mb-8 italic"><i class="fas fa-bolt text-orange-600 mr-4"></i>AUTOMATION HUB</h3>
+            <div class="space-y-12">
+                <div class="flex gap-8 items-start">
+                    <div class="w-12 h-12 flex-shrink-0 border-2 border-orange-500 rounded-full flex items-center justify-center font-bold text-orange-500">01</div>
+                    <div>
+                        <h4 class="text-xl font-bold uppercase tracking-widest mb-2">Python ETL Workflows</h4>
+                        <p class="text-gray-400">Automating the extraction and cleaning of 52M+ records. I build custom scripts that eliminate manual data prep time and prioritize accuracy.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8 items-start">
+                    <div class="w-12 h-12 flex-shrink-0 border-2 border-orange-500 rounded-full flex items-center justify-center font-bold text-orange-500">02</div>
+                    <div>
+                        <h4 class="text-xl font-bold uppercase tracking-widest mb-2">Systematic Imputation</h4>
+                        <p class="text-gray-400">Applying engineering logic to data cleaning, using AI models to predict missing values in high-frequency sensor streams.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="analytics" class="space-y-40">
-        <div class="flex justify-between items-end border-b border-white/10 pb-10 reveal">
-            <h2 class="text-8xl font-bold uppercase tracking-tighter italic">Featured<br>Projects</h2>
-            <span class="text-gray-500 font-mono">SELECTED WORKS 2024-2026</span>
+        <div class="grid md:grid-cols-2 gap-20 items-center reveal">
+            <div class="glass-panel overflow-hidden">
+                <img src="1000239452.jpg" class="w-full grayscale hover:grayscale-0 transition duration-1000 object-cover">
+            </div>
+            <div>
+                <h3 class="text-5xl font-black mb-6 uppercase">Swiggy Sales Intelligence</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">Processing **52.12 Million records** to identify revenue leakage. I built a dynamic filter architecture allowing city-level drill-downs for 193K+ individual restaurant orders.</p>
+                <div class="flex gap-4">
+                    <span class="text-[10px] px-4 py-2 bg-orange-600 rounded-full font-bold uppercase">Power BI</span>
+                    <span class="text-[10px] px-4 py-2 border border-white/20 rounded-full font-bold uppercase">DAX</span>
+                </div>
+            </div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-20 items-center reveal">
-            <div class="image-container">
-                <img src="1000239452.jpg" class="w-full grayscale hover:grayscale-0 transition duration-700">
-            </div>
-            <div>
-                <h3 class="text-6xl font-bold mb-6 italic text-orange-600">SWIGGY</h3>
-                <p class="text-2xl text-gray-400 mb-8 leading-snug">Processing a staggering <span class="text-white">52.12 Million Sales Records</span>. I engineered a dashboard that allows for surgical precision in cuisine and city-wise performance analysis.</p>
-                <div class="h-[1px] w-full bg-white/20 mb-8"></div>
-                <div class="flex gap-10 uppercase text-[10px] font-bold tracking-[0.2em]">
-                    <span>Analysis</span> <span>Business Intelligence</span> <span>Automation</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-20 items-center flex-row-reverse reveal">
             <div class="order-2 md:order-1">
-                <h3 class="text-6xl font-bold mb-6 italic text-blue-500">AMAZON</h3>
-                <p class="text-2xl text-gray-400 mb-8 leading-snug">Financial modeling of <span class="text-white">$2 Million Revenue</span>. Implementation of DAX logic to isolate shipment efficiency and regional profitability clusters.</p>
-                <div class="h-[1px] w-full bg-white/20 mb-8"></div>
-                <div class="flex gap-10 uppercase text-[10px] font-bold tracking-[0.2em]">
-                    <span>Finance</span> <span>Visual Modeling</span> <span>Optimization</span>
+                <h3 class="text-5xl font-black mb-6 uppercase">Amazon Financial Hub</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-8">Detailed tracking of **$2M in revenue**. This dashboard isolates high-risk returns and shipping delays while visualizing payment mode efficiency (43% COD vs 57% Prepaid).</p>
+                <div class="flex gap-4">
+                    <span class="text-[10px] px-4 py-2 bg-blue-600 rounded-full font-bold uppercase">Financial Modeling</span>
+                    <span class="text-[10px] px-4 py-2 border border-white/20 rounded-full font-bold uppercase">SQL</span>
                 </div>
             </div>
-            <div class="image-container order-1 md:order-2">
-                <img src="1000227044.jpg" class="w-full grayscale hover:grayscale-0 transition duration-700">
+            <div class="glass-panel overflow-hidden order-1 md:order-2">
+                <img src="1000227044.jpg" class="w-full grayscale hover:grayscale-0 transition duration-1000 object-cover">
             </div>
         </div>
     </section>
 
-    <section id="engineering" class="bg-white text-black p-0 overflow-hidden">
-        <div class="grid md:grid-cols-2 h-full">
+    <section id="engineering" class="bg-white text-black p-0">
+        <div class="grid md:grid-cols-2 h-full min-h-[60vh]">
             <div class="p-20 border-r border-black/10 flex flex-col justify-center">
-                <span class="font-bold text-xs uppercase tracking-[0.4em] mb-10">System 01</span>
-                <h4 class="text-5xl font-bold mb-6 uppercase tracking-tighter leading-none">Landslide IoT Monitor</h4>
-                <p class="text-xl leading-relaxed">An ESP32-based emergency system utilizing Firebase. Automated SMS triggers execute when soil moisture levels hit the critical 70% threshold.</p>
+                <span class="text-[10px] font-black tracking-[0.4em] mb-4">SYSTEM 01</span>
+                <h4 class="text-5xl font-black mb-6 uppercase leading-none">Landslide IoT Monitor</h4>
+                <p class="text-xl leading-relaxed">ESP32 and Firebase implementation. Automated SMS triggers execute when soil moisture levels hit the critical 70% threshold.</p>
             </div>
             <div class="p-20 flex flex-col justify-center bg-orange-600 text-white">
-                <span class="font-bold text-xs uppercase tracking-[0.4em] mb-10">System 02</span>
-                <h4 class="text-5xl font-bold mb-6 uppercase tracking-tighter leading-none">Smart SOS Response</h4>
-                <p class="text-xl leading-relaxed">GPS/GSM integration (Neo-6M) via Arduino. Designed a low-latency transmission protocol for elderly safety and coordinate broadcasting.</p>
+                <span class="text-[10px] font-black tracking-[0.4em] mb-4">SYSTEM 02</span>
+                <h4 class="text-5xl font-black mb-6 uppercase leading-none">Smart SOS Response</h4>
+                <p class="text-xl leading-relaxed">GPS/GSM integration via Arduino. Designed a low-latency transmission protocol for coordinate broadcasting and safety.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="text-center h-screen">
-        <h2 class="huge-text mb-20 reveal">SAY<br>HELLO</h2>
-        <div class="flex flex-wrap justify-center gap-20 reveal">
-            <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="group">
-                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">LinkedIn</span>
-                <span class="text-2xl font-bold group-hover:text-orange-600 transition">@sabharishraaja</span>
-            </a>
-            <a href="mailto:psabharish14@gmail.com" class="group">
-                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">Email</span>
-                <span class="text-2xl font-bold group-hover:text-orange-600 transition">Reach Out</span>
-            </a>
-            <a href="https://github.com/sabharish14" target="_blank" class="group">
-                <span class="text-xs uppercase tracking-widest block mb-2 opacity-50">GitHub</span>
-                <span class="text-2xl font-bold group-hover:text-orange-600 transition">Source Code</span>
-            </a>
+    <section id="contact" class="text-center relative">
+        <h2 class="huge-title mb-20 reveal">GET IN<br>TOUCH</h2>
+        <div class="flex flex-wrap justify-center gap-16 md:gap-32 reveal">
+            <div class="flex flex-col items-center">
+                <span class="text-[10px] font-bold uppercase tracking-[0.5em] mb-4 opacity-50">Direct Call</span>
+                <a href="tel:+917550149526" class="text-3xl md:text-5xl font-black contact-btn">+91 75501 49526</a>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-[10px] font-bold uppercase tracking-[0.5em] mb-4 opacity-50">Email Me</span>
+                <a href="mailto:psabharish14@gmail.com" class="text-3xl md:text-5xl font-black contact-btn text-orange-500">psabharish14@gmail.com</a>
+            </div>
         </div>
-        <p class="mt-40 text-[10px] uppercase tracking-[0.8em] opacity-30">© 2024 SABHARISH RAAJA / CHENNAI</p>
+        
+        <div class="mt-32 flex justify-center gap-12 reveal opacity-70">
+            <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="hover:text-orange-500 text-2xl transition"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/sabharish14" target="_blank" class="hover:text-orange-500 text-2xl transition"><i class="fab fa-github"></i></a>
+        </div>
+        
+        <p class="mt-20 text-[10px] uppercase tracking-[1em] opacity-30 italic font-bold">Data Architecture // Chennai // 2026</p>
     </section>
 
     <script>
@@ -172,7 +180,7 @@
             });
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Initial call
+        reveal(); // Trigger on load
     </script>
 </body>
 </html>
