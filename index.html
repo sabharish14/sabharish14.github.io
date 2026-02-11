@@ -5,180 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabharish Raaja | Data & Systems Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;500;900&display=swap');
         
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: #0a0a0a; 
-            color: #ffffff; 
-            font-family: 'Space Grotesk', sans-serif;
-            overflow-x: hidden;
+        :root { --accent: #ff4d00; --bg: #050505; }
+        html { scroll-behavior: smooth; cursor: crosshair; }
+        body { background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* Animated Mesh Background */
+        .mesh {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 77, 0, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 0% 0%, rgba(0, 102, 255, 0.05) 0%, transparent 50%);
+            z-index: -1; pointer-events: none;
         }
 
-        /* Glassmorphism & Effects */
-        .glass { background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .text-gradient { background: linear-gradient(to right, #f97316, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* Immersive Section Transitions */
-        section { min-height: 100vh; display: flex; align-items: center; padding: 0 10%; position: relative; }
-        
-        /* Reveal Animation Classes */
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease-out; }
+        .hero-title { font-family: 'Syncopate', sans-serif; line-height: 0.8; letter-spacing: -0.05em; }
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .glass-card:hover { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-color: var(--accent);
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .reveal { opacity: 0; transform: translateY(100px); transition: 1s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 10px; }
+        /* Horizontal Scroll Section Style */
+        .scroll-section { min-height: 100vh; display: flex; align-items: center; padding: 0 8%; }
+        
+        .loader {
+            position: fixed; inset: 0; background: #000; z-index: 999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 1s ease 1s;
+        }
     </style>
 </head>
-<body>
+<body onload="document.querySelector('.loader').style.opacity='0'; setTimeout(()=>document.querySelector('.loader').style.display='none', 2000)">
 
-    <nav class="fixed top-0 w-full z-50 flex justify-between items-center py-6 px-10 glass border-b border-white/5">
-        <div class="text-xl font-bold tracking-tighter uppercase">Sabharish<span class="text-orange-500">.</span></div>
-        <div class="hidden md:flex space-x-8 text-[0.65rem] font-bold uppercase tracking-[0.3em] opacity-70">
-            <a href="#home" class="hover:text-orange-500 transition">Home</a>
-            <a href="#about" class="hover:text-orange-500 transition">The Story</a>
-            <a href="#skills" class="hover:text-orange-500 transition">Expertise</a>
-            <a href="#analytics" class="hover:text-orange-500 transition">Analytics</a>
-            <a href="#engineering" class="hover:text-orange-500 transition">Engineering</a>
-            <a href="#contact" class="text-orange-500 hover:opacity-100 transition">Get In Touch</a>
+    <div class="loader"><h1 class="text-white font-bold tracking-[1em] animate-pulse uppercase">Initializing Data...</h1></div>
+    <div class="mesh"></div>
+
+    <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center mix-blend-difference">
+        <div class="text-2xl font-black uppercase tracking-tighter">SR<span class="text-orange-600">.</span></div>
+        <div class="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-[0.4em]">
+            <a href="#about" class="hover:text-orange-500 transition">About</a>
+            <a href="#work" class="hover:text-orange-500 transition">Projects</a>
+            <a href="#contact" class="hover:text-orange-500 transition">Connect</a>
         </div>
     </nav>
 
-    <section id="home" class="flex flex-col justify-center items-start">
-        <div class="max-w-4xl z-10">
-            <span class="text-orange-500 font-bold uppercase tracking-[0.5em] text-xs mb-4 block">Based in Chennai, TN</span>
-            <h1 class="text-6xl md:text-[8rem] font-bold leading-[0.9] tracking-tighter mb-8">
-                DATA <br> <span class="text-gradient">SYSTEMS.</span>
-            </h1>
-            <p class="text-gray-400 text-lg md:text-2xl font-light max-w-xl leading-relaxed">
-                An ECE Engineer crafting high-fidelity data narratives. I bridge the gap between <span class="text-white border-b border-orange-500/50">physical sensor logic</span> and <span class="text-white border-b border-orange-500/50">business intelligence</span>.
+    <section class="min-h-screen flex flex-col justify-center px-8 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-orange-600/20 blur-[150px] animate-pulse"></div>
+        <h2 class="text-orange-500 font-bold tracking-[0.5em] mb-6 uppercase text-sm ml-2">Engineer & Analyst</h2>
+        <h1 class="hero-title text-[15vw] md:text-[12vw] font-bold uppercase">Sabha<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">Rish</span></h1>
+        
+        <div class="mt-12 flex items-center gap-8">
+            <div class="h-[1px] w-24 bg-white"></div>
+            <p class="text-gray-400 max-w-sm text-sm uppercase leading-loose tracking-widest">
+                Merging the precision of ECE with the power of Data Visualization.
             </p>
         </div>
-        <div class="absolute right-[-10%] bottom-[10%] w-[600px] h-[600px] bg-orange-600/5 rounded-full blur-[150px]"></div>
     </section>
 
-    <section id="about" class="bg-[#0c0c0c]">
-        <div class="grid md:grid-cols-2 gap-20 items-start w-full reveal">
+    <section id="about" class="scroll-section">
+        <div class="grid md:grid-cols-2 gap-20 w-full reveal">
             <div>
-                <h2 class="text-5xl font-bold mb-10 leading-tight">The <br><span class="text-orange-500 italic">Interdisciplinary</span> <br>Approach.</h2>
-                <div class="space-y-6 text-gray-400 text-lg leading-relaxed">
-                    <p>My journey didn't start with spreadsheets; it started with silicon. As an <span class="text-white">Electronics and Communication Engineer</span>, I spent years understanding how signals move through circuits.</p>
-                    <p>When I transitioned to <span class="text-white">Data Analytics</span>, I brought that precision with me. I treat data like a transmission—it needs to be clean, prioritized, and decoded correctly to have value.</p>
-                    <p>Whether it's optimizing a 52M record dataset for Swiggy or designing an SOS alert logic, I focus on systems that are both robust and actionable.</p>
+                <h3 class="text-5xl font-black mb-12 leading-tight uppercase">Hardware<br><span class="text-orange-600">to Insight</span></h3>
+                <div class="space-y-8 text-gray-400 text-lg">
+                    <p class="leading-relaxed">My engineering foundation isn't just a degree—it's a <span class="text-white font-bold">framework</span>. I view data cleaning as signal filtering and dashboarding as interface design.</p>
+                    <p class="leading-relaxed">Specializing in Python-driven automation and Power BI storytelling, I build systems that don't just show data—they reveal <span class="text-white border-b-2 border-orange-600">strategies</span>.</p>
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-6 mt-20">
-                <div class="glass p-8 rounded-3xl border-orange-500/20">
-                    <h3 class="text-4xl font-bold text-white mb-2">52M</h3>
-                    <p class="text-[0.6rem] uppercase tracking-widest text-orange-500 font-bold">Sales Records</p>
-                </div>
-                <div class="glass p-8 rounded-3xl border-blue-500/20">
-                    <h3 class="text-4xl font-bold text-white mb-2">2M+</h3>
-                    <p class="text-[0.6rem] uppercase tracking-widest text-blue-500 font-bold">Revenue Tracked</p>
-                </div>
-                <div class="glass p-8 rounded-3xl border-yellow-500/20 col-span-2">
-                    <h3 class="text-4xl font-bold text-white mb-2">100%</h3>
-                    <p class="text-[0.6rem] uppercase tracking-widest text-yellow-500 font-bold">Hardware Logic Stability</p>
+            <div class="relative">
+                <div class="glass-card p-12 rounded-[2rem] border-l-4 border-orange-600">
+                    <div class="flex gap-4 mb-8">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <ul class="space-y-6 font-mono text-sm uppercase tracking-tighter">
+                        <li class="flex justify-between"><span class="text-gray-500">Analytics</span> <span class="text-white">Power BI / SQL / DAX</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Automation</span> <span class="text-white">Python / Pandas</span></li>
+                        <li class="flex justify-between"><span class="text-gray-500">Engineering</span> <span class="text-white">ESP32 / IoT / C++</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="flex flex-col justify-center items-start reveal">
-        <h2 class="text-4xl font-bold mb-16 uppercase tracking-widest text-orange-500">Expertise Matrix</h2>
-        <div class="grid md:grid-cols-3 gap-8 w-full">
-            <div class="glass p-10 rounded-[2rem] hover:bg-white/[0.03] transition">
-                <i class="fas fa-layer-group text-3xl text-orange-500 mb-6"></i>
-                <h3 class="text-xl font-bold mb-4 uppercase">Data Strategy</h3>
-                <p class="text-gray-500 text-sm leading-loose">Advanced Power BI, ETL Workflows, DAX Optimization, SQL Database Architecture, and Financial Modeling.</p>
-            </div>
-            <div class="glass p-10 rounded-[2rem] hover:bg-white/[0.03] transition">
-                <i class="fas fa-robot text-3xl text-blue-500 mb-6"></i>
-                <h3 class="text-xl font-bold mb-4 uppercase">Automation</h3>
-                <p class="text-gray-500 text-sm leading-loose">Python-based data cleaning, AI-assisted scripting, automated reporting pipelines, and Streamlit dashboards.</p>
-            </div>
-            <div class="glass p-10 rounded-[2rem] hover:bg-white/[0.03] transition">
-                <i class="fas fa-microchip text-3xl text-green-500 mb-6"></i>
-                <h3 class="text-xl font-bold mb-4 uppercase">Hardware Eng.</h3>
-                <p class="text-gray-500 text-sm leading-loose">Embedded C, Arduino, ESP32 systems, GSM/GPS module integration, and Real-time Firebase Syncing.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="analytics" class="flex flex-col justify-center items-start">
-        <h2 class="text-4xl font-bold mb-20 uppercase tracking-widest text-orange-500 reveal">Analytics Lab</h2>
-        <div class="space-y-40 w-full">
-            <div class="grid md:grid-cols-2 gap-16 items-center reveal">
-                <img src="1000239452.jpg" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition duration-700">
-                <div>
-                    <span class="text-orange-500 font-bold uppercase tracking-widest text-[0.6rem]">Case Study 01</span>
-                    <h3 class="text-4xl font-bold mt-4 mb-6">Swiggy Sales Intelligence</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">Processing 52.12 Million records to identify revenue leakage. I built a dynamic filter architecture allowing city-level drill-downs for 193K+ individual restaurant orders.</p>
-                    <div class="flex gap-4">
-                        <span class="text-[0.6rem] px-4 py-2 glass rounded-full font-bold uppercase">Power BI</span>
-                        <span class="text-[0.6rem] px-4 py-2 glass rounded-full font-bold uppercase">DAX</span>
+    <section id="work" class="py-32 px-8">
+        <h2 class="text-[8vw] font-black uppercase opacity-10 mb-20">Portfolio</h2>
+        <div class="grid md:grid-cols-2 gap-32">
+            
+            <div class="reveal">
+                <div class="glass-card overflow-hidden rounded-[3rem]">
+                    <img src="1000239452.jpg" class="w-full h-[500px] object-cover hover:scale-110 transition duration-[2s] grayscale hover:grayscale-0">
+                    <div class="p-12">
+                        <span class="text-orange-500 text-xs font-bold uppercase tracking-widest">01 / Data Analytics</span>
+                        <h4 class="text-4xl font-bold mt-4 mb-6 uppercase">Swiggy Sales Intelligence</h4>
+                        <p class="text-gray-500 leading-relaxed mb-10">Architected a 52.12M transaction pipeline. Designed custom logic to segment 193K+ orders across multi-city restaurant networks.</p>
+                        <a href="https://github.com/sabharish14" class="text-xs font-bold uppercase border-b border-orange-500 pb-2">View Technical Process</a>
                     </div>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-16 items-center flex-row-reverse reveal">
-                <div class="order-2 md:order-1">
-                    <span class="text-blue-500 font-bold uppercase tracking-widest text-[0.6rem]">Case Study 02</span>
-                    <h3 class="text-4xl font-bold mt-4 mb-6">Amazon Financial Modeling</h3>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">Detailed tracking of $2M in revenue. This dashboard isolates high-risk returns and shipping delays while visualizing payment mode efficiency (43% COD vs 57% Prepaid).</p>
-                    <div class="flex gap-4">
-                        <span class="text-[0.6rem] px-4 py-2 glass rounded-full font-bold uppercase">Financial Viz</span>
-                        <span class="text-[0.6rem] px-4 py-2 glass rounded-full font-bold uppercase">SQL</span>
+
+            <div class="reveal mt-32">
+                <div class="glass-card overflow-hidden rounded-[3rem]">
+                    <img src="1000227044.jpg" class="w-full h-[500px] object-cover hover:scale-110 transition duration-[2s] grayscale hover:grayscale-0">
+                    <div class="p-12">
+                        <span class="text-blue-500 text-xs font-bold uppercase tracking-widest">02 / Financial Modeling</span>
+                        <h4 class="text-4xl font-bold mt-4 mb-6 uppercase">Amazon Growth Visualizer</h4>
+                        <p class="text-gray-500 leading-relaxed mb-10">Transforming $2M in raw store data into a profit-engine dashboard. Implemented DAX measures for real-time shipping efficiency tracking.</p>
+                        <a href="https://github.com/sabharish14" class="text-xs font-bold uppercase border-b border-blue-500 pb-2">View Financial Logic</a>
                     </div>
                 </div>
-                <img src="1000227044.jpg" class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition duration-700 order-1 md:order-2">
+            </div>
+
+        </div>
+    </section>
+
+    <section id="engineering" class="py-32 px-8 bg-white/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black uppercase mb-20 tracking-tighter">System <span class="text-orange-500">Architecture</span></h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="glass-card p-16 rounded-[4rem] reveal">
+                    <i class="fas fa-microchip text-4xl mb-8 text-orange-600"></i>
+                    <h5 class="text-2xl font-bold mb-6 uppercase">Landslide IoT Core</h5>
+                    <p class="text-gray-400 leading-relaxed text-sm">Implementation of ESP32 and Firebase for geological monitoring. The system executes a GSM alert protocol when soil moisture crosses the 70% safety threshold.</p>
+                </div>
+                <div class="glass-card p-16 rounded-[4rem] reveal">
+                    <i class="fas fa-satellite text-4xl mb-8 text-blue-600"></i>
+                    <h5 class="text-2xl font-bold mb-6 uppercase">Smart SOS Protocol</h5>
+                    <p class="text-gray-400 leading-relaxed text-sm">Design of an Arduino-based emergency response system using SIM800L and GPS Neo-6M. Developed custom NMEA parsing for high-accuracy location sharing.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="engineering" class="flex flex-col justify-center items-start reveal">
-        <h2 class="text-4xl font-bold mb-20 uppercase tracking-widest text-orange-500">System Architecture</h2>
-        <div class="grid md:grid-cols-2 gap-10 w-full">
-            <div class="glass p-12 rounded-[3rem]">
-                <h4 class="text-2xl font-bold mb-6 italic">Landslide Correlation Study</h4>
-                <p class="text-gray-400 leading-relaxed mb-6">Developed a geological stability monitor using ESP32. The system processes soil moisture data and triggers a GSM-based SMS alert once a critical threshold of 70% is reached.</p>
-                <div class="text-[0.6rem] uppercase font-bold text-gray-600 tracking-widest">Tech: ESP32 | GSM | Firebase</div>
-            </div>
-            <div class="glass p-12 rounded-[3rem]">
-                <h4 class="text-2xl font-bold mb-6 italic">Smart SOS Response</h4>
-                <p class="text-gray-400 leading-relaxed mb-6">A personal safety system integrating SIM800L and Neo-6M GPS. Designed a low-latency logic to transmit real-time location coordinates to emergency contacts via Arduino.</p>
-                <div class="text-[0.6rem] uppercase font-bold text-gray-600 tracking-widest">Tech: Arduino | GPS | GPRS</div>
-            </div>
+    <footer id="contact" class="h-screen flex flex-col justify-center items-center text-center">
+        <h2 class="text-[12vw] font-black uppercase tracking-tighter reveal">LET'S <span class="text-orange-500">TALK</span></h2>
+        <div class="flex gap-20 mt-20 reveal">
+            <a href="https://github.com/sabharish14" class="text-4xl hover:text-orange-500 hover:scale-125 transition"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/sabharishraaja" class="text-4xl hover:text-blue-600 hover:scale-125 transition"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:psabharish14@gmail.com" class="text-4xl hover:text-red-500 hover:scale-125 transition"><i class="fas fa-envelope"></i></a>
         </div>
-    </section>
-
-    <footer id="contact" class="h-[60vh] flex flex-col justify-center items-center text-center">
-        <h2 class="text-6xl md:text-8xl font-bold tracking-tighter mb-10 reveal">LET'S <span class="text-gradient">WORK.</span></h2>
-        <div class="flex space-x-12 text-3xl mb-16 reveal">
-            <a href="https://github.com/sabharish14" target="_blank" class="hover:text-orange-500 transition"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="hover:text-blue-500 transition"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:psabharish14@gmail.com" class="hover:text-red-500 transition"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p class="text-gray-700 text-[0.6rem] uppercase tracking-[0.6em]">Sabharish Raaja • 2024 • Chennai, India</p>
+        <p class="mt-40 text-[10px] font-bold uppercase tracking-[1em] text-gray-700">Chennai • Tamil Nadu • 2026</p>
     </footer>
 
     <script>
+        // Scroll Reveal Logic
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
+            reveals.forEach(el => {
                 var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+                var elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) el.classList.add("active");
+            });
         }
         window.addEventListener("scroll", reveal);
-        // Initial call
         reveal();
     </script>
 </body>
