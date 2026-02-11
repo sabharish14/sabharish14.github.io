@@ -11,20 +11,19 @@
         :root { --accent: #ff4d00; }
         body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
         
-        /* High Quality Pitch Background */
         .stadium-bg {
             position: fixed; inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), 
                         url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop');
             background-size: cover; background-position: center; z-index: -2;
         }
 
         .player {
             position: fixed; bottom: 5%; transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 10; height: 65vh; pointer-events: none;
+            z-index: 10; height: 65vh; pointer-events: none; filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
         }
-        #bowler { left: -500px; opacity: 0; }
-        #batsman { right: -500px; opacity: 0; transform: scaleX(-1); }
+        #bowler { left: -600px; opacity: 0; }
+        #batsman { right: -600px; opacity: 0; transform: scaleX(-1); }
         #umpire { left: 50%; bottom: -100%; transform: translateX(-50%); opacity: 0; }
 
         #cricket-ball {
@@ -37,7 +36,7 @@
         .slide.active { display: flex; animation: fadeIn 0.8s forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 40px; }
+        .glass { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(25px); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 40px; }
         .project-card img { width: 100%; border-radius: 15px; border: 2px solid #333; margin-bottom: 15px; }
     </style>
 </head>
@@ -45,14 +44,14 @@
 
     <div class="stadium-bg"></div>
     
-    <img id="bowler" class="player" src="https://i.ibb.co/6P0f0wY/bowler.png" alt="Bowler">
-    <img id="batsman" class="player" src="https://i.ibb.co/L6V2fG9/batsman.png" alt="Batsman">
-    <img id="umpire" class="player" src="https://i.ibb.co/vYm6X3n/umpire.png" alt="Umpire">
+    <img id="bowler" class="player" src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Mitchell_Johnson_bowling_action.png" alt="Bowler">
+    <img id="batsman" class="player" src="https://pavan-portfolio-website.vercel.app/static/media/player.37e35b71.png" alt="Batsman">
+    <img id="umpire" class="player" src="https://pngimg.com/d/cricket_PNG37.png" alt="Umpire">
     <div id="cricket-ball"></div>
 
     <div class="slide active" id="s1">
         <h1 style="font-family: 'Syne'; font-size: 8vw; line-height: 0.9; text-transform: uppercase;">Sabharish<br>Raaja</h1>
-        <p class="text-orange-500 text-2xl font-bold mt-4 tracking-widest">DATA ANALYST // ECE ENGINEER</p>
+        <p class="text-orange-500 text-2xl font-bold mt-4 tracking-widest uppercase">Data Analyst // ECE Engineer</p>
     </div>
 
     <div class="slide" id="s2">
