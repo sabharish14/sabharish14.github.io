@@ -8,64 +8,74 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;900&display=swap');
         
-        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; }
+        body, html { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
 
-        /* Cinematic Background Layers */
-        .bg-layer {
-            position: fixed; inset: 0;
-            background-size: cover; background-position: center;
-            transition: transform 1.5s ease-out, opacity 1s;
-            z-index: -1; opacity: 0;
+        /* Top Navigation for Projects */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
         }
-        .bg-layer.active { opacity: 0.5; transform: scale(1.1); }
+        .nav-links a { margin-left: 25px; text-transform: uppercase; font-weight: 900; font-size: 12px; letter-spacing: 2px; color: rgba(255,255,255,0.6); transition: 0.3s; }
+        .nav-links a:hover { color: #ff4d00; }
 
-        #bg1 { background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000'); opacity: 0.7; }
+        /* Background Layers */
+        .bg-layer {
+            position: fixed; inset: 0; background-size: cover; background-position: center;
+            transition: transform 1.5s ease-out, opacity 1s; z-index: -1; opacity: 0;
+        }
+        .bg-layer.active { opacity: 0.4; transform: scale(1.05); }
+
+        /* Realistic Photography Links */
+        #bg1 { background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000'); opacity: 0.6; }
         #bg2 { background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000'); }
         #bg3 { background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000'); }
         #bg4 { background-image: url('https://images.unsplash.com/photo-1508344928928-7165b67de128?q=80&w=2000'); }
-        /* Final Celebration Background */
-        #bg5 { background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000'); opacity: 0.3; }
+        #bg5 { background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000'); }
 
-        .overlay { position: fixed; inset: 0; background: radial-gradient(circle, transparent 10%, #000 160%); z-index: 0; }
+        .overlay { position: fixed; inset: 0; background: radial-gradient(circle, transparent 0%, #000 140%); z-index: 0; }
 
+        /* Slide Adjustments to prevent cut-off */
         .slide {
             position: absolute; inset: 0; display: none;
-            flex-direction: column; justify-content: center; padding: 0 10%; z-index: 10;
+            flex-direction: column; justify-content: center; align-items: center;
+            padding: 0 5%; z-index: 10; text-align: center;
         }
         .slide.active { display: flex; animation: slideUp 0.8s forwards; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); padding: 40px; border-radius: 30px; }
-        
-        /* Final SIXER Text Effect */
-        .sixer-text {
-            font-family: 'Syne';
-            font-size: 15vw;
-            line-height: 0.8;
-            text-transform: uppercase;
-            color: #fff;
-            text-shadow: 0 0 20px #ff4d00, 0 0 40px #ff4d00;
-            animation: shake 0.5s infinite alternate;
+        /* Text Fixes */
+        .title { font-family: 'Syne'; font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; text-transform: uppercase; margin-bottom: 20px; width: 100%; }
+        .glass { 
+            background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255,255,255,0.1); padding: clamp(20px, 5vw, 40px); 
+            border-radius: 20px; max-width: 900px; width: 90%;
         }
 
-        @keyframes shake {
-            0% { transform: skewX(-5deg); }
-            100% { transform: skewX(5deg); text-shadow: 0 0 50px #ff4d00, 0 0 100px #ff4d00; }
-        }
+        .project-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; overflow: hidden; transition: 0.4s; }
+        .project-card:hover { transform: translateY(-10px); border-color: #ff4d00; }
+        .project-card img { width: 100%; height: 200px; object-fit: cover; filter: grayscale(100%) contrast(1.2); transition: 0.5s; }
+        .project-card:hover img { filter: grayscale(0%); }
 
-        .project-img { width: 100%; border-radius: 15px; border: 2px solid rgba(255,255,255,0.1); margin-bottom: 15px; }
-        
         #action-btn {
-            position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
-            z-index: 100; background: transparent; border: 1px solid #fff; padding: 12px 35px; 
-            font-weight: 900; text-transform: uppercase; letter-spacing: 5px; transition: 0.4s;
-            border-radius: 50px;
+            position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; background: #ff4d00; color: #fff; padding: 15px 40px; 
+            font-weight: 900; text-transform: uppercase; letter-spacing: 3px; border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
         }
-        #action-btn:hover { background: #ff4d00; border-color: #ff4d00; box-shadow: 0 0 30px #ff4d00; }
     </style>
 </head>
 <body>
+
+    <nav>
+        <div class="font-black tracking-tighter text-2xl uppercase">SR<span class="text-[#ff4d00]">.</span></div>
+        <div class="nav-links">
+            <a href="javascript:goToSlide(2)">About</a>
+            <a href="javascript:goToSlide(4)">Projects</a>
+            <a href="javascript:goToSlide(5)">Contact</a>
+        </div>
+    </nav>
 
     <div class="overlay"></div>
 
@@ -76,76 +86,78 @@
     <div id="bg5" class="bg-layer"></div>
 
     <div class="slide active" id="s1">
-        <h1 class="font-['Syne'] text-[10vw] leading-none uppercase">Sabharish<br><span class="text-[#ff4d00]">Raaja</span></h1>
-        <p class="text-xl tracking-[0.8em] opacity-40 mt-4 uppercase">Data Analytics // Engineering</p>
+        <h1 class="title">SABHARISH<br><span class="text-[#ff4d00]">RAAJA</span></h1>
+        <p class="text-xl tracking-[1em] opacity-40 uppercase">Data Analyst</p>
     </div>
 
     <div class="slide" id="s2">
-        <div class="max-w-3xl glass">
-            <h2 class="text-[#ff4d00] text-3xl font-black mb-6 italic uppercase">The Player Profile</h2>
-            <p class="text-xl leading-relaxed font-light">
-                I am an **Electronics and Communication Engineer (ECE)** who has strategically pivoted into the world of **Data Analytics**. During my **internship**, I mastered extracting insights from complex datasets to solve real-world business problems. I am now fully dedicated to building cleaner, more efficient data models that help organizations hit their targets with 100% accuracy.
+        <div class="glass">
+            <h2 class="text-[#ff4d00] text-2xl font-black mb-4 uppercase italic">The Player Narrative</h2>
+            <p class="text-lg md:text-xl leading-relaxed font-light text-gray-200">
+                I am an **Electronics and Communication Engineer (ECE)** who has strategically pivoted into the world of **Data Analytics**. My background allows me to understand the technical architecture of how information is captured, but my focus is translating that into actionable business strategies. During my **internship**, I honed my skills in interpreting complex datasets. I am now committed to combining engineering discipline with statistical modeling to help organizations make smarter, faster decisions.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s3">
-        <div class="max-w-xl glass border-r-4 border-[#ff4d00] text-right ml-auto">
+        <div class="glass border-l-4 border-[#ff4d00]">
             <h2 class="text-4xl font-black mb-4 uppercase">ETL Engine</h2>
-            <p class="text-gray-400 text-lg">
-                Custom Python-based automation that cleans data at the speed of a 150km/h delivery. Perfectly prepared for the strike.
+            <p class="text-gray-300 text-lg">
+                I built a custom Python-based automation that cleans data at the speed of a 150km/h delivery. Handling null values and normalization automatically so the pitch is ready for analysis.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s4">
-        <div class="grid grid-cols-2 gap-8">
-            <div class="glass">
-                <img src="1000239452.jpg" class="project-img">
-                <h3 class="font-bold text-xl uppercase tracking-widest">Swiggy Analysis</h3>
+        <div class="grid md:grid-cols-2 gap-8 w-full max-w-5xl">
+            <div class="project-card">
+                <img src="1000239452.jpg" alt="Swiggy">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl uppercase text-[#ff4d00]">Swiggy Sales Intelligence</h3>
+                    <p class="text-sm text-gray-400 mt-2">End-to-end analysis of 50M+ records.</p>
+                </div>
             </div>
-            <div class="glass">
-                <img src="1000227044.jpg" class="project-img">
-                <h3 class="font-bold text-xl uppercase tracking-widest">Amazon Tracker</h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="s5">
-        <div class="text-center">
-            <h1 class="sixer-text">SIXER!</h1>
-            <div class="mt-10 glass inline-block px-20">
-                <p class="text-[#ff4d00] tracking-[0.5em] font-bold uppercase mb-4">Match Official: Data Analyst</p>
-                <div class="h-[1px] bg-white/20 w-full mb-6"></div>
-                <a href="mailto:psabharish14@gmail.com" class="text-3xl font-black block hover:text-[#ff4d00] transition-colors mb-2">PSABHARISH14@GMAIL.COM</a>
-                <a href="tel:7550149526" class="text-5xl font-black block tracking-tighter hover:scale-105 transition-transform">+91 75501 49526</a>
-                <div class="mt-8 flex justify-center gap-6">
-                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">PYTHON</span>
-                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">SQL</span>
-                   <span class="border border-white/20 px-4 py-1 text-xs rounded-full">POWER BI</span>
+            <div class="project-card">
+                <img src="1000227044.jpg" alt="Amazon">
+                <div class="p-6">
+                    <h3 class="font-bold text-xl uppercase text-[#ff4d00]">Amazon Financial Tracker</h3>
+                    <p class="text-sm text-gray-400 mt-2">Profit/Loss modeling and forecasting.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <button id="action-btn" onclick="nextPhase()">Enter Pitch</button>
+    <div class="slide" id="s5">
+        <h1 class="font-['Syne'] text-[12vw] text-[#ff4d00] leading-none mb-4" style="text-shadow: 0 0 50px #ff4d00;">SIXER!</h1>
+        <div class="glass">
+            <p class="text-gray-400 uppercase tracking-widest mb-6">Contact the Captain</p>
+            <a href="mailto:psabharish14@gmail.com" class="text-2xl md:text-4xl font-black block hover:text-[#ff4d00] transition mb-4">PSABHARISH14@GMAIL.COM</a>
+            <a href="tel:7550149526" class="text-3xl font-black block">+91 75501 49526</a>
+        </div>
+    </div>
+
+    <button id="action-btn" onclick="nextPhase()">Start Match</button>
 
     <script>
         let current = 1;
         function nextPhase() {
+            current = current < 5 ? current + 1 : 1;
+            goToSlide(current);
+        }
+
+        function goToSlide(n) {
+            current = n;
             document.querySelectorAll('.slide, .bg-layer').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.slide').forEach(el => el.style.display = 'none');
 
-            current = current < 5 ? current + 1 : 1;
-
-            document.getElementById('bg' + current).classList.add('active');
-            const slide = document.getElementById('s' + current);
+            document.getElementById('bg' + n).classList.add('active');
+            const slide = document.getElementById('s' + n);
             slide.style.display = 'flex';
             setTimeout(() => slide.classList.add('active'), 50);
 
             const btn = document.getElementById('action-btn');
-            const steps = ["", "Start Match", "The Run Up", "Big Strike", "Scorecard", "New Match"];
-            btn.innerText = steps[current];
+            const labels = ["", "Enter Pitch", "Bowler Delivery", "Big Strike", "Match Result", "New Match"];
+            btn.innerText = labels[n];
         }
     </script>
 </body>
