@@ -9,9 +9,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
 
         :root {
-            /* NEW TECH THEME COLORS */
-            --primary: #00f2ff; /* Neon Cyan */
-            --bg: #020617;      /* Deep Midnight */
+            --primary: #00f2ff; 
+            --bg: #020617;      
             --card-bg: rgba(15, 23, 42, 0.7);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
@@ -24,14 +23,12 @@
             background-color: var(--bg); 
             color: var(--text-main); 
             line-height: 1.8;
-            /* Subtle Tech Grid Background */
             background-image: 
                 linear-gradient(var(--border) 1px, transparent 1px),
                 linear-gradient(90deg, var(--border) 1px, transparent 1px);
             background-size: 50px 50px;
         }
 
-        /* NAVIGATION - Glassmorphism */
         nav { 
             display: flex; justify-content: space-between; align-items: center;
             padding: 1.2rem 8%; 
@@ -46,7 +43,6 @@
         
         section { padding: 100px 10%; border-bottom: 1px solid var(--border); position: relative; }
         
-        /* THEME HEADINGS */
         h2 { 
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem; margin-bottom: 3rem; color: #fff; 
@@ -55,7 +51,6 @@
         }
         h2::after { content: ""; height: 2px; width: 100px; background: var(--primary); display: inline-block; }
 
-        /* HERO SECTION */
         .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
         .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; }
         .about-text { max-width: 850px; margin: 2rem 0; text-align: left; color: var(--text-dim); font-size: 1.1rem; border-left: 2px solid var(--primary); padding-left: 25px; }
@@ -69,7 +64,6 @@
         }
         .cv-btn:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 25px var(--primary); transform: translateY(-3px); }
 
-        /* 3x2 SKILLS GRID - Tech Cards */
         .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
         .skill-item { 
             background: var(--card-bg); 
@@ -85,17 +79,39 @@
         .skill-item strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem; text-transform: uppercase; }
         .skill-item p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
         
-        /* WORK BOXES */
         .work-box { 
             background: var(--card-bg); padding: 3rem; border-radius: 4px; 
             margin-bottom: 4rem; border: 1px solid var(--border);
             backdrop-filter: blur(5px);
         }
-        .project-img { width: 100%; border-radius: 4px; margin: 2.5rem 0; filter: grayscale(20%) contrast(110%); border: 1px solid var(--border); transition: 0.5s; }
-        .project-img:hover { filter: grayscale(0%); border-color: var(--primary); box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+
+        /* GLOWING IMAGE HOVER EFFECT */
+        .img-container {
+            overflow: hidden;
+            border-radius: 4px;
+            margin: 2.5rem 0;
+            border: 1px solid var(--border);
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .project-img { 
+            width: 100%; 
+            display: block;
+            filter: grayscale(40%) brightness(0.8);
+            transition: 0.5s ease;
+        }
+        .img-container:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
+            transform: scale(1.02);
+        }
+        .img-container:hover .project-img {
+            filter: grayscale(0%) brightness(1.1);
+            transform: scale(1.05);
+        }
+
         h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); }
 
-        /* CONTACT SECTION */
         .contact-section { text-align: center; background: #010409; padding: 120px 10%; border-top: 1px solid var(--primary); }
         .contact-info { margin-bottom: 4rem; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; }
         .contact-info i { margin-right: 15px; }
@@ -106,7 +122,6 @@
 
         footer { text-align: center; padding: 4rem; color: #475569; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Mobile Adjustments */
         @media (max-width: 900px) {
             .skills-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 3rem; }
@@ -182,7 +197,9 @@
             <p style="color: var(--text-dim);">
                 During my internship, I focused on mastering <strong>SQL and Power BI</strong>, leading to a specialized People Management project. I took full ownership of the project by sourcing my own dataset for over 200 employees to ensure the analysis was grounded in realistic data. I built an Employee Dashboard tracking key metrics like an <strong>attrition rate of 42</strong> and an average age of 42 among a 200-person workforce. The Company Dashboard visualized performance across <strong>20 branches</strong>, highlighting top-performing locations such as Delhi and Nagpur. I also mapped hiring trends and gender distribution across job roles like Senior and Junior positions. This project demonstrated my ability to clean data in SQL and present it as a strategic HR tool in Power BI.
             </p>
-            <img src="employee_dashboard.jpeg" alt="Company Dashboard" class="project-img">
+            <div class="img-container">
+                <img src="employee_dashboard.jpeg" alt="Company Dashboard" class="project-img">
+            </div>
         </div>
     </section>
 
@@ -193,8 +210,12 @@
             <p style="color: var(--text-dim);">
                 I developed a <strong>Data Cleaning App</strong> designed to automate the most tedious parts of data preparation. The application supports various file formats including CSV, Excel, and even ZIP folders for bulk processing. One of the core features is an <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates in a 500-row set. After cleaning, the tool produced a high-quality dataset of 180 unique rows, ensuring data integrity. The app includes a <strong>KPI Builder</strong> and manual duplicate removal options to give users full control over their data. By integrating text transformation filters, this tool significantly reduces the time spent on manual data entry and cleaning. This project showcases my ability to bridge the gap between software development and data analysis.
             </p>
-            <img src="automation_app1.jpeg" alt="Data Cleaning App Interface" class="project-img">
-            <img src="automation_app2.jpeg" alt="Data Cleaning App result" class="project-img">
+            <div class="img-container">
+                <img src="automation_app1.jpeg" alt="Data Cleaning App Interface" class="project-img">
+            </div>
+            <div class="img-container">
+                <img src="automation_app2.jpeg" alt="Data Cleaning App result" class="project-img">
+            </div>
         </div>
     </section>
 
@@ -206,7 +227,9 @@
             <p style="color: var(--text-dim);">
                 I built a detailed Sales Analysis dashboard for Swiggy, processing a massive <strong>52.12M in total sales</strong>. The analysis tracked 193.78K total orders with an average order price of 268.97 and an average rating of 4.34. I identified <strong>Bengaluru as the top city</strong> by revenue (4.6M) and analyzed food types to find that Non-Veg sales account for 64.48% of total income. The dashboard highlights the "Best Selling Dishes" and provides a "Poor Performing Restaurant" list to help managers improve service. By visualizing weekly sales trends, the project offers a clear window into daily demand fluctuations. This dashboard serves as a vital tool for understanding regional market dominance and customer preference.
             </p>
-            <img src="swiggy_dashboard.jpg" alt="Swiggy Dashboard" class="project-img">
+            <div class="img-container">
+                <img src="swiggy_dashboard.jpg" alt="Swiggy Dashboard" class="project-img">
+            </div>
         </div>
 
         <div class="work-box">
@@ -214,7 +237,9 @@
             <p style="color: var(--text-dim);">
                 For the Amazon project, I developed a Store Sales Dashboard tracking <strong>2M in total sales</strong> and 175K in profit. I analyzed consumer behavior across segments, finding that the Consumer category accounts for 48% of the total business. The data revealed that <strong>Cash on Delivery (43%)</strong> and Online payments (35%) are the leading payment methods. I also mapped sales geographically across North America and tracked returns, showing a high <strong>95.14% acceptance rate</strong>. Technology sub-categories like Phones were identified as the highest profit drivers, contributing 0.20M to sales. This project masterfully uses color-coding and trend lines to provide a 360-degree view of retail performance.
             </p>
-            <img src="amazon_dashboard.jpg" alt="Amazon Dashboard" class="project-img">
+            <div class="img-container">
+                <img src="amazon_dashboard.jpg" alt="Amazon Dashboard" class="project-img">
+            </div>
         </div>
     </section>
 
