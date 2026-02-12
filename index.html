@@ -6,125 +6,99 @@
     <title>Sabharish Raaja | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
         :root {
-            --primary: #00f2ff; 
-            --bg: #020617;      
-            --card-bg: rgba(15, 23, 42, 0.7);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-            --border: rgba(0, 242, 255, 0.2);
+            --primary: #d4af37; /* Soft Gold */
+            --bg: #0a0a0a;      /* Pure Dark */
+            --card-bg: #141414; /* Deep Charcoal */
+            --text-main: #ffffff;
+            --text-dim: #a3a3a3;
+            --border: #262626;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text-main); 
-            line-height: 1.8;
-            background-image: 
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.7; }
 
+        /* NAVIGATION - Minimalist */
         nav { 
             display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 8%; 
-            background: rgba(2, 6, 23, 0.8); 
+            padding: 1.5rem 8%; 
+            background: rgba(10, 10, 10, 0.9); 
             position: sticky; top: 0; z-index: 1000; 
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
-        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--text-dim); font-size: 0.85rem; transition: 0.3s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: -1px; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: var(--text-dim); font-size: 0.8rem; transition: 0.3s; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        .nav-links a:hover { color: var(--primary); }
         
-        section { padding: 100px 10%; border-bottom: 1px solid var(--border); position: relative; }
+        section { padding: 120px 10%; position: relative; }
         
+        /* THEME HEADINGS */
         h2 { 
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.5rem; margin-bottom: 3rem; color: #fff; 
-            text-transform: uppercase; letter-spacing: 4px;
-            display: flex; align-items: center; gap: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem; margin-bottom: 4rem; color: var(--text-main); 
+            text-align: center;
         }
-        h2::after { content: ""; height: 2px; width: 100px; background: var(--primary); display: inline-block; }
+        h2::after { content: "."; color: var(--primary); }
 
-        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
-        .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; }
-        .about-text { max-width: 850px; margin: 2rem 0; text-align: left; color: var(--text-dim); font-size: 1.1rem; border-left: 2px solid var(--primary); padding-left: 25px; }
+        /* HERO SECTION */
+        .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 5rem; font-weight: 800; line-height: 1; margin-bottom: 1.5rem; letter-spacing: -3px; }
+        .about-text { max-width: 800px; margin: 2rem auto; text-align: center; color: var(--text-dim); font-size: 1.1rem; line-height: 2; }
         
         .cv-btn { 
-            display: inline-block; padding: 15px 40px; 
-            background: transparent; color: var(--primary); 
-            text-decoration: none; font-weight: bold; border-radius: 4px; 
-            border: 2px solid var(--primary); transition: 0.4s;
-            text-transform: uppercase; letter-spacing: 2px;
+            display: inline-block; padding: 18px 45px; 
+            background: var(--text-main); color: var(--bg); 
+            text-decoration: none; font-weight: 800; border-radius: 100px; 
+            transition: 0.4s; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem;
         }
-        .cv-btn:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 25px var(--primary); transform: translateY(-3px); }
+        .cv-btn:hover { transform: scale(1.05); background: var(--primary); }
 
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        /* 3x2 SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
         .skill-item { 
             background: var(--card-bg); 
-            padding: 3rem 2rem; 
-            border-radius: 4px; 
+            padding: 3.5rem 2rem; 
+            border-radius: 20px; 
             border: 1px solid var(--border); 
-            text-align: left;
-            transition: 0.4s;
-            backdrop-filter: blur(5px);
+            text-align: center;
+            transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
-        .skill-item:hover { background: rgba(0, 242, 255, 0.05); border-color: var(--primary); transform: translateY(-10px); }
-        .skill-item i { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; }
-        .skill-item strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem; text-transform: uppercase; }
-        .skill-item p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+        .skill-item:hover { border-color: var(--primary); transform: translateY(-10px); background: #1a1a1a; }
+        .skill-item i { color: var(--primary); font-size: 2.2rem; margin-bottom: 1.5rem; }
+        .skill-item strong { display: block; font-size: 1.2rem; color: #fff; margin-bottom: 1rem; font-weight: 700; }
+        .skill-item p { font-size: 0.9rem; color: var(--text-dim); }
         
+        /* WORK BOXES */
         .work-box { 
-            background: var(--card-bg); padding: 3rem; border-radius: 4px; 
-            margin-bottom: 4rem; border: 1px solid var(--border);
-            backdrop-filter: blur(5px);
+            background: var(--card-bg); padding: 4rem; border-radius: 30px; 
+            margin-bottom: 5rem; border: 1px solid var(--border);
         }
-
-        /* GLOWING IMAGE HOVER EFFECT */
         .img-container {
-            overflow: hidden;
-            border-radius: 4px;
-            margin: 2.5rem 0;
-            border: 1px solid var(--border);
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
+            overflow: hidden; border-radius: 15px; margin: 3rem 0;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
-        .project-img { 
-            width: 100%; 
-            display: block;
-            filter: grayscale(40%) brightness(0.8);
-            transition: 0.5s ease;
-        }
-        .img-container:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 40px rgba(0, 242, 255, 0.3);
-            transform: scale(1.02);
-        }
-        .img-container:hover .project-img {
-            filter: grayscale(0%) brightness(1.1);
-            transform: scale(1.05);
-        }
+        .project-img { width: 100%; display: block; transition: 0.8s ease; }
+        .img-container:hover .project-img { transform: scale(1.08); }
+        
+        h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--text-main); }
 
-        h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); }
+        /* CONTACT SECTION */
+        .contact-section { text-align: center; background: #000; padding: 150px 10%; }
+        .contact-info { margin-bottom: 4rem; font-size: 1.8rem; font-weight: 300; }
+        .social-links { display: flex; justify-content: center; gap: 60px; }
+        .social-item { text-decoration: none; color: var(--text-main); transition: 0.3s; font-weight: 800; font-size: 0.8rem; letter-spacing: 3px; }
+        .social-item i { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
+        .social-item:hover { color: var(--primary); }
 
-        .contact-section { text-align: center; background: #010409; padding: 120px 10%; border-top: 1px solid var(--primary); }
-        .contact-info { margin-bottom: 4rem; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; }
-        .contact-info i { margin-right: 15px; }
-        .social-links { display: flex; justify-content: center; gap: 50px; }
-        .social-item { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
-        .social-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
-        .social-item:hover { color: #fff; transform: scale(1.1); }
-
-        footer { text-align: center; padding: 4rem; color: #475569; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+        footer { text-align: center; padding: 5rem; color: #444; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; border-top: 1px solid var(--border); }
 
         @media (max-width: 900px) {
             .skills-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
+            .hero h1 { font-size: 3.5rem; }
             .nav-links { display: none; }
         }
     </style>
@@ -132,31 +106,30 @@
 <body>
 
     <nav>
-        <div class="logo">SABHARISH RAAJA</div>
+        <div class="logo">Sabharish.</div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#internship">Internship</a>
             <a href="#automation">Automation</a>
-            <a href="#ecommerce">E-Commerce</a>
+            <a href="#ecommerce">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section class="hero" id="about">
-        <p style="color: var(--primary); font-weight: 700; letter-spacing: 5px; margin-bottom: 10px;">SYSTEM STATUS: ACTIVE</p>
         <h1 id="home">HI, I AM <br><span style="color: var(--primary)">SABHARISH RAAJA</span></h1>
-        <p style="font-size: 1.8rem; color: var(--text-main); font-family: 'Space Grotesk';">Data Analyst & ECE Graduate</p>
+        <p style="font-size: 1.2rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 8px;">Data Analyst & ECE Graduate</p>
         <div class="about-text">
             As an Electronics and Communication Engineering (ECE) student, I possess a unique technical background that allows me to bridge the gap between complex hardware systems and data-driven software solutions. My professional journey is centered around my passion for Data Analytics and Automation, where I strive to create efficient, scalable, and highly impactful digital tools. I have developed a robust expertise in programming and analytical frameworks, enabling me to handle large-scale datasets with high precision. I believe in the power of continuous learning and stay dedicated to mastering the latest industry trends to provide cutting-edge results for every project. My engineering education provides me with the technical rigor and creative problem-solving skills necessary to tackle the most complex challenges in today's data landscape. I am committed to writing clean, maintainable code and building seamless user experiences that provide genuine business value. Integrity, clear communication, and a relentless work ethic are the pillars of my professional approach. My ultimate goal is to leverage my analytical skills to drive innovation and create a positive impact in the global digital ecosystem.
         </div>
          <div>
-            <a href="Sabharish_Resume.pdf" class="cv-btn" target="_blank"> <i class="fas fa-terminal"></i> Get Resume</a>
+            <a href="Sabharish_Resume.pdf" class="cv-btn" target="_blank">Download Resume</a>
         </div>
     </section>
 
     <section id="skills">
-        <h2>Technical Arsenal</h2>
+        <h2>Expertise</h2>
         <div class="skills-grid">
             <div class="skill-item">
                 <i class="fas fa-chart-line"></i>
@@ -164,27 +137,27 @@
                 <p>Designing interactive, high-impact dashboards for visual data storytelling and business intelligence.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-code-branch"></i>
+                <i class="fas fa-database"></i>
                 <strong>SQL</strong>
                 <p>Proficient in relational database management, complex query writing, and efficient data extraction.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-microchip"></i>
+                <i class="fas fa-bolt"></i>
                 <strong>Automation</strong>
                 <p>Building custom Python scripts to automate repetitive manual tasks and streamline digital workflows.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-filter"></i>
+                <i class="fas fa-broom"></i>
                 <strong>Data Cleaning</strong>
                 <p>Expertise in identifying anomalies and removing duplicates to ensure the highest data integrity.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-globe"></i>
+                <i class="fas fa-shopping-bag"></i>
                 <strong>E-Commerce</strong>
                 <p>In-depth analysis of retail datasets to monitor sales trends, profit margins, and consumer behavior.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-terminal"></i>
+                <i class="fas fa-code"></i>
                 <strong>Python</strong>
                 <p>Utilizing Python for data processing, application development, and advanced analytical problem-solving.</p>
             </div>
@@ -194,7 +167,7 @@
     <section id="internship">
         <h2>Professional Internship</h2>
         <div class="work-box">
-            <p style="color: var(--text-dim);">
+            <p style="color: var(--text-dim); font-size: 1.1rem; line-height: 2;">
                 During my internship, I focused on mastering <strong>SQL and Power BI</strong>, leading to a specialized People Management project. I took full ownership of the project by sourcing my own dataset for over 200 employees to ensure the analysis was grounded in realistic data. I built an Employee Dashboard tracking key metrics like an <strong>attrition rate of 42</strong> and an average age of 42 among a 200-person workforce. The Company Dashboard visualized performance across <strong>20 branches</strong>, highlighting top-performing locations such as Delhi and Nagpur. I also mapped hiring trends and gender distribution across job roles like Senior and Junior positions. This project demonstrated my ability to clean data in SQL and present it as a strategic HR tool in Power BI.
             </p>
             <div class="img-container">
@@ -204,10 +177,10 @@
     </section>
 
     <section id="automation">
-        <h2>Data Engineering & Automation</h2>
+        <h2>Data Engineering</h2>
         <div class="work-box">
             <h3>Data Cleaning Application</h3>
-            <p style="color: var(--text-dim);">
+            <p style="color: var(--text-dim); font-size: 1.1rem; line-height: 2;">
                 I developed a <strong>Data Cleaning App</strong> designed to automate the most tedious parts of data preparation. The application supports various file formats including CSV, Excel, and even ZIP folders for bulk processing. One of the core features is an <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates in a 500-row set. After cleaning, the tool produced a high-quality dataset of 180 unique rows, ensuring data integrity. The app includes a <strong>KPI Builder</strong> and manual duplicate removal options to give users full control over their data. By integrating text transformation filters, this tool significantly reduces the time spent on manual data entry and cleaning. This project showcases my ability to bridge the gap between software development and data analysis.
             </p>
             <div class="img-container">
@@ -220,11 +193,11 @@
     </section>
 
     <section id="ecommerce">
-        <h2>Analytics Case Studies</h2>
+        <h2>Case Studies</h2>
         
         <div class="work-box">
             <h3>Swiggy Sales Analysis</h3>
-            <p style="color: var(--text-dim);">
+            <p style="color: var(--text-dim); font-size: 1.1rem; line-height: 2;">
                 I built a detailed Sales Analysis dashboard for Swiggy, processing a massive <strong>52.12M in total sales</strong>. The analysis tracked 193.78K total orders with an average order price of 268.97 and an average rating of 4.34. I identified <strong>Bengaluru as the top city</strong> by revenue (4.6M) and analyzed food types to find that Non-Veg sales account for 64.48% of total income. The dashboard highlights the "Best Selling Dishes" and provides a "Poor Performing Restaurant" list to help managers improve service. By visualizing weekly sales trends, the project offers a clear window into daily demand fluctuations. This dashboard serves as a vital tool for understanding regional market dominance and customer preference.
             </p>
             <div class="img-container">
@@ -234,7 +207,7 @@
 
         <div class="work-box">
             <h3>Amazon Store Sales</h3>
-            <p style="color: var(--text-dim);">
+            <p style="color: var(--text-dim); font-size: 1.1rem; line-height: 2;">
                 For the Amazon project, I developed a Store Sales Dashboard tracking <strong>2M in total sales</strong> and 175K in profit. I analyzed consumer behavior across segments, finding that the Consumer category accounts for 48% of the total business. The data revealed that <strong>Cash on Delivery (43%)</strong> and Online payments (35%) are the leading payment methods. I also mapped sales geographically across North America and tracked returns, showing a high <strong>95.14% acceptance rate</strong>. Technology sub-categories like Phones were identified as the highest profit drivers, contributing 0.20M to sales. This project masterfully uses color-coding and trend lines to provide a 360-degree view of retail performance.
             </p>
             <div class="img-container">
@@ -244,31 +217,25 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <h2>Establish Connection</h2> 
+        <h2>Contact</h2> 
         <div class="contact-info">
-            <div style="margin-bottom: 20px;">
-                <i class="fas fa-envelope" style="color:var(--primary)"></i>
-                <a href="mailto:psabharish14@gmail.com" style="text-decoration: none; color: inherit; border-bottom: 1px solid var(--primary);">psabharish14@gmail.com</a>
-            </div>
-            <div>
-                <i class="fas fa-phone" style="color:var(--primary)"></i>
-                <a href="tel:+917550149526" style="text-decoration: none; color: inherit;">+91 7550149526</a>
-            </div>
+            <a href="mailto:psabharish14@gmail.com" style="text-decoration: none; color: inherit; border-bottom: 1px solid var(--primary); padding-bottom: 5px;">psabharish14@gmail.com</a>
+            <p style="margin-top: 20px; font-size: 1.2rem; color: var(--text-dim);">+91 75501 49526</p>
         </div>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="social-item">
-                <i class="fab fa-linkedin"></i>
-                <span>LINKEDIN</span>
+                <i class="fab fa-linkedin-in"></i>
+                LINKEDIN
             </a>
             <a href="https://github.com/sabharish14" target="_blank" class="social-item">
                 <i class="fab fa-github"></i>
-                <span>GITHUB</span>
+                GITHUB
             </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 SABHARISH RAAJA // ENCRYPTED & SECURED</p>
+        <p>&copy; 2026 SABHARISH RAAJA / DESIGNED FOR IMPACT</p>
     </footer>
 
 </body>
