@@ -3,162 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABHARISH RAAJA | DATA ANALYST</title>
+    <title>SABHARISH RAAJA | DATA ARCHITECT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;900&display=swap');
         
-        :root { --accent: #ff4d00; --pitch: #2d5a27; }
+        :root { --accent: #ff4d00; }
         body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
 
-        /* Full Screen Stadium Background */
+        /* Cinematic Background with Players */
         .stadium {
             position: fixed; inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop');
             background-size: cover; background-position: center; z-index: -2;
         }
 
-        /* The Animated Cricket Ball */
+        /* The Animated Ball */
         #cricket-ball {
-            position: fixed; bottom: 15%; left: 10%; width: 40px; height: 40px;
-            background: radial-gradient(circle at 30% 30%, #ff4d4d, #8b0000);
-            border-radius: 50%; border: 2px dashed rgba(255,255,255,0.4);
-            z-index: 100; transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 20px rgba(255,0,0,0.5);
-            display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold;
+            position: fixed; bottom: 20%; left: 15%; width: 35px; height: 35px;
+            background: radial-gradient(circle at 30% 30%, #ff1a1a, #800000);
+            border-radius: 50%; border: 1px dashed rgba(255,255,255,0.5);
+            z-index: 100; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 0 15px rgba(255,0,0,0.6);
+            display: flex; align-items: center; justify-content: center; font-size: 8px;
         }
 
         .huge-title { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 10vw, 12rem); line-height: 0.8; text-transform: uppercase; }
         
-        /* Section Transitions */
+        /* Interactive Slides */
         .slide {
             position: absolute; inset: 0; display: none;
             flex-direction: column; justify-content: center; padding: 0 10%;
-            animation: fadeIn 0.8s forwards;
+            animation: slideUp 0.6s ease-out forwards;
         }
         .slide.active { display: flex; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* UI Controls */
-        .action-trigger {
-            position: fixed; bottom: 5%; left: 50%; transform: translateX(-50%);
+        /* The Button */
+        .play-action {
+            position: fixed; bottom: 8%; left: 50%; transform: translateX(-50%);
             z-index: 200; background: var(--accent); color: white;
-            padding: 20px 40px; border-radius: 50px; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255,77,0,0.4); transition: 0.3s;
+            padding: 18px 45px; border-radius: 12px; font-weight: 900;
+            text-transform: uppercase; cursor: pointer; border: none;
+            box-shadow: 0 10px 20px rgba(255,77,0,0.3); transition: 0.3s;
         }
-        .action-trigger:hover { transform: translateX(-50%) scale(1.1); background: #ff6a00; }
+        .play-action:hover { background: #fff; color: #000; transform: translateX(-50%) scale(1.05); }
 
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 40px; }
+        .glass { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; }
+        .project-img { width: 100%; height: 200px; object-cover: cover; border-radius: 12px; margin-bottom: 15px; border: 2px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
     <div class="stadium"></div>
-    <div id="cricket-ball">BALL</div>
+    <div id="cricket-ball"></div>
 
-    <div class="action-trigger" onclick="nextOver()" id="main-btn">Start Match</div>
+    <button class="play-action" onclick="playGame()" id="ctl-btn">Step onto the Pitch</button>
 
     <div class="slide active" id="s1">
-        <span class="text-orange-500 font-bold tracking-[0.5em] mb-4 uppercase">Pitching Now</span>
         <h1 class="huge-title">SABHARISH<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">RAAJA.</span></h1>
-        <p class="text-2xl font-light text-gray-400 mt-6">Data Analyst & ECE Engineer</p>
+        <p class="text-2xl mt-6 text-orange-500 font-bold uppercase tracking-widest italic">Data Analyst | ECE Engineer</p>
     </div>
 
     <div class="slide" id="s2">
-        <div class="max-w-3xl glass">
-            <h2 class="text-4xl font-black mb-6 uppercase text-orange-500">The Professional Pivot</h2>
-            <p class="text-lg leading-relaxed text-gray-300">
-                I am an **Electronics and Communication Engineer (ECE)** who has pivoted my career path toward the field of **Data Analysis**. My technical engineering background gives me a distinct advantage in understanding how data is generated, but my passion lies in the storytelling and strategic value of analytics. Following my **internship**, I am now fully dedicated to transforming complex datasets into actionable business intelligence.
+        <div class="max-w-4xl glass">
+            <h2 class="text-4xl font-black mb-6 uppercase italic text-orange-500">The Player Profile</h2>
+            <p class="text-lg leading-relaxed text-gray-200">
+                I am an **Electronics and Communication Engineer (ECE)** who has strategically transitioned into the world of **Data Analytics**. While my engineering background allows me to understand the hardware foundations of data, my focus is now entirely on decoding complex information into business value. Having completed my internship, I am fully dedicated to a career path in analytics, specializing in cleaning, modeling, and visualizing data to drive elite-level decision making.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s3">
-        <div class="max-w-3xl glass border-l-8 border-orange-600">
-            <h2 class="text-4xl font-black mb-4 uppercase">Custom Automation Logic</h2>
-            <p class="text-xl text-orange-500 mb-6 font-bold">Independent ETL Workflow</p>
-            <p class="text-gray-300 leading-relaxed">
-                I developed a standalone **Python-based data cleaning engine**. This isn't just a basic script; it's an automated pipeline that handles null imputation, outlier detection, and structural normalization for massive datasets using Pandas and NumPy.
+        <div class="max-w-3xl glass border-t-4 border-orange-600">
+            <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter">Automated Field Strategy</h2>
+            <p class="text-orange-500 font-bold mb-6">Custom Python ETL Engine</p>
+            <p class="text-gray-300 leading-relaxed mb-6">
+                I built a standalone **Data Cleaning Pipeline** from scratch. This custom automation uses Python (Pandas/NumPy) to automatically detect outliers and handle missing values, ensuring every dataset is "match-ready" without manual intervention.
             </p>
+            <div class="flex gap-4">
+                <i class="fab fa-python text-3xl"></i>
+                <i class="fas fa-database text-3xl"></i>
+            </div>
         </div>
     </div>
 
     <div class="slide" id="s4">
-        <h2 class="text-6xl font-black mb-10 uppercase italic">Big Hits (Analytics)</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass">
-                <h3 class="text-2xl font-bold mb-2">Swiggy Intelligence</h3>
-                <p class="text-sm text-gray-400">Processing 52.12M records to optimize restaurant partner ratings.</p>
+        <h2 class="text-5xl font-black mb-10 uppercase italic">On the Scoreboard</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="glass p-6">
+                <img src="1000239452.jpg" alt="Swiggy Project" class="project-img">
+                <h3 class="text-xl font-bold uppercase mb-2">Swiggy Analytics</h3>
+                <p class="text-sm text-gray-400">Processing 52.12M records for high-performance sales tracking.</p>
             </div>
-            <div class="glass">
-                <h3 class="text-2xl font-bold mb-2">Amazon Financials</h3>
-                <p class="text-sm text-gray-400">Modeling $2M revenue and tracking shipment efficiency.</p>
+            <div class="glass p-6">
+                <img src="1000227044.jpg" alt="Amazon Project" class="project-img">
+                <h3 class="text-xl font-bold uppercase mb-2">Amazon Financials</h3>
+                <p class="text-sm text-gray-400">Modeling $2M revenue and tracking logistics efficiency.</p>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s5">
-        <h2 class="huge-title">IT'S A <span class="text-orange-500">SIX!</span></h2>
-        <div class="mt-10 glass text-center">
-            <p class="text-xl mb-8 uppercase tracking-widest font-bold">Let's Team Up</p>
-            <div class="space-y-4">
-                <a href="mailto:psabharish14@gmail.com" class="text-3xl font-black block text-orange-500">psabharish14@gmail.com</a>
-                <a href="tel:+917550149526" class="text-3xl font-black block">+91 75501 49526</a>
+        <h2 class="huge-title">THAT'S A <span class="text-orange-500 italic">SIX!</span></h2>
+        <div class="mt-10 glass text-center max-w-2xl mx-auto">
+            <p class="text-sm uppercase tracking-[0.5em] mb-8 font-bold">Contact the Captain</p>
+            <div class="space-y-6">
+                <a href="mailto:psabharish14@gmail.com" class="text-2xl md:text-4xl font-black block hover:text-orange-500 transition">psabharish14@gmail.com</a>
+                <a href="tel:+917550149526" class="text-2xl md:text-4xl font-black block">+91 75501 49526</a>
+            </div>
+            <div class="mt-12 flex justify-center gap-10 opacity-60">
+                <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="text-2xl hover:text-orange-500"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sabharish14" target="_blank" class="text-2xl hover:text-orange-500"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </div>
 
     <script>
-        let currentStep = 1;
+        let step = 1;
         const ball = document.getElementById('cricket-ball');
-        const btn = document.getElementById('main-btn');
+        const btn = document.getElementById('ctl-btn');
 
-        function nextOver() {
-            currentStep++;
-
-            // Hide all slides
+        function playGame() {
+            step++;
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
 
-            if (currentStep === 2) {
-                // BOWLER ACTION
-                ball.style.left = '45%';
-                ball.style.bottom = '40%';
-                btn.innerText = 'Bowler Bowls...';
+            if (step === 2) {
+                // Ball Moves to Bowler Release
+                ball.style.left = '40%'; ball.style.bottom = '40%';
+                btn.innerText = 'Bowler Delivery';
                 document.getElementById('s2').classList.add('active');
             } 
-            else if (currentStep === 3) {
-                // BALL GOES TO FIELD
-                ball.style.left = '80%';
-                ball.style.bottom = '70%';
-                btn.innerText = 'Automation Logic';
+            else if (step === 3) {
+                // Ball hits the pitch
+                ball.style.left = '50%'; ball.style.bottom = '20%';
+                btn.innerText = 'Automation Script Run';
                 document.getElementById('s3').classList.add('active');
             }
-            else if (currentStep === 4) {
-                // BATSMAN HITS HIGH
-                ball.style.left = '50%';
-                ball.style.bottom = '90%';
-                ball.style.transform = 'scale(0.5)';
-                btn.innerText = 'The Big Hit (Projects)';
+            else if (step === 4) {
+                // BATSMAN HITS BALL HIGH (PROJECTS SHOW)
+                ball.style.left = '80%'; ball.style.bottom = '85%';
+                ball.style.transform = 'scale(0.6)';
+                btn.innerText = 'The Big Hit (Analytics)';
                 document.getElementById('s4').classList.add('active');
             }
-            else if (currentStep === 5) {
-                // UMPIRE GIVES SIX
-                ball.style.left = '20%';
-                ball.style.bottom = '-10%';
-                btn.innerText = 'Signal Six (Contact)';
+            else if (step === 5) {
+                // SIX - BALL DISAPPEARS
+                ball.style.left = '110%'; ball.style.bottom = '110%';
+                btn.innerText = 'Check Scorecard (Contact)';
                 document.getElementById('s5').classList.add('active');
             }
             else {
-                // RESET MATCH
-                currentStep = 1;
-                ball.style.left = '10%';
-                ball.style.bottom = '15%';
+                // Reset
+                step = 1;
+                ball.style.left = '15%'; ball.style.bottom = '20%';
                 ball.style.transform = 'scale(1)';
-                btn.innerText = 'Restart Match';
+                btn.innerText = 'Step onto the Pitch';
                 document.getElementById('s1').classList.add('active');
             }
         }
