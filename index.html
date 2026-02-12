@@ -10,21 +10,23 @@
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;900&display=swap');
         
         :root { --accent: #ff4d00; }
-        body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
+        body { background-color: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
 
-        /* Cinematic Background */
-        .stadium {
+        /* Background Layers */
+        .stadium-bg {
             position: fixed; inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.98)), 
-                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover; background-position: center; z-index: -2;
+            background-size: cover; background-position: center;
+            z-index: -2; transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            opacity: 0; transform: scale(1.1);
         }
+        .stadium-bg.active { opacity: 1; transform: scale(1); }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: -1; }
 
         /* Top Right Navigator */
         nav {
-            position: fixed; top: 20px; right: 40px; z-index: 500;
-            display: flex; gap: 20px; background: rgba(0,0,0,0.5);
-            padding: 10px 25px; border-radius: 50px; backdrop-filter: blur(10px);
+            position: fixed; top: 25px; right: 40px; z-index: 500;
+            display: flex; gap: 20px; background: rgba(0,0,0,0.6);
+            padding: 10px 25px; border-radius: 50px; backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
         }
         nav a { font-size: 0.7rem; font-weight: 900; letter-spacing: 1px; color: #888; transition: 0.3s; cursor: pointer; }
@@ -39,34 +41,43 @@
         .slide {
             position: absolute; inset: 0; display: none;
             flex-direction: column; justify-content: center; padding: 0 10%;
-            animation: fadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            z-index: 10;
         }
-        .slide.active { display: flex; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .slide.active { display: flex; animation: slideIn 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .glass { 
-            background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(30px); 
-            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 40px; 
+            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; 
         }
 
         .project-img { 
-            width: 100%; height: 280px;
+            width: 100%; height: auto; max-height: 300px;
             object-fit: contain; border-radius: 12px; 
-            background: rgba(0,0,0,0.3); margin-bottom: 20px; 
+            background: rgba(0,0,0,0.5); margin-bottom: 20px; 
         }
 
         .action-btn {
             position: fixed; bottom: 5%; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: white; padding: 12px 35px;
-            border-radius: 8px; font-weight: 900; cursor: pointer; z-index: 1000;
-            transition: 0.3s;
+            background: var(--accent); color: white; padding: 14px 40px;
+            border-radius: 4px; font-weight: 900; cursor: pointer; z-index: 1000;
+            transition: 0.3s; letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
         }
-        .action-btn:hover { background: #fff; color: #000; }
+        .action-btn:hover { background: #fff; color: #000; transform: translateX(-50%) translateY(-5px); }
     </style>
 </head>
 <body>
 
-    <div class="stadium"></div>
+    <div class="stadium-bg active" id="bg1" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg2" style="background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg3" style="background-image: url('https://images.unsplash.com/photo-1599327311431-d96a55e040f9?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg4" style="background-image: url('https://images.unsplash.com/photo-1562077772-3bd90403f7f0?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg5" style="background-image: url('https://images.unsplash.com/photo-1508615070457-7baeba4003ab?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg6" style="background-image: url('https://images.unsplash.com/photo-1512716676300-5d60698287bc?q=80&w=2000');"></div>
+    <div class="stadium-bg" id="bg7" style="background-image: url('https://images.unsplash.com/photo-1431324155629-1a6eda1dec2d?q=80&w=2000');"></div>
+    
+    <div class="overlay"></div>
 
     <nav id="top-nav">
         <a onclick="goToSlide(1)">HOME</a>
@@ -85,8 +96,8 @@
 
     <div class="slide" id="s2">
         <div class="max-w-4xl glass">
-            <h2 class="text-3xl font-black mb-6 uppercase text-orange-500 italic">The Professional Journey</h2>
-            <p class="text-lg leading-relaxed text-gray-300">
+            <h2 class="text-3xl font-black mb-6 uppercase text-orange-500 italic underline decoration-1">The Professional Journey</h2>
+            <p class="text-lg leading-relaxed text-gray-200">
                 I hold a degree in Electronics and Communication Engineering, which built my logic and analytical mindset. My engineering background provided a strong foundation in solving complex problems through statistical thinking. My passion for uncovering stories in data led me to Data Analytics, where I combine technical skills with BI tools to drive value. During my internship, I specialized in high-speed data cleaning and building interactive dashboards using Power BI and Tableau. I am proficient in Python, particularly using Pandas for efficient data manipulation. My goal is to transform raw data into insights that drive business success.
             </p>
         </div>
@@ -95,23 +106,11 @@
     <div class="slide" id="s3">
         <div class="max-w-3xl glass">
             <h2 class="text-3xl font-black mb-8 uppercase text-orange-500">Technical Arsenal</h2>
-            <div class="space-y-6 text-gray-200">
-                <div>
-                    <h3 class="font-bold text-white uppercase text-sm mb-1">Python (Pandas & NumPy)</h3>
-                    <p class="text-gray-400">Leveraging advanced libraries for high-speed data cleaning, duplicate removal, and complex data manipulation.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white uppercase text-sm mb-1">SQL Database Management</h3>
-                    <p class="text-gray-400">Architecting complex queries to extract, transform, and load (ETL) data from relational databases efficiently.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white uppercase text-sm mb-1">Power BI & Tableau</h3>
-                    <p class="text-gray-400">Designing high-impact, interactive dashboards that turn static numbers into visual business stories.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white uppercase text-sm mb-1">Advanced Excel</h3>
-                    <p class="text-gray-400">Utilizing PivotTables, VLOOKUPs, and complex formulas to model data and automate recurring reporting tasks.</p>
-                </div>
+            <div class="space-y-6">
+                <p><strong><i class="fab fa-python text-orange-500 mr-2"></i> Python:</strong> Using Pandas and NumPy for high-speed data cleaning and duplicate removal.</p>
+                <p><strong><i class="fas fa-database text-orange-500 mr-2"></i> SQL:</strong> Writing complex queries to manage databases and perform ETL operations.</p>
+                <p><strong><i class="fas fa-chart-bar text-orange-500 mr-2"></i> Power BI / Tableau:</strong> Creating interactive dashboards to visualize key business metrics.</p>
+                <p><strong><i class="fas fa-file-excel text-orange-500 mr-2"></i> Advanced Excel:</strong> Managing data using Pivot Tables, VLOOKUP, and complex formulas.</p>
             </div>
         </div>
     </div>
@@ -119,14 +118,9 @@
     <div class="slide" id="s4">
         <div class="max-w-3xl glass text-center mx-auto">
             <h2 class="text-3xl font-black mb-6 uppercase text-orange-500">Data Automation Tool</h2>
-            <p class="text-xl leading-relaxed text-gray-300 mb-8">
-                I developed a standalone Python-based ETL engine that performs automated data cleaning. This tool instantly detects missing values and removes duplicate entries without manual coding, ensuring 100% data integrity for large-scale analytical projects.
+            <p class="text-xl leading-relaxed text-gray-200">
+                I developed a custom Python-based ETL engine that performs automated data cleaning. This tool instantly detects missing values and removes duplicate entries without manual coding, ensuring 100% data integrity for large-scale analytical projects.
             </p>
-            <div class="flex justify-center gap-10 text-5xl text-orange-600 opacity-80">
-                <i class="fas fa-microchip"></i>
-                <i class="fas fa-bolt"></i>
-                <i class="fas fa-filter"></i>
-            </div>
         </div>
     </div>
 
@@ -136,11 +130,8 @@
                 <img src="1000239452.jpg" class="project-img" alt="Swiggy Analysis">
                 <div>
                     <h2 class="text-3xl font-black mb-4 uppercase text-orange-500">Swiggy Sales Analysis</h2>
-                    <p class="text-gray-300 leading-relaxed space-y-4">
-                        This project involved processing over 50 million records to identify peak ordering hours and regional food preferences. 
-                        I implemented a data pipeline that revealed critical delivery bottlenecks during high-demand windows. 
-                        The resulting dashboard allowed for optimized supply chain resource allocation, helping to reduce delivery times significantly. 
-                        By analyzing customer churn patterns, I provided actionable insights into restaurant performance and logistics efficiency.
+                    <p class="text-gray-200 leading-relaxed">
+                        Processed over 50 million records to identify peak ordering hours and regional food preferences. I implemented a data pipeline that revealed critical delivery bottlenecks during high-demand windows. The resulting dashboard allowed for optimized supply chain resource allocation, helping to reduce delivery times significantly. By analyzing customer churn patterns, I provided actionable insights into logistics efficiency.
                     </p>
                 </div>
             </div>
@@ -152,12 +143,9 @@
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <img src="1000227044.jpg" class="project-img" alt="Amazon Financials">
                 <div>
-                    <h2 class="text-3xl font-black mb-4 uppercase text-orange-500">Amazon Financial Forecasting</h2>
-                    <p class="text-gray-300 leading-relaxed">
-                        I built a comprehensive financial tracking model to forecast profit and loss based on historical shipping and regional sales data. 
-                        The analysis identified specific logistical routes that were underperforming in terms of cost-to-revenue ratios. 
-                        Using advanced Excel and Tableau, I visualized regional revenue growth and projected future earnings with high accuracy. 
-                        This project served as a strategic tool for evaluating logistics performance and identifying high-margin product categories.
+                    <h2 class="text-3xl font-black mb-4 uppercase text-orange-500">Amazon Financials</h2>
+                    <p class="text-gray-200 leading-relaxed">
+                        Built a comprehensive financial tracking model to forecast profit and loss based on historical shipping and regional sales data. The analysis identified specific logistical routes that were underperforming in terms of cost-to-revenue ratios. Using advanced Excel and Tableau, I visualized regional revenue growth and projected future earnings with high accuracy, serving as a strategic tool for evaluating logistics.
                     </p>
                 </div>
             </div>
@@ -169,20 +157,20 @@
             <h2 class="text-4xl font-black mb-10 uppercase text-orange-500 italic">Contact the Captain</h2>
             <div class="space-y-8">
                 <a href="mailto:psabharish14@gmail.com" class="flex items-center justify-center gap-5 text-2xl hover:text-orange-500 transition">
-                    <i class="fas fa-envelope-open-text text-orange-500"></i> psabharish14@gmail.com
+                    <i class="fas fa-envelope text-orange-500"></i> psabharish14@gmail.com
                 </a>
                 <a href="tel:+917550149526" class="flex items-center justify-center gap-5 text-2xl hover:text-orange-500 transition">
-                    <i class="fas fa-mobile-alt text-orange-500"></i> +91 75501 49526
+                    <i class="fas fa-phone-alt text-orange-500"></i> +91 75501 49526
                 </a>
             </div>
-            <div class="mt-12 flex justify-center gap-12 border-t border-white/10 pt-10">
+            <div class="mt-12 flex justify-center gap-12 pt-10 border-t border-white/10">
                 <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="text-4xl text-gray-500 hover:text-orange-500"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/sabharish14" target="_blank" class="text-4xl text-gray-500 hover:text-orange-500"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </div>
 
-    <div class="action-btn" onclick="nextSlide()">NEXT PAGE</div>
+    <div class="action-btn" onclick="nextSlide()" id="ctl-btn">START THE MATCH</div>
 
     <script>
         let current = 1;
@@ -199,14 +187,24 @@
         }
 
         function updateUI() {
+            // Update Slides
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
             document.getElementById('s' + current).classList.add('active');
             
+            // Update Backgrounds
+            document.querySelectorAll('.stadium-bg').forEach(bg => bg.classList.remove('active'));
+            document.getElementById('bg' + current).classList.add('active');
+
             // Update Nav Active State
             document.querySelectorAll('nav a').forEach((a, i) => {
                 a.style.color = (i + 1 === current) ? '#ff4d00' : '#888';
-                a.style.borderBottom = (i + 1 === current) ? '2px solid #ff4d00' : 'none';
             });
+
+            // Update Button Text
+            const btn = document.getElementById('ctl-btn');
+            if (current === 1) btn.innerText = "START THE MATCH";
+            else if (current === total) btn.innerText = "VIEW SCORECARD";
+            else btn.innerText = "NEXT OVER";
         }
     </script>
 </body>
