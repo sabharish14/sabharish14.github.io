@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio | Full Build</title>
+    <title>Sabharish Raaja | Portfolio</title>
     <style>
         :root {
             --primary: #38bdf8;
@@ -12,120 +12,121 @@
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
-
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; padding: 1.5rem 10%; align-items: center; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); letter-spacing: -1px; }
-        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--text-dim); font-weight: 500; transition: 0.3s; }
+        body { background-color: var(--bg); color: var(--text-main); line-height: 1.8; }
+        nav { display: flex; justify-content: space-between; padding: 1.5rem 10%; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; font-weight: 500; }
         .nav-links a:hover { color: var(--primary); }
+        
+        section { padding: 80px 10%; border-bottom: 1px solid #1e293b; }
+        h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero Section */
-        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 10%; }
-        .hero h1 { font-size: 4rem; margin-bottom: 1rem; }
-        .hero span { color: var(--primary); }
-        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 700px; margin-bottom: 2rem; }
-        .btn { background: var(--primary); color: var(--bg); padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn:hover { opacity: 0.9; transform: scale(1.05); }
+        /* Hero & About */
+        .hero { text-align: center; padding-top: 100px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--text-dim); font-size: 1.05rem; }
 
-        /* Sections General */
-        section { padding: 80px 10%; }
-        h2 { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; }
+        /* Skills */
+        .skill-item { margin-bottom: 1.5rem; padding: 1.2rem; background: var(--card-bg); border-left: 4px solid var(--primary); border-radius: 8px; }
+        .skill-item strong { color: var(--primary); display: block; font-size: 1.2rem; margin-bottom: 5px; }
 
-        /* Skills Section */
-        .skills-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .skill-bar { margin-bottom: 20px; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .bar-bg { background: #334155; height: 10px; border-radius: 10px; overflow: hidden; }
-        .bar-fill { background: var(--primary); height: 100%; border-radius: 10px; }
+        /* Experience Box */
+        .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 2rem; border: 1px solid #334155; }
+        .project-img { width: 100%; max-width: 800px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); box-shadow: 0 15px-40px rgba(0,0,0,0.6); }
+        
+        /* Contact Section */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+        .contact-link { padding: 1.5rem; background: #111827; border-radius: 12px; text-decoration: none; color: var(--text-main); transition: 0.3s; border: 1px solid #334155; text-align: center; }
+        .contact-link:hover { border-color: var(--primary); background: #1e293b; transform: translateY(-5px); }
 
-        /* Projects Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        .card { background: var(--card-bg); border-radius: 16px; overflow: hidden; border: 1px solid #334155; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card-content { padding: 1.5rem; }
-        .card-content h3 { margin-bottom: 0.5rem; color: var(--primary); }
-
-        /* Contact Form */
-        .contact-form { max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 2rem; border-radius: 16px; }
-        input, textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 6px; }
-        button { width: 100%; padding: 12px; background: var(--primary); border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-
-        footer { text-align: center; padding: 4rem; color: var(--text-dim); border-top: 1px solid #334155; }
+        footer { text-align: center; padding: 3rem; color: #475569; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">MYBRAND.</div>
+        <div class="logo">SABHARISH RAAJA</div>
         <div class="nav-links">
-            <a href="#work">Projects</a>
+            <a href="#about">About</a>
             <a href="#skills">Skills</a>
+            <a href="#internship">Internship</a>
+            <a href="#automation">Automation</a>
+            <a href="#projects">E-Commerce</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>Building <span>Digital Excellence</span></h1>
-        <p>A showcase of professional projects, technical expertise, and creative problem-solving.</p>
-        <a href="#work" class="btn">View My Work</a>
-    </section>
-
-    <section id="work">
-        <h2>Selected Projects</h2>
-        <div class="grid">
-            <div class="card">
-                <div style="height:200px; background:#334155;"></div> <div class="card-content">
-                    <h3>E-Commerce Interface</h3>
-                    <p>Designed a seamless user journey for a modern retail brand using React and Tailwind.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div style="height:200px; background:#334155;"></div>
-                <div class="card-content">
-                    <h3>Data Analytics Dashboard</h3>
-                    <p>Visualizing complex datasets into actionable insights for corporate clients.</p>
-                </div>
-            </div>
+    <section class="hero" id="about">
+        <h1>Hi, I'm <span style="color:var(--primary)">Sabharish Raaja</span></h1>
+        <p style="font-size: 1.5rem; color: var(--text-dim);">Data Analyst & Automation Professional</p>
+        
+        <div class="about-text">
+            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. I believe in continuous learning and staying updated with the latest industry trends to deliver cutting-edge results. My approach combines technical rigor with a creative mindset to tackle complex challenges effectively. I thrive in collaborative environments where I can contribute to meaningful projects and grow alongside a team. I am dedicated to writing clean, maintainable code and building seamless user experiences. Beyond technical skills, I value integrity, clear communication, and a strong work ethic in every task I undertake. My goal is to leverage my expertise to drive innovation and make a positive impact in the digital landscape. I am currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
         </div>
     </section>
 
-    <section id="skills" style="background: #111827;">
-        <h2>Technical Skills</h2>
-        <div class="skills-container">
-            <div class="skill-bar">
-                <div class="skill-info"><span>Frontend Development</span> <span>90%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
+    <section id="skills">
+        <h2>Technical Expertise</h2>
+        <div class="skill-item">
+            <strong>SQL & Data Management</strong>
+            <span>Advanced querying and data cleaning to prepare complex datasets for visualization and analysis.</span>
+        </div>
+        <div class="skill-item">
+            <strong>Power BI Dashboards</strong>
+            <span>Creating high-impact visual reports that track KPI metrics like employee attrition, performance, and regional trends.</span>
+        </div>
+        <div class="skill-item">
+            <strong>Python Automation</strong>
+            <span>Developing custom scripts to automate data collection and repetitive system tasks for maximum efficiency.</span>
+        </div>
+    </section>
+
+    <section id="internship">
+        <h2>Internship: People Management Project</h2>
+        <div class="work-box">
+            <p style="color: var(--text-dim);">
+                During my internship, I was trained in SQL and Power BI to solve business intelligence problems. I spearheaded a <strong>People Management & Company Dashboard</strong> project, where I took full ownership of finding and sourcing the dataset myself. Using SQL, I structured data for 200+ employees to analyze metrics like active headcount, attrition rates, and average age. I built a dual-dashboard system in Power BI: an <strong>Employee Dashboard</strong> focusing on department-wise performance and salary distribution, and a <strong>Company Dashboard</strong> tracking hiring trends and performance scores across 20 different branch locations including Chennai, Delhi, and Bangalore. This project involved complex visualizations such as sunburst charts for gender distribution and geographical maps for branch locations. My work provided a clear, visual way to monitor the health of an organization and identify high-performing regions and roles. This end-to-end process from data sourcing to final visualization significantly improved my analytical decision-making skills.
+            </p>
+            <img src="dashboard.jpg" alt="Sabharish's Power BI Dashboard" class="project-img">
+        </div>
+    </section>
+
+    <section id="automation" style="background: #111827;">
+        <h2>Automation Work</h2>
+        <div class="work-box">
+            <p style="color: var(--text-dim);">
+                My work in automation focuses on reducing manual intervention by developing intelligent scripts and workflows. I have built tools that handle data extraction and processing, saving hours of manual entry every week. By implementing automated testing suites, I ensured that software updates could be deployed with zero regression errors. These solutions were designed to be modular, allowing them to be easily adapted for different departments and tasks. My goal with every automation project is to maximize accuracy while minimizing human effort and time.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>E-Commerce Projects</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div class="work-box">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Swiggy Logistics Analysis</h3>
+                <p style="color: var(--text-dim);">Analyzed the food delivery ecosystem to understand user behavior and logistics optimization. I focused on identifying bottlenecks in the delivery partner assignment and peak-hour demand management. The project highlighted data-driven strategies for improving customer retention through better service timing.</p>
             </div>
-            <div class="skill-bar">
-                <div class="skill-info"><span>UI/UX Design</span> <span>85%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-info"><span>Backend (Node.js)</span> <span>70%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 70%;"></div></div>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-info"><span>Project Management</span> <span>95%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+            <div class="work-box">
+                <h3 style="color:var(--primary); margin-bottom:1rem;">Amazon System Analysis</h3>
+                <p style="color: var(--text-dim);">Explored high-scale data handling through an analysis of Amazon's purchasing flow. I recreated mock-ups of search filtering systems and "One-Click" checkout logic. This project helped me master the UI/UX standards required for global e-commerce platforms and large-scale product grids.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <h2>Get In Touch</h2>
-        <form class="contact-form">
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea rows="5" placeholder="Tell me about your project..."></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+        <h2>Let's Connect</h2>
+        <div class="contact-grid">
+            <a href="mailto:psabharish14@gmail.com" class="contact-link"><strong>Email</strong><br>psabharish14@gmail.com</a>
+            <a href="tel:7550149526" class="contact-link"><strong>Phone</strong><br>+91 7550149526</a>
+            <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="contact-link"><strong>LinkedIn</strong><br>sabharishraaja</a>
+            <a href="https://github.com/sabharish14" target="_blank" class="contact-link"><strong>GitHub</strong><br>sabharish14</a>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Sabharish Raaja. All rights reserved.</p>
     </footer>
 
 </body>
