@@ -3,167 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SABHARISH RAAJA | DATA ARCHITECT</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SABHARISH RAAJA | Data Analyst Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;900&display=swap');
+        body { margin: 0; overflow: hidden; background: #050505; font-family: 'Inter', sans-serif; }
+        canvas { display: block; }
+
+        /* Navigation Menu */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+        nav a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; letter-spacing: 2px; transition: 0.3s; cursor: pointer; }
+        nav a:hover { color: #ff4d00; }
+
+        /* Hero Text Fix - Ensuring no letters are hidden */
+        #hero-ui {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        #hero-ui h1 {
+            font-size: clamp(2rem, 12vw, 7.5rem); /* Prevents 'h' from hiding on screens */
+            margin: 0;
+            color: white;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+        #hero-ui p {
+            font-size: 1.2rem;
+            color: #ff4d00;
+            letter-spacing: 5px;
+            margin-top: 10px;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 77, 0, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+            z-index: 20;
+        }
+        .active-card { opacity: 1; pointer-events: auto; }
         
-        :root { --accent: #ff4d00; }
-        body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
+        h2 { color: #ff4d00; margin-top: 0; }
+        .skill-item { margin-bottom: 10px; font-size: 0.9rem; }
+        .project-img { width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid #444; }
 
-        /* Cinematic Background with Players */
-        .stadium {
-            position: fixed; inset: 0;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
-                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover; background-position: center; z-index: -2;
+        #start-btn {
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 50px;
+            background: #ff4d00;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 1001;
+            letter-spacing: 2px;
         }
-
-        /* The Animated Ball */
-        #cricket-ball {
-            position: fixed; bottom: 20%; left: 15%; width: 35px; height: 35px;
-            background: radial-gradient(circle at 30% 30%, #ff1a1a, #800000);
-            border-radius: 50%; border: 1px dashed rgba(255,255,255,0.5);
-            z-index: 100; transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-            box-shadow: 0 0 15px rgba(255,0,0,0.6);
-            display: flex; align-items: center; justify-content: center; font-size: 8px;
-        }
-
-        .huge-title { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 10vw, 12rem); line-height: 0.8; text-transform: uppercase; }
-        
-        /* Interactive Slides */
-        .slide {
-            position: absolute; inset: 0; display: none;
-            flex-direction: column; justify-content: center; padding: 0 10%;
-            animation: slideUp 0.6s ease-out forwards;
-        }
-        .slide.active { display: flex; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* The Button */
-        .play-action {
-            position: fixed; bottom: 8%; left: 50%; transform: translateX(-50%);
-            z-index: 200; background: var(--accent); color: white;
-            padding: 18px 45px; border-radius: 12px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; border: none;
-            box-shadow: 0 10px 20px rgba(255,77,0,0.3); transition: 0.3s;
-        }
-        .play-action:hover { background: #fff; color: #000; transform: translateX(-50%) scale(1.05); }
-
-        .glass { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; }
-        .project-img { width: 100%; height: 200px; object-cover: cover; border-radius: 12px; margin-bottom: 15px; border: 2px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <div class="stadium"></div>
-    <div id="cricket-ball"></div>
+    <nav>
+        <a onclick="moveCamera(0)">ABOUT</a>
+        <a onclick="moveCamera(1)">SKILLS</a>
+        <a onclick="moveCamera(2)">AUTOMATION</a>
+        <a onclick="moveCamera(3)">PROJECTS</a>
+        <a onclick="moveCamera(4)">CONTACT</a>
+    </nav>
 
-    <button class="play-action" onclick="playGame()" id="ctl-btn">Step onto the Pitch</button>
-
-    <div class="slide active" id="s1">
-        <h1 class="huge-title">SABHARISH<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">RAAJA.</span></h1>
-        <p class="text-2xl mt-6 text-orange-500 font-bold uppercase tracking-widest italic">Data Analyst | ECE Engineer</p>
+    <div id="hero-ui">
+        <h1>SABHARISH RAAJA</h1>
+        <p>DATA ANALYST | ECE ENGINEER</p>
     </div>
 
-    <div class="slide" id="s2">
-        <div class="max-w-4xl glass">
-            <h2 class="text-4xl font-black mb-6 uppercase italic text-orange-500">The Player Profile</h2>
-            <p class="text-lg leading-relaxed text-gray-200">
-                I am an **Electronics and Communication Engineer (ECE)** who has strategically transitioned into the world of **Data Analytics**. While my engineering background allows me to understand the hardware foundations of data, my focus is now entirely on decoding complex information into business value. Having completed my internship, I am fully dedicated to a career path in analytics, specializing in cleaning, modeling, and visualizing data to drive elite-level decision making.
-            </p>
+    <button id="start-btn">STEP ONTO THE PITCH</button>
+
+    <div id="card-about" class="glass-card">
+        <h2>About Me</h2>
+        <div style="font-size: 0.9rem; line-height: 1.6;">
+            1. I hold a degree in Electronics and Communication Engineering (ECE), which built my logic.<br>
+            2. My engineering background provided a strong foundation in analytical thinking.<br>
+            3. However, my passion for uncovering stories in data led me to Data Analytics.<br>
+            4. I combine technical engineering skills with advanced business intelligence tools.<br>
+            5. During my internship, I worked extensively with large datasets to perform data cleaning.<br>
+            6. I specialized in interactive dashboards using Power BI and Tableau for decisions.<br>
+            7. My experience includes analyzing customer behavior to optimize growth.<br>
+            8. I am proficient in Python (Pandas) for high-speed cleaning and duplicate removal.<br>
+            9. I believe data is more than just numbers; it is a narrative to be told effectively.<br>
+            10. My goal is to transform raw data into insights that drive real-world success.
         </div>
     </div>
 
-    <div class="slide" id="s3">
-        <div class="max-w-3xl glass border-t-4 border-orange-600">
-            <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter">Automated Field Strategy</h2>
-            <p class="text-orange-500 font-bold mb-6">Custom Python ETL Engine</p>
-            <p class="text-gray-300 leading-relaxed mb-6">
-                I built a standalone **Data Cleaning Pipeline** from scratch. This custom automation uses Python (Pandas/NumPy) to automatically detect outliers and handle missing values, ensuring every dataset is "match-ready" without manual intervention.
-            </p>
-            <div class="flex gap-4">
-                <i class="fab fa-python text-3xl"></i>
-                <i class="fas fa-database text-3xl"></i>
-            </div>
-        </div>
+    <div id="card-skills" class="glass-card">
+        <h2>Technical Skills</h2>
+        <div class="skill-item"><strong>Python (Pandas/NumPy):</strong> High-speed data manipulation.</div>
+        <div class="skill-item"><strong>SQL:</strong> Complex query design and database management.</div>
+        <div class="skill-item"><strong>Excel:</strong> Advanced modeling, PivotTables, and functions.</div>
+        <div class="skill-item"><strong>Power BI & Tableau:</strong> Interactive dashboarding and visual stories.</div>
+        <div class="skill-item"><strong>Data Visualization:</strong> Turning complex numbers into insights.</div>
     </div>
 
-    <div class="slide" id="s4">
-        <h2 class="text-5xl font-black mb-10 uppercase italic">On the Scoreboard</h2>
-        <div class="grid md:grid-cols-2 gap-10">
-            <div class="glass p-6">
-                <img src="1000239452.jpg" alt="Swiggy Project" class="project-img">
-                <h3 class="text-xl font-bold uppercase mb-2">Swiggy Analytics</h3>
-                <p class="text-sm text-gray-400">Processing 52.12M records for high-performance sales tracking.</p>
-            </div>
-            <div class="glass p-6">
-                <img src="1000227044.jpg" alt="Amazon Project" class="project-img">
-                <h3 class="text-xl font-bold uppercase mb-2">Amazon Financials</h3>
-                <p class="text-sm text-gray-400">Modeling $2M revenue and tracking logistics efficiency.</p>
-            </div>
-        </div>
+    <div id="card-automation" class="glass-card">
+        <h2>Automation Tool</h2>
+        <p style="font-size: 0.95rem;">This system performs automatic data cleaning by removing duplicates and fixing missing values instantly without any coding. It allows users to apply filters and perform Group By operations directly.</p>
     </div>
 
-    <div class="slide" id="s5">
-        <h2 class="huge-title">THAT'S A <span class="text-orange-500 italic">SIX!</span></h2>
-        <div class="mt-10 glass text-center max-w-2xl mx-auto">
-            <p class="text-sm uppercase tracking-[0.5em] mb-8 font-bold">Contact the Captain</p>
-            <div class="space-y-6">
-                <a href="mailto:psabharish14@gmail.com" class="text-2xl md:text-4xl font-black block hover:text-orange-500 transition">psabharish14@gmail.com</a>
-                <a href="tel:+917550149526" class="text-2xl md:text-4xl font-black block">+91 75501 49526</a>
-            </div>
-            <div class="mt-12 flex justify-center gap-10 opacity-60">
-                <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="text-2xl hover:text-orange-500"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sabharish14" target="_blank" class="text-2xl hover:text-orange-500"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+    <div id="card-projects" class="glass-card">
+        <h2>Project Highlights</h2>
+        <p style="font-size: 0.85rem; margin-bottom: 5px;"><strong>Swiggy:</strong> Sales order analysis identifying peak delivery times and preferences.</p>
+        <p style="font-size: 0.85rem;"><strong>Amazon:</strong> Profit and loss forecasting based on historical sales trends.</p>
+        <p style="font-size: 0.7rem; color: #aaa;">(Walk to billboards in stadium to see full visuals)</p>
     </div>
 
     <script>
-        let step = 1;
-        const ball = document.getElementById('cricket-ball');
-        const btn = document.getElementById('ctl-btn');
+        // THREE.JS SCENE SETUP
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.body.appendChild(renderer.domElement);
 
-        function playGame() {
-            step++;
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+        // STADIUM ENVIRONMENT
+        // Green Grass Pitch
+        const pitchGeo = new THREE.CircleGeometry(60, 64);
+        const pitchMat = new THREE.MeshStandardMaterial({ color: 0x1a4a1a });
+        const pitch = new THREE.Mesh(pitchGeo, pitchMat);
+        pitch.rotation.x = -Math.PI / 2;
+        scene.add(pitch);
 
-            if (step === 2) {
-                // Ball Moves to Bowler Release
-                ball.style.left = '40%'; ball.style.bottom = '40%';
-                btn.innerText = 'Bowler Delivery';
-                document.getElementById('s2').classList.add('active');
-            } 
-            else if (step === 3) {
-                // Ball hits the pitch
-                ball.style.left = '50%'; ball.style.bottom = '20%';
-                btn.innerText = 'Automation Script Run';
-                document.getElementById('s3').classList.add('active');
-            }
-            else if (step === 4) {
-                // BATSMAN HITS BALL HIGH (PROJECTS SHOW)
-                ball.style.left = '80%'; ball.style.bottom = '85%';
-                ball.style.transform = 'scale(0.6)';
-                btn.innerText = 'The Big Hit (Analytics)';
-                document.getElementById('s4').classList.add('active');
-            }
-            else if (step === 5) {
-                // SIX - BALL DISAPPEARS
-                ball.style.left = '110%'; ball.style.bottom = '110%';
-                btn.innerText = 'Check Scorecard (Contact)';
-                document.getElementById('s5').classList.add('active');
-            }
-            else {
-                // Reset
-                step = 1;
-                ball.style.left = '15%'; ball.style.bottom = '20%';
-                ball.style.transform = 'scale(1)';
-                btn.innerText = 'Step onto the Pitch';
-                document.getElementById('s1').classList.add('active');
+        // Lights (Floodlights)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+
+        function createFloodlight(x, z) {
+            const poleGeo = new THREE.CylinderGeometry(0.2, 0.2, 20);
+            const poleMat = new THREE.MeshStandardMaterial({ color: 0x333333 });
+            const pole = new THREE.Mesh(poleGeo, poleMat);
+            pole.position.set(x, 10, z);
+            scene.add(pole);
+
+            const light = new THREE.PointLight(0xffffff, 1, 100);
+            light.position.set(x, 20, z);
+            scene.add(light);
+        }
+        createFloodlight(40, 40);
+        createFloodlight(-40, 40);
+        createFloodlight(40, -40);
+        createFloodlight(-40, -40);
+
+        // Project Billboards (Using your images)
+        const loader = new THREE.TextureLoader();
+        
+        function createBillboard(x, z, texturePath) {
+            const frameGeo = new THREE.BoxGeometry(16, 9, 0.5);
+            const frameMat = new THREE.MeshStandardMaterial({ color: 0x000000 });
+            const frame = new THREE.Mesh(frameGeo, frameMat);
+            frame.position.set(x, 8, z);
+            scene.add(frame);
+
+            loader.load(texturePath, (texture) => {
+                const screenGeo = new THREE.PlaneGeometry(15, 8);
+                const screenMat = new THREE.MeshBasicMaterial({ map: texture });
+                const screen = new THREE.Mesh(screenGeo, screenMat);
+                screen.position.set(x, 8, z + 0.3);
+                scene.add(screen);
+            });
+        }
+        // Swiggy Billboard
+        createBillboard(-15, -30, '1000239452.jpg');
+        // Amazon Billboard
+        createBillboard(15, -30, '1000227044.jpg');
+
+        camera.position.set(0, 5, 25);
+
+        // CAMERA NAVIGATION
+        const zones = [
+            { pos: { x: 0, y: 5, z: 25 }, card: 'card-about' },      // About
+            { pos: { x: -20, y: 8, z: 10 }, card: 'card-skills' },   // Skills
+            { pos: { x: 20, y: 8, z: 10 }, card: 'card-automation' },// Automation
+            { pos: { x: 0, y: 10, z: -15 }, card: 'card-projects' }, // Projects
+            { pos: { x: 0, y: 5, z: 15 }, card: null }               // Contact/Final
+        ];
+
+        function moveCamera(index) {
+            const target = zones[index];
+            
+            // Move Camera
+            gsap.to(camera.position, {
+                x: target.pos.x, y: target.pos.y, z: target.pos.z,
+                duration: 2, ease: "power2.inOut"
+            });
+
+            // Handle UI Cards
+            document.querySelectorAll('.glass-card').forEach(c => c.classList.remove('active-card'));
+            if(target.card) {
+                document.getElementById(target.card).classList.add('active-card');
+                document.getElementById('hero-ui').style.opacity = "0";
+            } else {
+                document.getElementById('hero-ui').style.opacity = "1";
             }
         }
+
+        document.getElementById('start-btn').addEventListener('click', () => {
+            document.getElementById('start-btn').style.display = 'none';
+            moveCamera(0);
+        });
+
+        // ANIMATION LOOP
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Responsive Resizing
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
