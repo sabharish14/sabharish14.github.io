@@ -10,53 +10,50 @@
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@400;900&display=swap');
         
         :root { --accent: #ff4d00; }
-        body { background-color: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
+        body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
 
-        /* CRICKET STADIUM BACKGROUNDS FOR ALL 7 SLIDES */
+        /* CRICKET STADIUM BACKGROUNDS - Updated with high-reliability links */
         .stadium-bg {
             position: fixed; inset: 0;
             background-size: cover; background-position: center;
             z-index: -2; transition: opacity 1s ease-in-out;
             opacity: 0;
-            background-color: #0a0a0a;
+            /* Fallback Stadium Color */
+            background: radial-gradient(circle, #1a2e1a 0%, #000 100%);
         }
         .stadium-bg.active { opacity: 1; }
         
         .overlay { 
             position: fixed; inset: 0; 
-            background: rgba(0,0,0,0.75); 
+            background: rgba(0,0,0,0.7); 
             z-index: -1; 
         }
 
-        /* NAVIGATION */
         nav {
             position: fixed; top: 25px; right: 40px; z-index: 500;
-            display: flex; gap: 20px; background: rgba(0,0,0,0.8);
+            display: flex; gap: 20px; background: rgba(0,0,0,0.85);
             padding: 10px 25px; border-radius: 50px; backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
         }
-        nav a { font-size: 0.75rem; font-weight: 900; color: #888; cursor: pointer; transition: 0.3s; }
+        nav a { font-size: 0.75rem; font-weight: 900; color: #888; cursor: pointer; }
         nav a.active { color: var(--accent); }
 
-        /* SLIDE SYSTEM */
         .slide {
             position: absolute; inset: 0; display: none;
             flex-direction: column; justify-content: center;
             padding: 0 10%; z-index: 10;
         }
-        .slide.active { display: flex; animation: slideIn 0.8s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .slide.active { display: flex; animation: slideIn 0.7s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .glass { 
             background: rgba(10, 10, 10, 0.85); 
             backdrop-filter: blur(25px); 
             border: 1px solid rgba(255,255,255,0.15); 
-            border-radius: 20px; 
-            padding: 40px; 
+            border-radius: 20px; padding: 40px; 
             width: 100%; max-width: 950px;
         }
 
-        /* BAT ANIMATION */
         .bat-icon {
             display: inline-block;
             transform-origin: top right;
@@ -78,20 +75,19 @@
             position: fixed; bottom: 5%; left: 50%; transform: translateX(-50%);
             background: var(--accent); color: white; padding: 15px 50px;
             border-radius: 5px; font-weight: 900; cursor: pointer; z-index: 1000;
-            border: none; text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
+            text-transform: uppercase; letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="stadium-bg active" id="bg1" style="background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1600');"></div>
-    <div class="stadium-bg" id="bg2" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600');"></div>
-    <div class="stadium-bg" id="bg3" style="background-image: url('https://images.unsplash.com/photo-1599327311431-d96a55e040f9?w=1600');"></div>
-    <div class="stadium-bg" id="bg4" style="background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=1600');"></div>
-    <div class="stadium-bg" id="bg5" style="background-image: url('https://images.unsplash.com/photo-1562077772-3bd90403f7f0?w=1600');"></div>
-    <div class="stadium-bg" id="bg6" style="background-image: url('https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?w=1600');"></div>
-    <div class="stadium-bg" id="bg7" style="background-image: url('https://images.unsplash.com/photo-1512716676300-5d60698287bc?w=1600');"></div>
+    <div class="stadium-bg active" id="bg1" style="background-image: url('https://images.pexels.com/photos/3628912/pexels-photo-3628912.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg2" style="background-image: url('https://images.pexels.com/photos/209977/pexels-photo-209977.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg3" style="background-image: url('https://images.pexels.com/photos/3757361/pexels-photo-3757361.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg4" style="background-image: url('https://images.pexels.com/photos/10816004/pexels-photo-10816004.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg5" style="background-image: url('https://images.pexels.com/photos/10368593/pexels-photo-10368593.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg6" style="background-image: url('https://images.pexels.com/photos/10368592/pexels-photo-10368592.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+    <div class="stadium-bg" id="bg7" style="background-image: url('https://images.pexels.com/photos/3823039/pexels-photo-3823039.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
     
     <div class="overlay"></div>
 
@@ -118,7 +114,7 @@
         <div class="glass">
             <h2 class="text-3xl font-black mb-4 text-orange-500 uppercase italic">The Professional Journey</h2>
             <p class="text-lg leading-relaxed text-gray-100">
-                I hold a degree in Electronics and Communication Engineering, which built my logic and analytical mindset. My engineering background provided a strong foundation in solving complex problems through statistical thinking. My passion for uncovering stories in data led me to Data Analytics, where I combine technical skills with BI tools to drive value.
+                I hold a degree in Electronics and Communication Engineering, which built my logic and analytical mindset. My engineering background provided a strong foundation in solving complex problems through statistical thinking. My passion for uncovering stories in data led me to Data Analytics, where I combine technical skills with BI tools to drive value. During my internship, I specialized in high-speed data cleaning and building interactive dashboards using Power BI and Tableau. I am proficient in Python, particularly using Pandas for efficient data manipulation. My goal is to transform raw data into insights that drive business success.
             </p>
         </div>
     </div>
