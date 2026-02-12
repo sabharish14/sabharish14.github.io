@@ -24,7 +24,7 @@
         section { padding: 80px 10%; border-bottom: 1px solid #1e293b; }
         h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        .hero { text-align: center; padding-top: 120px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero { text-align: center; padding-top: 100px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
         .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
         .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--text-dim); font-size: 1.05rem; }
         
@@ -32,7 +32,11 @@
             display: inline-block; padding: 12px 30px; background: var(--primary); color: var(--bg); 
             text-decoration: none; font-weight: bold; border-radius: 8px; margin-top: 20px; transition: 0.3s;
         }
-        .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .skill-card { background: var(--card-bg); padding: 1.5rem; border-left: 4px solid var(--primary); border-radius: 8px; }
+        .skill-card strong { display: block; color: var(--primary); margin-bottom: 5px; font-size: 1.1rem; }
 
         .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; border: 1px solid #334155; }
         .project-img { width: 100%; max-width: 850px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); display: block; margin-left: auto; margin-right: auto; }
@@ -51,6 +55,7 @@
         <div class="logo">SABHARISH RAAJA</div>
         <div class="nav-links">
             <a href="#about">About</a>
+            <a href="#skills">Skills</a>
             <a href="#internship">Internship</a>
             <a href="#automation">Automation</a>
             <a href="#ecommerce">E-Commerce</a>
@@ -62,55 +67,66 @@
         <h1>Sabharish <span style="color:var(--primary)">Raaja</span></h1>
         <p style="font-size: 1.5rem; color: var(--text-dim);">Data Analyst & Automation Professional</p>
         <div class="about-text">
-            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. Currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
+            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. I believe in continuous learning and staying updated with the latest industry trends to deliver cutting-edge results. My approach combines technical rigor with a creative mindset to tackle complex challenges effectively. I thrive in collaborative environments where I can contribute to meaningful projects and grow alongside a team. I am dedicated to writing clean, maintainable code and building seamless user experiences. Beyond technical skills, I value integrity, clear communication, and a strong work ethic in every task I undertake. My goal is to leverage my expertise to drive innovation and make a positive impact in the digital landscape. I am currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
         </div>
-        <div>
-            <a href="your-resume.pdf" class="cv-btn" download><i class="fa-solid fa-file-arrow-down"></i> Download My CV</a>
+        <a href="your-resume.pdf" class="cv-btn" download><i class="fa-solid fa-file-arrow-down"></i> Download My CV</a>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card"><strong>Power BI</strong>Expertise in creating interactive dashboards and complex data visualizations to drive business decisions.</div>
+            <div class="skill-card"><strong>SQL</strong>Proficient in writing advanced queries, data cleaning, and managing large relational databases efficiently.</div>
+            <div class="skill-card"><strong>Python</strong>Building custom scripts for data processing and developing end-to-end automation workflows.</div>
+            <div class="skill-card"><strong>Data Automation</strong>Streamlining repetitive manual tasks using intelligent software solutions and KPI builders.</div>
+            <div class="skill-card"><strong>Data Cleaning</strong>Specialized in identifying duplicates and transforming raw datasets into clean, actionable formats.</div>
+            <div class="skill-card"><strong>E-Commerce Analytics</strong>Analyzing large-scale retail data to track sales trends, profit margins, and consumer behavior.</div>
         </div>
     </section>
 
     <section id="internship">
-        <h2>Internship: People Management</h2>
+        <h2>Internship & People Management</h2>
         <div class="work-box">
             <p style="color: var(--text-dim);">
-                I underwent intensive training in SQL and Power BI, applying these skills to a comprehensive People Management project. I personally sourced the dataset to build a dual-dashboard system that tracks hiring trends and salary distributions for 200+ employees. I visualized branch performance across 20 locations, identifying key performance hubs like Delhi and Chennai.
+                During my internship, I focused on mastering <strong>SQL and Power BI</strong>, leading to a specialized People Management project. I took full ownership of the project by sourcing my own dataset for over 200 employees to ensure the analysis was grounded in realistic data. I built an Employee Dashboard tracking key metrics like an <strong>attrition rate of 42</strong> and an average age of 42 among a 200-person workforce. The Company Dashboard visualized performance across <strong>20 branches</strong>, highlighting top-performing locations such as Delhi and Nagpur. I also mapped hiring trends and gender distribution across job roles like Senior and Junior positions. This project demonstrated my ability to clean data in SQL and present it as a strategic HR tool in Power BI.
             </p>
             <img src="employee_dashboard.jpg" alt="Company Dashboard" class="project-img">
         </div>
     </section>
 
     <section id="automation">
-        <h2>Automation Projects</h2>
+        <h2>Automation Work</h2>
         <div class="work-box">
-            <h3>Custom Data Cleaning Application</h3>
+            <h3>Data Cleaning Application</h3>
             <p style="color: var(--text-dim);">
-                Developed a full-stack Data Cleaning App that supports CSV, Excel, TXT, and ZIP folder uploads. The tool features an automatic duplicate check that removed 320 duplicate rows from a 500-row dataset in a single click, resulting in a clean 180-row output. I integrated a KPI Builder, column filters, and text transformation modules to streamline the pre-analysis workflow. This automation drastically reduces manual data preparation time, allowing analysts to focus on generating insights.
+                I developed a full-stack <strong>Data Cleaning App</strong> designed to automate the most tedious parts of data preparation. The application supports various file formats including CSV, Excel, and even ZIP folders for bulk processing. One of the core features is an <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates in a 500-row set. After cleaning, the tool produced a high-quality dataset of 180 unique rows, ensuring data integrity. The app includes a <strong>KPI Builder</strong> and manual duplicate removal options to give users full control over their data. By integrating text transformation filters, this tool significantly reduces the time spent on manual data entry and cleaning. This project showcases my ability to bridge the gap between software development and data analysis.
             </p>
-            <img src="automation_app.jpg" alt="Data Cleaning App" class="project-img">
+            <img src="automation_app.jpg" alt="Automation Tool" class="project-img">
         </div>
     </section>
 
     <section id="ecommerce">
-        <h2>E-Commerce Data Analysis</h2>
+        <h2>E-Commerce Projects</h2>
+        
         <div class="work-box">
-            <h3>Swiggy Sales Dashboard</h3>
+            <h3>Swiggy Sales Analysis</h3>
             <p style="color: var(--text-dim);">
-                Processed 52.12M in total sales and 193.78K orders, identifying Bengaluru as the revenue leader with 4.6M in sales. I analyzed food-type sales showing that Non-Veg items account for 64.48% of revenue and identified top-performing restaurants with ratings up to 4.82.
+                I built a detailed Sales Analysis dashboard for Swiggy, processing a massive <strong>52.12M in total sales</strong>. The analysis tracked 193.78K total orders with an average order price of 268.97 and an average rating of 4.34. I identified <strong>Bengaluru as the top city</strong> by revenue (4.6M) and analyzed food types to find that Non-Veg sales account for 64.48% of total income. The dashboard highlights the "Best Selling Dishes" and provides a "Poor Performing Restaurant" list to help managers improve service. By visualizing weekly sales trends, the project offers a clear window into daily demand fluctuations. This dashboard serves as a vital tool for understanding regional market dominance and customer preference.
             </p>
-            <img src="swiggy_dashboard.jpg" alt="Swiggy Analysis" class="project-img">
+            <img src="swiggy_dashboard.jpg" alt="Swiggy Dashboard" class="project-img">
         </div>
 
         <div class="work-box">
             <h3>Amazon Store Sales</h3>
             <p style="color: var(--text-dim);">
-                Tracked $2M in global sales and $175K in profit, maintaining an accepted order status of 95.14%. I identified that 43% of customers prefer Cash on Delivery (COD) and Phones are the most profitable sub-category at $0.20M.
+                For the Amazon project, I developed a Store Sales Dashboard tracking <strong>2M in total sales</strong> and 175K in profit. I analyzed consumer behavior across segments, finding that the Consumer category accounts for 48% of the total business. The data revealed that <strong>Cash on Delivery (43%)</strong> and Online payments (35%) are the leading payment methods. I also mapped sales geographically across North America and tracked returns, showing a high <strong>95.14% acceptance rate</strong>. Technology sub-categories like Phones were identified as the highest profit drivers, contributing 0.20M to sales. This project masterfully uses color-coding and trend lines to provide a 360-degree view of retail performance.
             </p>
             <img src="amazon_dashboard.jpg" alt="Amazon Dashboard" class="project-img">
         </div>
     </section>
 
     <section id="contact">
-        <h2>Connect With Me</h2>
+        <h2>Contact</h2>
         <div class="contact-grid">
             <a href="mailto:psabharish14@gmail.com" class="contact-link"><strong>Email</strong><br>psabharish14@gmail.com</a>
             <a href="tel:7550149526" class="contact-link"><strong>Phone</strong><br>+91 7550149526</a>
