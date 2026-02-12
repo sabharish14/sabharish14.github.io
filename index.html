@@ -3,55 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabharish Raaja | Data & Automation Portfolio</title>
+    <title>Sabharish Raaja | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --dim: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
         
-        /* Navigation */
-        nav { display: flex; justify-content: space-between; padding: 1rem 10%; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
-        .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--dim); font-size: 0.85rem; transition: 0.3s; }
+        /* Nav */
+        nav { display: flex; justify-content: space-between; padding: 1rem 10%; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; }
+        .logo { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--dim); font-size: 0.8rem; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Sections */
-        section { padding: 80px 10%; border-bottom: 1px solid #1e293b; }
-        h2 { color: var(--primary); margin-bottom: 2.5rem; text-transform: uppercase; letter-spacing: 2px; }
+        /* Page Layout */
+        .page-section { min-height: 100vh; padding: 100px 10%; border-bottom: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: center; }
+        h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
 
-        /* Hero Styling */
-        .hero { text-align: center; padding-top: 100px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--dim); font-size: 1rem; }
-        .cv-btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: var(--bg); text-decoration: none; font-weight: bold; border-radius: 8px; margin-top: 15px; transition: 0.3s; }
-        .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+        /* About & Name */
+        .hero { text-align: center; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .greeting { color: var(--primary); font-size: 1.5rem; font-weight: 600; }
+        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--dim); font-size: 1.05rem; line-height: 1.8; }
 
         /* 3x2 Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
-        .skill-item { background: var(--card); padding: 1.5rem; border-radius: 12px; border-top: 4px solid var(--primary); text-align: center; transition: 0.3s; }
-        .skill-item:hover { transform: translateY(-5px); }
-        .skill-item i { color: var(--primary); font-size: 2.2rem; margin-bottom: 12px; display: block; }
-        .skill-item strong { display: block; margin-bottom: 8px; font-size: 1.1rem; color: var(--text); }
-        .skill-item p { font-size: 0.85rem; color: var(--dim); line-height: 1.4; }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+        .skill-item { background: var(--card); padding: 2rem; border-radius: 15px; border-bottom: 4px solid var(--primary); text-align: center; transition: 0.3s; }
+        .skill-item:hover { transform: translateY(-10px); background: #24334d; }
+        .skill-item i { color: var(--primary); font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .skill-item strong { display: block; margin-bottom: 10px; font-size: 1.2rem; }
+        .skill-item p { font-size: 0.9rem; color: var(--dim); }
 
-        /* Work Box Styling (Separate Boxes) */
-        .work-box { background: var(--card); padding: 2.5rem; border-radius: 15px; margin-bottom: 3.5rem; border: 1px solid #334155; }
-        .work-box h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1.2rem; }
-        .work-box p { color: var(--dim); font-size: 1rem; margin-bottom: 1.5rem; text-align: justify; }
-        .project-img { width: 100%; max-width: 850px; border-radius: 12px; border: 2px solid var(--primary); display: block; margin: 0 auto; }
+        /* Content Boxes */
+        .content-box { background: var(--card); padding: 3rem; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .content-box h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; border-left: 5px solid var(--primary); padding-left: 15px; }
+        .content-box p { color: var(--dim); font-size: 1.1rem; margin-bottom: 2rem; text-align: justify; }
+        .project-img { width: 100%; max-width: 900px; border-radius: 12px; border: 2px solid #334155; display: block; margin: 0 auto; transition: 0.3s; }
+        .project-img:hover { border-color: var(--primary); }
 
-        /* Centered Contact Section */
-        .contact-section { text-align: center; background: #0b1121; padding: 100px 10%; }
-        .contact-container { max-width: 700px; margin: 0 auto; }
-        .contact-info { margin-bottom: 3rem; color: var(--text); font-size: 1.3rem; }
+        /* Centered Contact */
+        .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
+        .contact-info { font-size: 1.4rem; margin-bottom: 3rem; }
         .contact-info div { margin: 15px 0; }
-        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 25px; }
-        .social-item { text-decoration: none; color: var(--text); transition: 0.3s; text-align: center; }
-        .social-item i { font-size: 3rem; display: block; margin-bottom: 10px; color: var(--primary); }
-        .social-item:hover { transform: translateY(-8px); color: var(--primary); }
+        .social-grid { display: flex; justify-content: center; gap: 50px; }
+        .social-link { text-decoration: none; color: var(--text); text-align: center; transition: 0.3s; }
+        .social-link i { font-size: 3.5rem; color: var(--primary); display: block; margin-bottom: 10px; }
+        .social-link:hover { transform: scale(1.1); color: var(--primary); }
 
-        footer { text-align: center; padding: 3rem; color: #475569; font-size: 0.9rem; border-top: 1px solid #1e293b; }
+        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.9rem; }
 
         @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .skills-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
@@ -62,114 +61,90 @@
     <nav>
         <div class="logo">SABHARISH RAAJA</div>
         <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Projects</a>
+            <a href="#home">Home</a>
+            <a href="#internship">Internship</a>
+            <a href="#automation">Automation</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section class="hero" id="about">
-        <p style="color: var(--primary); font-weight: bold; font-size: 1.4rem; margin-bottom: 5px;">Hi, I am</p>
-        <h1>Sabharish <span style="color:var(--primary)">Raaja</span></h1>
-        <p style="color: var(--dim); font-size: 1.3rem;">ECE Student | Data Analyst & Automation Professional</p>
+    <section class="page-section hero" id="home">
+        <h1><span class="greeting">Hi, I am</span> Sabharish <span style="color:var(--primary)">Raaja</span></h1>
+        <p style="color: var(--dim); font-size: 1.4rem; font-weight: 500;">ECE Student | Data Analyst & Automation Professional</p>
         
         <div class="about-text">
-            As a student of **Electronics and Communication Engineering (ECE)**, I bring a unique analytical perspective to the world of software and data science. My journey transitioned from hardware systems to becoming a dedicated **Data Analyst and Automation Professional**, driven by a desire to build efficient, scalable digital solutions. I have developed a deep technical foundation in SQL, Power BI, and Python, allowing me to transform massive datasets into clear, actionable business intelligence. I am committed to continuous learning, ensuring that I stay at the forefront of industry trends to deliver cutting-edge results for complex challenges. My ECE background instills a high level of technical rigor, which I apply to writing clean, maintainable code and developing seamless user experiences. I pride myself on maintaining a strong work ethic, clear communication, and absolute integrity in every project I undertake. I am currently seeking opportunities to apply my automation and data analytics skills to solve real-world problems and drive innovation.
+            As a student of **Electronics and Communication Engineering (ECE)**, I have always been fascinated by the intersection of hardware and data-driven software. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. I believe in continuous learning and staying updated with the latest industry trends to deliver cutting-edge results. My approach combines technical rigor with a creative mindset to tackle complex challenges effectively. I thrive in collaborative environments where I can contribute to meaningful projects and grow alongside a team. I am dedicated to writing clean, maintainable code and building seamless user experiences. Beyond technical skills, I value integrity, clear communication, and a strong work ethic in every task I undertake. My goal is to leverage my expertise to drive innovation and make a positive impact in the digital landscape.
         </div>
-        <div>
-            <a href="your-resume.pdf" class="cv-btn" download><i class="fas fa-download"></i> Download My CV</a>
-        </div>
-    </section>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <i class="fas fa-chart-line"></i>
-                <strong>Power BI</strong>
-                <p>Designing interactive, high-impact dashboards for visual data storytelling and business intelligence.</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-database"></i>
-                <strong>SQL</strong>
-                <p>Proficient in relational database management, complex query writing, and efficient data extraction.</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-robot"></i>
-                <strong>Automation</strong>
-                <p>Building custom Python scripts to automate repetitive manual tasks and streamline digital workflows.</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-broom"></i>
-                <strong>Data Cleaning</strong>
-                <p>Expertise in identifying anomalies and removing duplicates to ensure the highest data integrity.</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-shopping-cart"></i>
-                <strong>E-Commerce</strong>
-                <p>In-depth analysis of retail datasets to monitor sales trends, profit margins, and consumer behavior.</p>
-            </div>
-            <div class="skill-item">
-                <i class="fas fa-laptop-code"></i>
-                <strong>Python</strong>
-                <p>Utilizing Python for data processing, application development, and advanced analytical problem-solving.</p>
-            </div>
+        <div class="skills-grid" style="margin-top: 50px;">
+            <div class="skill-item"><i class="fas fa-chart-bar"></i><strong>Power BI</strong><p>Interactive dashboards for visual data storytelling.</p></div>
+            <div class="skill-item"><i class="fas fa-database"></i><strong>SQL</strong><p>Relational database management and extraction.</p></div>
+            <div class="skill-item"><i class="fas fa-robot"></i><strong>Automation</strong><p>Python scripts for manual workflow streamlining.</p></div>
+            <div class="skill-item"><i class="fas fa-broom"></i><strong>Data Cleaning</strong><p>Ensuring integrity by identifying and removing duplicates.</p></div>
+            <div class="skill-item"><i class="fas fa-shopping-cart"></i><strong>E-Commerce</strong><p>Retail dataset analysis and consumer trend tracking.</p></div>
+            <div class="skill-item"><i class="fas fa-code"></i><strong>Python</strong><p>End-to-end development and analytical processing.</p></div>
         </div>
     </section>
 
-    <section id="experience">
-        <h2>Professional Projects</h2>
-
-        <div class="work-box">
-            <h3>Internship: People Management Project</h3>
+    <section class="page-section" id="internship">
+        <h2>Internship Experience</h2>
+        <div class="content-box">
+            <h3>People Management Analysis</h3>
             <p>
-                My internship involved intensive training in SQL and Power BI, focusing on translating complex HR data into actionable professional insights. I took full ownership of the project by sourcing a unique dataset for 200 employees, ensuring the analysis reflected realistic corporate scenarios. I built an <strong>Employee Dashboard</strong> tracking vital metrics like an <strong>attrition rate of 42</strong> and an average workforce age of 42. Additionally, I created a <strong>Company Dashboard</strong> that mapped performance across <strong>20 branch locations</strong>, identifying top-performing regions like Delhi and Chennai. I analyzed gender distribution and hiring trends across various job roles, ranging from Junior to Managerial levels. By applying SQL for data cleaning, I ensured stakeholders could identify high-performing talent pools with high precision.
+                My internship involved intensive training in SQL and Power BI, where I learned to translate complex data into business intelligence. I led a People Management project, taking full responsibility for sourcing my own datasets to analyze a workforce of 200 employees. I developed an Employee Dashboard tracking metrics like an attrition rate of 42 and an average age of 42. I also created a Company Dashboard that visualized the performance of 20 branch locations, including Delhi and Chennai. The project analyzed hiring trends and gender distribution across various job roles, from Junior to Managerial levels. By using SQL for data cleaning and integrity, I ensured that stakeholders could identify high-performing regional hubs effectively.
             </p>
-            <img src="employee_dashboard.jpg" alt="Internship Dashboard" class="project-img">
+            <img src="employee_dashboard.jpg" alt="Internship Project" class="project-img">
         </div>
+    </section>
 
-        <div class="work-box">
-            <h3>Automation: Data Cleaning Application</h3>
+    <section class="page-section" id="automation">
+        <h2>Data Automation</h2>
+        <div class="content-box">
+            <h3>Full-Stack Data Cleaning App</h3>
             <p>
-                I developed a full-stack <strong>Data Cleaning App</strong> to automate the preparation of CSV, Excel, and TXT files for analytical workflows. This application supports bulk folder uploads and direct Google Drive file links, making it a robust tool for data professionals. A core feature is the <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates within a 500-row dataset in seconds. After cleaning, the tool produced a high-quality output of 180 unique rows, ensuring perfect data accuracy for modeling. I also integrated a <strong>KPI Builder</strong> and text transformation modules, allowing users to filter and process data instantly without manual effort. This automation significantly reduces preparation time and eliminates the risk of human error during data entry.
+                I developed a full-stack Data Cleaning Application designed to automate the preparation of CSV, Excel, and TXT datasets. The application supports bulk folder uploads and direct Google Drive file links, making it highly versatile for corporate environments. I implemented an Automatic Duplicate Check that identified 320 duplicate rows from a 500-row dataset in seconds. Upon cleaning, the tool generated a refined output of 180 unique rows, ensuring complete data accuracy for downstream analysis. To enhance user experience, I integrated a KPI Builder and text transformation modules for instant data filtering and processing. This automation significantly reduces the manual labor required for data prep, allowing analysts to focus on insight generation rather than formatting.
             </p>
             <img src="automation_app.jpg" alt="Automation Application" class="project-img">
         </div>
+    </section>
 
-        <div class="work-box">
-            <h3>Swiggy Sales Analysis Dashboard</h3>
+    <section class="page-section" id="projects">
+        <h2>E-Commerce Projects</h2>
+        
+        <div class="content-box" style="margin-bottom: 50px;">
+            <h3>Swiggy Sales Analysis</h3>
             <p>
-                I conducted a massive sales analysis for Swiggy, processing a dataset representing <strong>52.12M in total sales</strong> and over 193K orders. I identified <strong>Bengaluru as the leading city</strong> with 4.6M in sales and maintained an average partner rating of 4.34 across the platform. The analysis highlighted consumer food preferences, revealing that **Non-Veg sales** account for 64.48% of the total revenue. I built a dedicated tracker for "Top Performing vs. Poor Performing Restaurants" to help operations teams improve service quality. By visualizing weekly sales trends, I provided stakeholders with a clear view of daily demand cycles and average order pricing benchmarks.
+                For this project, I processed a dataset representing 52.12M in total sales and nearly 194K delivery orders. I identified Bengaluru as the top revenue city (4.6M) and tracked an average customer rating of 4.34 across all partners. The analysis highlighted food preferences, revealing that Non-Veg items account for 64.48% of total revenue generated. I built a tracker for high and low performing restaurants to help managers identify service quality gaps in real-time. By visualizing weekly sales trends, I provided a clear window into daily demand peaks and average pricing benchmarks.
             </p>
             <img src="swiggy_dashboard.jpg" alt="Swiggy Project" class="project-img">
         </div>
 
-        <div class="work-box">
-            <h3>Amazon Store Sales Dashboard</h3>
+        <div class="content-box">
+            <h3>Amazon Store Dashboard</h3>
             <p>
-                I developed a retail dashboard for an Amazon store tracking <strong>$2M in sales</strong> and $175K in total net profit. My analysis identified that 48% of the sales volume comes from individual consumers, with 43% of all users preferring **Cash on Delivery (COD)**. I implemented geographic heat maps to show sales density across North America and tracked a high <strong>95.14% order acceptance rate</strong>. The project identifies Phones as the most profitable sub-category, contributing $0.20M to total revenue. This dashboard offers a comprehensive view of logistics, profitability, and customer behavior across different shipping modes.
+                I created an end-to-end retail dashboard tracking 2M in sales and 175K in total profit for an Amazon store. My analysis identified that 48% of sales volume is driven by individual consumers and 43% of users prefer Cash on Delivery (COD). I implemented geographic mapping to show sales density across North America and tracked a high 95.14% order acceptance rate. The project highlights that Phones are the most profitable sub-category, contributing $0.20M to the store's total revenue. This dashboard allows for 360-degree monitoring of logistics performance and customer satisfaction metrics across multiple ship modes.
             </p>
             <img src="amazon_dashboard.jpg" alt="Amazon Project" class="project-img">
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section class="page-section" id="contact" style="background: #0b1121;">
+        <h2>Contact Me</h2>
         <div class="contact-container">
-            <h2>Get In Touch</h2>
             <div class="contact-info">
                 <div><i class="fas fa-envelope" style="color:var(--primary)"></i> psabharish14@gmail.com</div>
                 <div><i class="fas fa-phone" style="color:var(--primary)"></i> +91 7550149526</div>
             </div>
             
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="social-item">
+            <div class="social-grid">
+                <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="social-link">
                     <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
+                    <strong>LinkedIn</strong>
                 </a>
-                <a href="https://github.com/sabharish14" target="_blank" class="social-item">
+                <a href="https://github.com/sabharish14" target="_blank" class="social-link">
                     <i class="fab fa-github"></i>
-                    <span>GitHub</span>
+                    <strong>GitHub</strong>
                 </a>
             </div>
         </div>
