@@ -32,46 +32,53 @@
         .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
 
          /* 3x2 Skills Grid */
-        .skills-grid { 
+        /* Container for the boxes */
+.skills-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
-    gap: 2rem; /* Increased gap for clarity */
+    gap: 1.5rem; 
     max-width: 1100px; 
-    margin: 0 auto 3rem auto; 
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
+/* Individual Skill Box */
 .skill-item { 
-    background: var(--card); 
-    padding: 2.5rem; /* More space inside the card */
-    border-radius: 15px; 
-    border-bottom: 4px solid var(--primary); 
-    text-align: center; /* Center align for a modern look */
-    transition: 0.3s;
+    background: #1e293b; /* Matches your Data App card color */
+    padding: 2rem; 
+    border-radius: 12px; 
+    border: 1px solid #334155; /* Defines the box edge */
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+/* Hover effect to make it feel interactive */
 .skill-item:hover {
-    transform: translateY(-10px);
-    background: #24334a; /* Slight highlight on hover */
+    transform: translateY(-5px);
+    border-color: var(--primary); /* Highlights the box on hover */
 }
 
+/* Large Icon inside box */
 .skill-item i { 
     color: var(--primary); 
-    font-size: 3rem; /* Larger, clearer icons */
-    margin-bottom: 1.5rem; 
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
     display: block; 
 }
 
+/* Large Title inside box */
 .skill-item strong { 
     display: block; 
-    font-size: 1.6rem; /* Large, bold titles */
-    color: #fff; 
-    margin-bottom: 0.8rem; 
+    font-size: 1.4rem; 
+    color: #ffffff; 
+    margin-bottom: 0.5rem; 
 }
 
+/* Description inside box */
 .skill-item p { 
-    font-size: 1.1rem; /* Highly readable description text */
+    font-size: 1rem; 
     color: var(--dim); 
-    line-height: 1.6; 
+    line-height: 1.5; 
 }
         
         .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; border: 1px solid #334155; }
@@ -121,7 +128,7 @@
         <h2> Skills</h2>
         <div class="skills-grid">
             <div class="skill-item">
-                <i class="fas fa-chart-line"></i>
+                <i class="fas fa-chart-robot"></i>
                 <strong>Power BI</strong>
                 <p>Designing interactive, high-impact dashboards for visual data storytelling and business intelligence.</p>
             </div>
