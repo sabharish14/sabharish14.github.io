@@ -32,12 +32,47 @@
         .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
 
          /* 3x2 Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
-        .skill-item { background: var(--card); padding: 1.5rem; border-radius: 12px; border-top: 4px solid var(--primary); text-align: center; transition: 0.3s; }
-        .skill-item:hover { transform: translateY(-5px); }
-        .skill-item i { color: var(--primary); font-size: 2.2rem; margin-bottom: 12px; display: block; }
-        .skill-item strong { display: block; margin-bottom: 8px; font-size: 1.1rem; color: var(--text); }
-        .skill-item p { font-size: 0.85rem; color: var(--dim); line-height: 1.4; }
+        .skills-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem; /* Increased gap for clarity */
+    max-width: 1100px; 
+    margin: 0 auto 3rem auto; 
+}
+
+.skill-item { 
+    background: var(--card); 
+    padding: 2.5rem; /* More space inside the card */
+    border-radius: 15px; 
+    border-bottom: 4px solid var(--primary); 
+    text-align: center; /* Center align for a modern look */
+    transition: 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    background: #24334a; /* Slight highlight on hover */
+}
+
+.skill-item i { 
+    color: var(--primary); 
+    font-size: 3rem; /* Larger, clearer icons */
+    margin-bottom: 1.5rem; 
+    display: block; 
+}
+
+.skill-item strong { 
+    display: block; 
+    font-size: 1.6rem; /* Large, bold titles */
+    color: #fff; 
+    margin-bottom: 0.8rem; 
+}
+
+.skill-item p { 
+    font-size: 1.1rem; /* Highly readable description text */
+    color: var(--dim); 
+    line-height: 1.6; 
+}
         
         .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; border: 1px solid #334155; }
         .project-img { width: 100%; max-width: 850px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); display: block; margin-left: auto; margin-right: auto; }
