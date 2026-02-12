@@ -20,55 +20,61 @@
             background-size: cover; background-position: center; z-index: -2;
         }
 
-        /* Name Visibility Fix - 'H' is safe here */
+        /* Top Navigator */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 500;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,77,0,0.2);
+            display: flex; justify-content: center; gap: 25px; padding: 15px 0;
+        }
+        nav a { font-size: 0.75rem; font-weight: 900; letter-spacing: 2px; color: #aaa; transition: 0.3s; cursor: pointer; }
+        nav a:hover, nav a.active { color: var(--accent); }
+
         .huge-title { 
             font-family: 'Syne', sans-serif; 
             font-size: clamp(2.5rem, 8vw, 9rem); 
-            line-height: 0.9; 
-            text-transform: uppercase;
-            padding-right: 50px; 
+            line-height: 0.9; text-transform: uppercase; padding-right: 50px; 
         }
         
         .slide {
             position: absolute; inset: 0; display: none;
             flex-direction: column; justify-content: center; padding: 0 10%;
-            animation: slideUp 0.5s ease-out forwards;
+            animation: fadeIn 0.5s ease-out forwards;
         }
         .slide.active { display: flex; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .play-action {
-            position: fixed; bottom: 8%; left: 50%; transform: translateX(-50%);
-            z-index: 200; background: var(--accent); color: white;
-            padding: 15px 40px; border-radius: 8px; font-weight: 900;
-            text-transform: uppercase; cursor: pointer; border: none; transition: 0.3s;
-        }
-        .play-action:hover { background: #fff; color: #000; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .glass { 
-            background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(25px); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 16px; 
-            padding: 40px; 
-        }
-        
-        .about-para {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 800px;
-            color: #e0e0e0;
-            text-align: left;
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(25px); 
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 35px; 
         }
 
-        .project-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+        /* Project Image Fix - Show Full Image */
+        .project-img { 
+            width: 100%; height: auto; max-height: 250px; 
+            object-fit: contain; border-radius: 8px; 
+            background: rgba(0,0,0,0.4); margin-bottom: 15px; 
+        }
+
+        .action-btn {
+            position: fixed; bottom: 5%; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: white; padding: 12px 30px;
+            border-radius: 50px; font-weight: 900; cursor: pointer; z-index: 1000;
+        }
     </style>
 </head>
 <body>
 
     <div class="stadium"></div>
 
-    <button class="play-action" onclick="nextSlide()" id="ctl-btn">Step onto the Pitch</button>
+    <nav id="top-nav">
+        <a onclick="goToSlide(1)">HOME</a>
+        <a onclick="goToSlide(2)">ABOUT</a>
+        <a onclick="goToSlide(3)">SKILLS</a>
+        <a onclick="goToSlide(4)">AUTOMATION</a>
+        <a onclick="goToSlide(5)">PROJECTS</a>
+        <a onclick="goToSlide(6)">CONTACT</a>
+    </nav>
 
     <div class="slide active" id="s1">
         <h1 class="huge-title">SABHARISH<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">RAAJA.</span></h1>
@@ -77,71 +83,94 @@
 
     <div class="slide" id="s2">
         <div class="max-w-4xl glass">
-            <h2 class="text-2xl font-black mb-6 uppercase text-orange-500 tracking-tighter italic">Player Profile</h2>
-            <p class="about-para">
-                I hold a degree in Electronics and Communication Engineering, a background that fundamentally built my technical logic and analytical mindset. While my engineering journey provided a strong foundation in solving complex problems, my true passion for uncovering stories within data led me to transition into Data Analytics. By combining my technical skills with advanced business intelligence tools, I now focus on transforming raw information into strategic value. During my internship, I gained hands-on experience managing large datasets, specializing in high-speed data cleaning and building interactive dashboards using Power BI and Tableau. I am highly proficient in Python, particularly using Pandas for efficient data manipulation and duplicate removal. My goal is to use data storytelling to drive elite-level decision-making and real-world business success.
+            <h2 class="text-2xl font-black mb-4 uppercase text-orange-500 italic">Player Profile</h2>
+            <p class="text-lg leading-relaxed text-gray-200">
+                I hold a degree in Electronics and Communication Engineering, which built my logic and analytical mindset. My engineering background provided a strong foundation in solving complex problems through statistical thinking. My passion for uncovering stories in data led me to Data Analytics, where I combine technical skills with BI tools to drive value. During my internship, I specialized in high-speed data cleaning and building interactive dashboards using Power BI and Tableau. I am proficient in Python, particularly using Pandas for efficient data manipulation. My goal is to transform raw data into insights that drive business success.
             </p>
         </div>
     </div>
 
     <div class="slide" id="s3">
-        <div class="max-w-2xl glass border-l-4 border-orange-600">
-            <h2 class="text-2xl font-black mb-6 uppercase">Technical Arsenal</h2>
-            <div class="grid grid-cols-2 gap-8 text-sm">
-                <div class="space-y-3">
-                    <p class="font-bold text-orange-500 uppercase">Analysis</p>
-                    <p><i class="fab fa-python mr-2"></i> Python (Pandas/NumPy)</p>
-                    <p><i class="fas fa-database mr-2"></i> SQL Management</p>
-                </div>
-                <div class="space-y-3">
-                    <p class="font-bold text-orange-500 uppercase">Visuals</p>
-                    <p><i class="fas fa-chart-pie mr-2"></i> Power BI & Tableau</p>
-                    <p><i class="fas fa-file-excel mr-2"></i> Advanced Excel</p>
-                </div>
+        <div class="max-w-3xl glass">
+            <h2 class="text-2xl font-black mb-6 uppercase text-orange-500">Technical Arsenal</h2>
+            <div class="space-y-4 text-gray-200">
+                <p><strong><i class="fab fa-python text-orange-500 mr-2"></i> Python:</strong> Using Pandas and NumPy for high-speed data cleaning and duplicate removal.</p>
+                <p><strong><i class="fas fa-database text-orange-500 mr-2"></i> SQL:</strong> Writing complex queries to manage databases and perform ETL operations.</p>
+                <p><strong><i class="fas fa-chart-bar text-orange-500 mr-2"></i> Power BI / Tableau:</strong> Creating interactive dashboards to visualize key business metrics.</p>
+                <p><strong><i class="fas fa-file-excel text-orange-500 mr-2"></i> Advanced Excel:</strong> Managing data using Pivot Tables, VLOOKUP, and complex formulas.</p>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s4">
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass">
-                <img src="1000239452.jpg" class="project-img">
-                <h3 class="font-bold uppercase text-orange-500 text-lg">Swiggy Analysis</h3>
-                <p class="text-sm text-gray-400 mt-2">Analyzed sales records to identify delivery peaks and customer preferences for supply optimization and logistics efficiency.</p>
-            </div>
-            <div class="glass">
-                <img src="1000227044.jpg" class="project-img">
-                <h3 class="font-bold uppercase text-orange-500 text-lg">Amazon Financials</h3>
-                <p class="text-sm text-gray-400 mt-2">Built profit/loss forecasting models using historical logistics data to track regional revenue growth and financial trends.</p>
+        <div class="max-w-3xl glass">
+            <h2 class="text-2xl font-black mb-4 uppercase text-orange-500">Automation Strategy</h2>
+            <p class="text-lg leading-relaxed">
+                I developed a custom **Data Cleaning Pipeline** that automates the removal of duplicates and handles missing values instantly. This tool significantly reduces manual work, ensuring that datasets are perfectly formatted and ready for analysis in seconds.
+            </p>
+            <div class="mt-6 flex gap-6 text-4xl text-orange-500">
+                <i class="fas fa-robot"></i><i class="fas fa-cogs"></i><i class="fas fa-magic"></i>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s5">
-        <div class="glass text-center max-w-lg mx-auto">
-            <h2 class="text-4xl font-black mb-8 uppercase italic text-orange-500">Scorecard</h2>
-            <div class="space-y-4">
-                <p class="text-xl font-bold tracking-wide">psabharish14@gmail.com</p>
-                <p class="text-xl font-bold tracking-wide">+91 75501 49526</p>
+        <div class="grid md:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
+            <div class="glass">
+                <img src="1000239452.jpg" class="project-img" alt="Swiggy">
+                <h3 class="font-bold text-orange-500 uppercase">Swiggy Sales Analysis</h3>
+                <p class="text-xs text-gray-400 mt-1">Full analysis of peak order times and delivery logistics.</p>
             </div>
-            <div class="mt-10 flex justify-center gap-10">
-                <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="text-4xl hover:text-orange-500 transition"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sabharish14" target="_blank" class="text-4xl hover:text-orange-500 transition"><i class="fab fa-github"></i></a>
+            <div class="glass">
+                <img src="1000227044.jpg" class="project-img" alt="Amazon">
+                <h3 class="font-bold text-orange-500 uppercase">Amazon Financials</h3>
+                <p class="text-xs text-gray-400 mt-1">Revenue forecasting and profit/loss regional tracking.</p>
             </div>
         </div>
     </div>
 
+    <div class="slide" id="s6">
+        <div class="glass text-center max-w-lg mx-auto">
+            <h2 class="text-3xl font-black mb-8 uppercase text-orange-500 italic">Contact the Captain</h2>
+            <div class="space-y-6">
+                <a href="mailto:psabharish14@gmail.com" class="flex items-center justify-center gap-4 text-xl hover:text-orange-500 transition">
+                    <i class="fas fa-envelope text-orange-500"></i> psabharish14@gmail.com
+                </a>
+                <a href="tel:+917550149526" class="flex items-center justify-center gap-4 text-xl hover:text-orange-500 transition">
+                    <i class="fas fa-phone-alt text-orange-500"></i> +91 75501 49526
+                </a>
+            </div>
+            <div class="mt-10 flex justify-center gap-10">
+                <a href="https://linkedin.com/in/sabharishraaja" target="_blank" class="text-4xl hover:text-orange-500"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/sabharish14" target="_blank" class="text-4xl hover:text-orange-500"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-btn" onclick="nextSlide()">NEXT INNINGS</div>
+
     <script>
-        let currentSlide = 1;
-        const btn = document.getElementById('ctl-btn');
+        let current = 1;
+        const total = 6;
+
+        function goToSlide(num) {
+            current = num;
+            updateUI();
+        }
 
         function nextSlide() {
+            current = current < total ? current + 1 : 1;
+            updateUI();
+        }
+
+        function updateUI() {
             document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            currentSlide = currentSlide < 5 ? currentSlide + 1 : 1;
-            document.getElementById('s' + currentSlide).classList.add('active');
+            document.getElementById('s' + current).classList.add('active');
             
-            const labels = ['Start', 'Skills', 'Projects', 'Contact', 'Restart'];
-            btn.innerText = labels[currentSlide - 1] || 'Next';
+            // Update Nav Active State
+            document.querySelectorAll('nav a').forEach((a, i) => {
+                a.style.color = (i + 1 === current) ? '#ff4d00' : '#aaa';
+            });
         }
     </script>
 </body>
