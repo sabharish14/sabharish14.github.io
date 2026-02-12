@@ -10,49 +10,60 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
         
-        /* Nav */
         nav { display: flex; justify-content: space-between; padding: 1rem 10%; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; }
         .logo { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
         .nav-links a { margin-left: 20px; text-decoration: none; color: var(--dim); font-size: 0.8rem; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Multi-Page Effect Sections */
-        .page-section { min-height: 100vh; padding: 100px 10%; border-bottom: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: center; }
-        h2 { color: var(--primary); font-size: 2.8rem; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        .page-section { min-height: 100vh; padding: 60px 10%; border-bottom: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: center; }
+        h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
 
-        /* About Me Section */
+        /* Hero Fixes */
         .hero { text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: #fff; }
+        .hero h1 .blue-name { color: var(--primary); } /* Fixed: Entire name is blue */
         .greeting { color: var(--primary); font-size: 1.5rem; font-weight: 600; }
-        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--dim); font-size: 1.1rem; line-height: 1.9; }
+        .about-text { max-width: 900px; margin: 1.5rem auto; text-align: justify; color: var(--dim); font-size: 1rem; line-height: 1.8; }
+        
+        /* CV Button Fix */
+        .cv-btn { 
+            display: inline-block; 
+            padding: 10px 20px; /* Reduced from huge size */
+            background: var(--primary); 
+            color: #000; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 6px; 
+            font-size: 0.9rem; 
+            width: auto; /* Ensures it doesn't stretch */
+            margin-top: 10px;
+        }
 
-        /* Separate Skills Page: 3x2 Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .skill-item { background: var(--card); padding: 2.5rem; border-radius: 15px; border-bottom: 4px solid var(--primary); text-align: center; transition: 0.4s; }
-        .skill-item:hover { transform: translateY(-10px); background: #24334d; }
-        .skill-item i { color: var(--primary); font-size: 3rem; margin-bottom: 15px; display: block; }
-        .skill-item strong { display: block; margin-bottom: 10px; font-size: 1.3rem; }
-        .skill-item p { font-size: 0.95rem; color: var(--dim); }
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+        .skill-item { background: var(--card); padding: 1.5rem; border-radius: 12px; border-bottom: 4px solid var(--primary); text-align: center; }
+        .skill-item i { color: var(--primary); font-size: 2.2rem; margin-bottom: 10px; display: block; }
+        .skill-item strong { display: block; margin-bottom: 5px; font-size: 1.1rem; }
+        .skill-item p { font-size: 0.85rem; color: var(--dim); }
 
-        /* Project Boxes (Separate Pages) */
-        .content-box { background: var(--card); padding: 3.5rem; border-radius: 20px; border: 1px solid #334155; box-shadow: 0 20px 40px rgba(0,0,0,0.4); max-width: 1000px; margin: 0 auto; }
-        .content-box h3 { font-size: 2.2rem; color: var(--primary); margin-bottom: 1.5rem; border-left: 6px solid var(--primary); padding-left: 20px; }
-        .content-box p { color: var(--dim); font-size: 1.1rem; margin-bottom: 2.5rem; text-align: justify; line-height: 1.8; }
-        .project-img { width: 100%; border-radius: 12px; border: 2px solid #334155; display: block; margin: 0 auto; }
+        .content-box { background: var(--card); padding: 2.5rem; border-radius: 15px; border: 1px solid #334155; max-width: 900px; margin: 0 auto; }
+        .content-box h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem; border-left: 5px solid var(--primary); padding-left: 15px; }
+        .content-box p { color: var(--dim); font-size: 1rem; margin-bottom: 1.5rem; text-align: justify; }
+        .project-img { width: 100%; border-radius: 10px; border: 1px solid #334155; display: block; margin: 0 auto; }
 
-        /* Contact Section */
-        .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
-        .contact-info { font-size: 1.5rem; margin-bottom: 3.5rem; font-weight: 500; }
-        .contact-info div { margin: 20px 0; }
-        .social-grid { display: flex; justify-content: center; gap: 60px; }
+        /* Contact Spacing Fix */
+        .contact-section { min-height: 70vh; padding: 40px 10%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .contact-container { text-align: center; width: 100%; }
+        .contact-info { font-size: 1.3rem; margin-bottom: 2rem; }
+        .contact-info div { margin: 8px 0; }
+        .social-grid { display: flex; justify-content: center; gap: 40px; }
         .social-link { text-decoration: none; color: var(--text); text-align: center; transition: 0.3s; }
-        .social-link i { font-size: 4rem; color: var(--primary); display: block; margin-bottom: 12px; }
-        .social-link:hover { transform: scale(1.1); color: var(--primary); }
+        .social-link i { font-size: 3rem; color: var(--primary); display: block; margin-bottom: 8px; }
+        .social-link:hover { transform: translateY(-5px); }
 
-        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.9rem; }
+        footer { text-align: center; padding: 30px; color: #475569; font-size: 0.8rem; }
 
-        @media (max-width: 950px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 650px) { .skills-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+        @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .skills-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
@@ -70,13 +81,13 @@
     </nav>
 
     <section class="page-section hero" id="about">
-        <h1><span class="greeting">Hi, I am</span> Sabharish <span style="color:var(--primary)">Raaja</span></h1>
-        <p style="color: var(--dim); font-size: 1.5rem; font-weight: 500; margin-bottom: 20px;">ECE Student | Data Analyst & Automation Professional</p>
+        <h1><span class="greeting">Hi, I am</span> <span class="blue-name">Sabharish Raaja</span></h1>
+        <p style="color: var(--dim); font-size: 1.3rem; font-weight: 500; margin-bottom: 10px;">ECE Student | Data Analyst & Automation Professional</p>
         
         <div class="about-text">
             As an **Electronics and Communication Engineering (ECE)** student, I possess a unique technical background that allows me to bridge the gap between complex hardware systems and data-driven software solutions. My professional journey is centered around my passion for **Data Analytics and Automation**, where I strive to create efficient, scalable, and highly impactful digital tools. I have developed a robust expertise in programming and analytical frameworks, enabling me to handle large-scale datasets with high precision. I believe in the power of continuous learning and stay dedicated to mastering the latest industry trends to provide cutting-edge results for every project. My engineering education provides me with the technical rigor and creative problem-solving skills necessary to tackle the most complex challenges in today's data landscape. I am committed to writing clean, maintainable code and building seamless user experiences that provide genuine business value. Integrity, clear communication, and a relentless work ethic are the pillars of my professional approach. My ultimate goal is to leverage my analytical skills to drive innovation and create a positive impact in the global digital ecosystem.
         </div>
-        <a href="your-resume.pdf" class="cv-btn" style="padding: 12px 30px; background: var(--primary); color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 20px; display: inline-block;" download><i class="fas fa-download"></i> Download CV</a>
+        <a href="your-resume.pdf" class="cv-btn" download><i class="fas fa-download"></i> Download CV</a>
     </section>
 
     <section class="page-section" id="skills">
@@ -115,7 +126,7 @@
 
     <section class="page-section" id="projects">
         <h2>E-Commerce Projects</h2>
-        <div class="content-box" style="margin-bottom: 4rem;">
+        <div class="content-box" style="margin-bottom: 2rem;">
             <h3>Swiggy Sales Analysis</h3>
             <p>
                 In this project, I processed a dataset representing 52.12M in total sales and nearly 194K delivery orders for the Swiggy platform. I identified Bengaluru as the top-performing city with 4.6M in revenue and tracked an average partner rating of 4.34. The analysis provided a detailed breakdown of food preferences, revealing that Non-Vegetarian items account for 64.48% of the total income. I also implemented a "Top vs. Poor Performing Restaurant" tracker to help managers identify and address service quality gaps in real-time. By visualizing weekly sales trends, I offered stakeholders a clear window into daily demand fluctuations and pricing benchmarks.
@@ -132,7 +143,7 @@
         </div>
     </section>
 
-    <section class="page-section" id="contact" style="background: #0b1121;">
+    <section class="contact-section" id="contact" style="background: #0b1121;">
         <h2>Get In Touch</h2>
         <div class="contact-container">
             <div class="contact-info">
