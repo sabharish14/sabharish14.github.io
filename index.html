@@ -6,96 +6,112 @@
     <title>Sabharish Raaja | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+
         :root {
-            --primary: #38bdf8;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
+            /* NEW TECH THEME COLORS */
+            --primary: #00f2ff; /* Neon Cyan */
+            --bg: #020617;      /* Deep Midnight */
+            --card-bg: rgba(15, 23, 42, 0.7);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+            --border: rgba(0, 242, 255, 0.2);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        body { background-color: var(--bg); color: var(--text-main); line-height: 1.8; }
         
-        nav { display: flex; justify-content: space-between; padding: 1.5rem 10%; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
-        .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; font-weight: 500; }
-        .nav-links a:hover { color: var(--primary); }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text-main); 
+            line-height: 1.8;
+            /* Subtle Tech Grid Background */
+            background-image: 
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* NAVIGATION - Glassmorphism */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.2rem 8%; 
+            background: rgba(2, 6, 23, 0.8); 
+            position: sticky; top: 0; z-index: 1000; 
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+        }
+        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: 2px; }
+        .nav-links a { margin-left: 25px; text-decoration: none; color: var(--text-dim); font-size: 0.85rem; transition: 0.3s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         
-        section { padding: 80px 10%; border-bottom: 1px solid #1e293b; }
-        h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
-
-        .hero { text-align: center; padding-top: 100px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
-        .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
-        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--text-dim); font-size: 1.05rem; }
+        section { padding: 100px 10%; border-bottom: 1px solid var(--border); position: relative; }
         
-        .cv-btn { display: inline-block; padding: 12px 30px; background: var(--primary); color: var(--bg); text-decoration: none; font-weight: bold; border-radius: 8px; margin-top: 15px; transition: 0.3s; }
-        .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+        /* THEME HEADINGS */
+        h2 { 
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem; margin-bottom: 3rem; color: #fff; 
+            text-transform: uppercase; letter-spacing: 4px;
+            display: flex; align-items: center; gap: 15px;
+        }
+        h2::after { content: ""; height: 2px; width: 100px; background: var(--primary); display: inline-block; }
 
-         /* 3x2 Skills Grid */
-        /* Container for the boxes */
-.skills-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 1.5rem; 
-    max-width: 1100px; 
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-/* Individual Skill Box */
-.skill-item { 
-    background: #1e293b; /* Matches your Data App card color */
-    padding: 2rem; 
-    border-radius: 12px; 
-    border: 1px solid #334155; /* Defines the box edge */
-    text-align: center;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-/* Hover effect to make it feel interactive */
-.skill-item:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary); /* Highlights the box on hover */
-}
-
-/* Large Icon inside box */
-.skill-item i { 
-    color: var(--primary); 
-    font-size: 2.5rem; 
-    margin-bottom: 1rem; 
-    display: block; 
-}
-
-/* Large Title inside box */
-.skill-item strong { 
-    display: block; 
-    font-size: 1.4rem; 
-    color: #ffffff; 
-    margin-bottom: 0.5rem; 
-}
-
-/* Description inside box */
-.skill-item p { 
-    font-size: 1rem; 
-    color: var(--dim); 
-    line-height: 1.5; 
-}
+        /* HERO SECTION */
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
+        .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; }
+        .about-text { max-width: 850px; margin: 2rem 0; text-align: left; color: var(--text-dim); font-size: 1.1rem; border-left: 2px solid var(--primary); padding-left: 25px; }
         
-        .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; border: 1px solid #334155; }
-        .project-img { width: 100%; max-width: 850px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); display: block; margin-left: auto; margin-right: auto; }
-        h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
+        .cv-btn { 
+            display: inline-block; padding: 15px 40px; 
+            background: transparent; color: var(--primary); 
+            text-decoration: none; font-weight: bold; border-radius: 4px; 
+            border: 2px solid var(--primary); transition: 0.4s;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+        .cv-btn:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 25px var(--primary); transform: translateY(-3px); }
 
-        /* Centered Contact Section */
-        .contact-section { text-align: center; background: #0b1121; padding: 100px 10%; }
-        .contact-container { max-width: 700px; margin: 0 auto; }
-        .contact-info { margin-bottom: 3rem; color: var(--text); font-size: 1.3rem; }
-        .contact-info div { margin: 15px 0; }
-        .social-links { display: flex; justify-content: center; gap: 40px; margin-top: 25px; }
-        .social-item { text-decoration: none; color: var(--text); transition: 0.3s; text-align: center; }
-        .social-item i { font-size: 3rem; display: block; margin-bottom: 10px; color: var(--primary); }
-        .social-item:hover { transform: translateY(-8px); color: var(--primary); }
+        /* 3x2 SKILLS GRID - Tech Cards */
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        .skill-item { 
+            background: var(--card-bg); 
+            padding: 3rem 2rem; 
+            border-radius: 4px; 
+            border: 1px solid var(--border); 
+            text-align: left;
+            transition: 0.4s;
+            backdrop-filter: blur(5px);
+        }
+        .skill-item:hover { background: rgba(0, 242, 255, 0.05); border-color: var(--primary); transform: translateY(-10px); }
+        .skill-item i { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; }
+        .skill-item strong { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 1rem; text-transform: uppercase; }
+        .skill-item p { font-size: 0.95rem; color: var(--text-dim); line-height: 1.6; }
+        
+        /* WORK BOXES */
+        .work-box { 
+            background: var(--card-bg); padding: 3rem; border-radius: 4px; 
+            margin-bottom: 4rem; border: 1px solid var(--border);
+            backdrop-filter: blur(5px);
+        }
+        .project-img { width: 100%; border-radius: 4px; margin: 2.5rem 0; filter: grayscale(20%) contrast(110%); border: 1px solid var(--border); transition: 0.5s; }
+        .project-img:hover { filter: grayscale(0%); border-color: var(--primary); box-shadow: 0 0 30px rgba(0, 242, 255, 0.2); }
+        h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); }
 
-        footer { text-align: center; padding: 3rem; color: #475569; font-size: 0.9rem; }
+        /* CONTACT SECTION */
+        .contact-section { text-align: center; background: #010409; padding: 120px 10%; border-top: 1px solid var(--primary); }
+        .contact-info { margin-bottom: 4rem; font-size: 1.5rem; font-family: 'Space Grotesk', sans-serif; }
+        .contact-info i { margin-right: 15px; }
+        .social-links { display: flex; justify-content: center; gap: 50px; }
+        .social-item { text-decoration: none; color: var(--text-dim); transition: 0.3s; }
+        .social-item i { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; display: block; }
+        .social-item:hover { color: #fff; transform: scale(1.1); }
+
+        footer { text-align: center; padding: 4rem; color: #475569; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -113,49 +129,47 @@
     </nav>
 
     <section class="hero" id="about">
-       <h1 id="home">
-    HI, I am <span style="color: var(--primary)">Sabharish Raaja</span>
-</h1>
-        <p style="font-size: 1.5rem; color: var(--text-dim);">Data Analyst & ECE Graduate</p>
+        <p style="color: var(--primary); font-weight: 700; letter-spacing: 5px; margin-bottom: 10px;">SYSTEM STATUS: ACTIVE</p>
+        <h1 id="home">HI, I AM <br><span style="color: var(--primary)">SABHARISH RAAJA</span></h1>
+        <p style="font-size: 1.8rem; color: var(--text-main); font-family: 'Space Grotesk';">Data Analyst & ECE Graduate</p>
         <div class="about-text">
             As an Electronics and Communication Engineering (ECE) student, I possess a unique technical background that allows me to bridge the gap between complex hardware systems and data-driven software solutions. My professional journey is centered around my passion for Data Analytics and Automation, where I strive to create efficient, scalable, and highly impactful digital tools. I have developed a robust expertise in programming and analytical frameworks, enabling me to handle large-scale datasets with high precision. I believe in the power of continuous learning and stay dedicated to mastering the latest industry trends to provide cutting-edge results for every project. My engineering education provides me with the technical rigor and creative problem-solving skills necessary to tackle the most complex challenges in today's data landscape. I am committed to writing clean, maintainable code and building seamless user experiences that provide genuine business value. Integrity, clear communication, and a relentless work ethic are the pillars of my professional approach. My ultimate goal is to leverage my analytical skills to drive innovation and create a positive impact in the global digital ecosystem.
         </div>
          <div>
-            <a href="Sabharish_Resume.pdf" class="cv-btn" target="_blank"> <i class="fas fa-download"></i> Download CV</a>
+            <a href="Sabharish_Resume.pdf" class="cv-btn" target="_blank"> <i class="fas fa-terminal"></i> Get Resume</a>
         </div>
     </section>
 
-   
     <section id="skills">
-        <h2> Skills</h2>
+        <h2>Technical Arsenal</h2>
         <div class="skills-grid">
             <div class="skill-item">
-                <i class="fas fa-chart-robot"></i>
+                <i class="fas fa-chart-line"></i>
                 <strong>Power BI</strong>
                 <p>Designing interactive, high-impact dashboards for visual data storytelling and business intelligence.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-database"></i>
+                <i class="fas fa-code-branch"></i>
                 <strong>SQL</strong>
                 <p>Proficient in relational database management, complex query writing, and efficient data extraction.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-robot"></i>
+                <i class="fas fa-microchip"></i>
                 <strong>Automation</strong>
                 <p>Building custom Python scripts to automate repetitive manual tasks and streamline digital workflows.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-broom"></i>
+                <i class="fas fa-filter"></i>
                 <strong>Data Cleaning</strong>
                 <p>Expertise in identifying anomalies and removing duplicates to ensure the highest data integrity.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-shopping-cart"></i>
+                <i class="fas fa-globe"></i>
                 <strong>E-Commerce</strong>
                 <p>In-depth analysis of retail datasets to monitor sales trends, profit margins, and consumer behavior.</p>
             </div>
             <div class="skill-item">
-                <i class="fas fa-laptop-code"></i>
+                <i class="fas fa-terminal"></i>
                 <strong>Python</strong>
                 <p>Utilizing Python for data processing, application development, and advanced analytical problem-solving.</p>
             </div>
@@ -163,7 +177,7 @@
     </section>
 
     <section id="internship">
-        <h2>Internship</h2>
+        <h2>Professional Internship</h2>
         <div class="work-box">
             <p style="color: var(--text-dim);">
                 During my internship, I focused on mastering <strong>SQL and Power BI</strong>, leading to a specialized People Management project. I took full ownership of the project by sourcing my own dataset for over 200 employees to ensure the analysis was grounded in realistic data. I built an Employee Dashboard tracking key metrics like an <strong>attrition rate of 42</strong> and an average age of 42 among a 200-person workforce. The Company Dashboard visualized performance across <strong>20 branches</strong>, highlighting top-performing locations such as Delhi and Nagpur. I also mapped hiring trends and gender distribution across job roles like Senior and Junior positions. This project demonstrated my ability to clean data in SQL and present it as a strategic HR tool in Power BI.
@@ -173,11 +187,11 @@
     </section>
 
     <section id="automation">
-        <h2> Data Automation</h2>
+        <h2>Data Engineering & Automation</h2>
         <div class="work-box">
             <h3>Data Cleaning Application</h3>
             <p style="color: var(--text-dim);">
-                I developed a  <strong>Data Cleaning App</strong> designed to automate the most tedious parts of data preparation. The application supports various file formats including CSV, Excel, and even ZIP folders for bulk processing. One of the core features is an <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates in a 500-row set. After cleaning, the tool produced a high-quality dataset of 180 unique rows, ensuring data integrity. The app includes a <strong>KPI Builder</strong> and manual duplicate removal options to give users full control over their data. By integrating text transformation filters, this tool significantly reduces the time spent on manual data entry and cleaning. This project showcases my ability to bridge the gap between software development and data analysis.
+                I developed a <strong>Data Cleaning App</strong> designed to automate the most tedious parts of data preparation. The application supports various file formats including CSV, Excel, and even ZIP folders for bulk processing. One of the core features is an <strong>Automatic Duplicate Check</strong>, which I demonstrated by identifying 320 duplicates in a 500-row set. After cleaning, the tool produced a high-quality dataset of 180 unique rows, ensuring data integrity. The app includes a <strong>KPI Builder</strong> and manual duplicate removal options to give users full control over their data. By integrating text transformation filters, this tool significantly reduces the time spent on manual data entry and cleaning. This project showcases my ability to bridge the gap between software development and data analysis.
             </p>
             <img src="automation_app1.jpeg" alt="Data Cleaning App Interface" class="project-img">
             <img src="automation_app2.jpeg" alt="Data Cleaning App result" class="project-img">
@@ -185,7 +199,7 @@
     </section>
 
     <section id="ecommerce">
-        <h2>E-Commerce Projects</h2>
+        <h2>Analytics Case Studies</h2>
         
         <div class="work-box">
             <h3>Swiggy Sales Analysis</h3>
@@ -205,39 +219,31 @@
     </section>
 
     <section id="contact" class="contact-section">
-    <h2>Get In Touch</h2> 
-
-    <div class="contact-info">
-        <div>
-            <i class="fas fa-envelope" style="color:var(--primary)"></i>
-            <a href="mailto:psabharish14@gmail.com" style="text-decoration: none; color: inherit;">
-                psabharish14@gmail.com
-            </a>
-        </div>
-        
-        <div>
-            <i class="fas fa-phone" style="color:var(--primary)"></i>
-            <a href="tel:+917550149526" style="text-decoration: none; color: inherit;">
-                +91 7550149526
-            </a>
-        </div>
-    </div>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="social-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/sabharish14" target="_blank" class="social-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
+        <h2>Establish Connection</h2> 
+        <div class="contact-info">
+            <div style="margin-bottom: 20px;">
+                <i class="fas fa-envelope" style="color:var(--primary)"></i>
+                <a href="mailto:psabharish14@gmail.com" style="text-decoration: none; color: inherit; border-bottom: 1px solid var(--primary);">psabharish14@gmail.com</a>
             </div>
+            <div>
+                <i class="fas fa-phone" style="color:var(--primary)"></i>
+                <a href="tel:+917550149526" style="text-decoration: none; color: inherit;">+91 7550149526</a>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="social-item">
+                <i class="fab fa-linkedin"></i>
+                <span>LINKEDIN</span>
+            </a>
+            <a href="https://github.com/sabharish14" target="_blank" class="social-item">
+                <i class="fab fa-github"></i>
+                <span>GITHUB</span>
+            </a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Sabharish Raaja. All rights reserved.</p>
+        <p>&copy; 2026 SABHARISH RAAJA // ENCRYPTED & SECURED</p>
     </footer>
 
 </body>
