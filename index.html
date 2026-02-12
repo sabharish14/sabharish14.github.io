@@ -9,140 +9,95 @@
         :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --dim: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
-        
-        nav { display: flex; justify-content: space-between; padding: 1rem 10%; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1e293b; }
-        .logo { font-size: 1.1rem; font-weight: 800; color: var(--primary); }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--dim); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
-
-        /* Full Page Spacing Restored */
-        .page-section { min-height: 100vh; padding: 100px 10%; border-bottom: 1px solid #1e293b; display: flex; flex-direction: column; justify-content: center; }
-        h2 { color: var(--primary); font-size: 2.8rem; margin-bottom: 3rem; text-transform: uppercase; text-align: center; }
-
-        /* Hero Fixes */
-        .hero { text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; color: var(--primary); } /* Name is fully blue */
-        .greeting { color: #fff; font-size: 1.5rem; font-weight: 600; }
-        .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--dim); font-size: 1.1rem; line-height: 1.9; }
-        
-        /* Small Minimal Button */
-        .cv-btn { 
-            display: inline-block; 
-            padding: 8px 18px; 
-            background: var(--primary); 
-            color: #000; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-radius: 4px; 
-            font-size: 0.9rem; 
-            margin-top: 10px;
-        }
-
-        /* Skills with Larger Text */
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .skill-item { background: var(--card); padding: 2rem; border-radius: 15px; border-bottom: 4px solid var(--primary); text-align: center; }
-        .skill-item i { color: var(--primary); font-size: 2.5rem; margin-bottom: 15px; display: block; }
-        .skill-item strong { display: block; margin-bottom: 10px; font-size: 1.5rem; color: #fff; } /* Bigger text */
-        .skill-item p { font-size: 1.1rem; color: var(--dim); } /* Bigger text */
-
-        .content-box { background: var(--card); padding: 3rem; border-radius: 20px; border: 1px solid #334155; max-width: 1000px; margin: 0 auto; }
-        .content-box h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; border-left: 6px solid var(--primary); padding-left: 20px; }
-        .content-box p { color: var(--dim); font-size: 1.1rem; margin-bottom: 2rem; text-align: justify; }
-        .project-img { width: 100%; border-radius: 12px; border: 1px solid #334155; }
-
-        /* Contact Section Restored to Full Page */
-        .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
-        .contact-info { font-size: 1.5rem; margin-bottom: 3rem; }
-        .contact-info div { margin: 15px 0; }
-        .social-grid { display: flex; justify-content: center; gap: 50px; }
-        .social-link { text-decoration: none; color: var(--text); text-align: center; }
-        .social-link i { font-size: 3.5rem; color: var(--primary); display: block; margin-bottom: 10px; }
-
-        footer { text-align: center; padding: 40px; color: #475569; font-size: 0.9rem; }
-
-        @media (max-width: 900px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 650px) { .skills-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+        nav { display: flex; justify-content: space-between; padding: 1rem 10%; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .nav-links a { margin-left: 15px; text-decoration: none; color: var(--dim); font-size: 0.85rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        section { padding: 60px 10%; border-bottom: 1px solid #1e293b; }
+        h2 { color: var(--primary); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero { text-align: center; padding-top: 80px; }
+        .hero h1 { font-size: 3rem; }
+        .about-text { max-width: 850px; margin: 1.5rem auto; text-align: justify; color: var(--dim); font-size: 0.95rem; }
+        .cv-btn { display: inline-block; padding: 10px 25px; background: var(--primary); color: var(--bg); text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 10px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .skill-item { background: var(--card); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--primary); }
+        .skill-item i { color: var(--primary); margin-right: 10px; }
+        .work-box { background: var(--card); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+        .work-box p { color: var(--dim); font-size: 0.9rem; margin-bottom: 1rem; text-align: justify; }
+        .project-img { width: 100%; max-width: 750px; border-radius: 8px; border: 1px solid var(--primary); display: block; margin: 1rem auto; }
+        .contact-section { text-align: center; padding: 80px 10%; }
+        .contact-container { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .contact-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .contact-item { text-decoration: none; color: var(--text); transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+        .contact-item i { color: var(--primary); font-size: 1.5rem; }
+        .contact-item:hover { color: var(--primary); transform: translateY(-3px); }
+        footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.8rem; }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="logo">SABHARISH RAAJA</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#internship">Internship</a>
-            <a href="#automation">Automation</a>
-            <a href="#projects">E-Commerce</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <div class="nav-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#internship">Experience</a><a href="#contact">Contact</a></div>
     </nav>
 
-    <section class="page-section hero" id="about">
-        <span class="greeting">Hi, I am</span>
-        <h1>Sabharish Raaja</h1>
-        <p style="color: var(--dim); font-size: 1.4rem; font-weight: 500;">ECE Student | Data Analyst & Automation Professional</p>
-        
+    <section class="hero" id="about">
+        <h1>Sabharish <span style="color:var(--primary)">Raaja</span></h1>
+        <p style="color: var(--dim); font-size: 1.2rem;">Data Analyst & Automation Professional</p>
         <div class="about-text">
-            As an **Electronics and Communication Engineering (ECE)** student, I possess a unique technical background that allows me to bridge the gap between complex hardware systems and data-driven software solutions. My professional journey is centered around my passion for **Data Analytics and Automation**, where I strive to create efficient, scalable, and highly impactful digital tools. I have developed a robust expertise in programming and analytical frameworks, enabling me to handle large-scale datasets with high precision.
+            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. I believe in continuous learning and staying updated with the latest industry trends to deliver cutting-edge results. My approach combines technical rigor with a creative mindset to tackle complex challenges effectively. I thrive in collaborative environments where I can contribute to meaningful projects and grow alongside a team. I am dedicated to writing clean, maintainable code and building seamless user experiences. Beyond technical skills, I value integrity, clear communication, and a strong work ethic in every task I undertake. My goal is to leverage my expertise to drive innovation and make a positive impact in the digital landscape. I am currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
         </div>
-        <center><a href="#" class="cv-btn"><i class="fas fa-download"></i> Download CV</a></center>
+        <a href="#" class="cv-btn"><i class="fas fa-download"></i> Download My CV</a>
     </section>
 
-    <section class="page-section" id="skills">
-        <h2>Technical Skills</h2>
+    <section id="skills">
+        <h2>My Skills</h2>
         <div class="skills-grid">
-            <div class="skill-item"><i class="fas fa-chart-bar"></i><strong>Power BI</strong><p>Interactive dashboard creation</p></div>
-            <div class="skill-item"><i class="fas fa-database"></i><strong>SQL</strong><p>Database management</p></div>
-            <div class="skill-item"><i class="fas fa-robot"></i><strong>Automation</strong><p>Python scripting</p></div>
-            <div class="skill-item"><i class="fas fa-broom"></i><strong>Data Cleaning</strong><p>Data integrity</p></div>
-            <div class="skill-item"><i class="fas fa-shopping-cart"></i><strong>E-Commerce</strong><p>Sales analysis</p></div>
-            <div class="skill-item"><i class="fas fa-code"></i><strong>Python</strong><p>Full-stack development</p></div>
+            <div class="skill-item"><i class="fas fa-chart-bar"></i> <strong>Power BI:</strong> Designing interactive dashboards for visual data storytelling.</div>
+            <div class="skill-item"><i class="fas fa-database"></i> <strong>SQL:</strong> Managing relational databases and performing complex data extraction.</div>
+            <div class="skill-item"><i class="fas fa-robot"></i> <strong>Automation:</strong> Developing Python scripts to streamline repetitive manual workflows.</div>
+            <div class="skill-item"><i class="fas fa-broom"></i> <strong>Data Cleaning:</strong> Efficiently identifying and removing duplicates to ensure data integrity.</div>
+            <div class="skill-item"><i class="fas fa-code"></i> <strong>Python Development:</strong> Building functional applications and data-driven software solutions.</div>
+            <div class="skill-item"><i class="fas fa-shopping-cart"></i> <strong>E-Commerce Analytics:</strong> Analyzing large retail datasets to track sales and consumer trends.</div>
         </div>
     </section>
 
-    <section class="page-section" id="internship">
-        <h2>Internship Experience</h2>
-        <div class="content-box">
-            <h3>People Management Analysis</h3>
+    <section id="internship">
+        <h2>Internship & Experience</h2>
+        <div class="work-box">
             <p>
-                Analyzed a workforce of 200 employees, tracking an attrition rate of 42 and an average employee age of 42. Built a Company Dashboard visualizing branch performance across 20 locations.
+                My internship involved intensive training in SQL and Power BI, where I learned to translate complex data into business intelligence. I led a People Management project, taking full responsibility for sourcing my own datasets to analyze a workforce of 200 employees. I developed an Employee Dashboard tracking metrics like an attrition rate of 42 and an average age of 42. I also created a Company Dashboard that visualized the performance of 20 branch locations, including Delhi and Chennai. The project analyzed hiring trends and gender distribution across various job roles, from Junior to Managerial levels. I used SQL to ensure data accuracy before creating professional visualizations that highlighted regional performance hubs. This experience allowed me to master end-to-end data modeling and reporting for high-level decision-making.
             </p>
-            <img src="14a348aa-ac82-4d36-977c-d8f01e0186fb-1_all_27113.jpg" class="project-img">
+            <img src="employee_dashboard.jpg" alt="Company Dashboard" class="project-img">
         </div>
-    </section>
 
-    <section class="page-section" id="automation">
-        <h2>Data Automation</h2>
-        <div class="content-box">
-            <h3>Data Cleaning App</h3>
+        <h3>Automation Projects</h3>
+        <div class="work-box">
             <p>
-                Developed a full-stack Data Cleaning App that identified 320 duplicate rows from a 500-row dataset, resulting in 180 clean rows.
+                I developed a full-stack Data Cleaning Application to automate the cleaning of CSV, Excel, and TXT files. The app supports ZIP folder uploads and Google Drive links for bulk data processing. It features an automatic duplicate check that successfully identified 320 duplicate rows from a 500-row dataset. By removing these duplicates, the tool produced a clean output of 180 unique rows instantly. I also integrated a KPI Builder and text transformation modules to help users prepare data for analysis without manual effort. This project significantly reduces operational time and eliminates human error in data preparation.
             </p>
-            <img src="1000258291.jpg" class="project-img">
+            <img src="automation_app.jpg" alt="Automation Tool" class="project-img">
         </div>
-    </section>
 
-    <section class="page-section" id="projects">
-        <h2>E-Commerce Case Studies</h2>
-        <div class="content-box">
+        <h3>E-Commerce Case Studies</h3>
+        <div class="work-box">
             <p>
-                Processed 52.12M in Swiggy sales and built an Amazon Store Sales Dashboard tracking 2M in sales and 175K in profit.
+                The Swiggy project analyzed 52.12M in total sales and over 193K orders to identify regional market dominance. I identified Bengaluru as the top-performing city with 4.6M in sales and tracked an average rating of 4.34 across partners. I also built an Amazon Store Sales Dashboard tracking 2M in sales and 175K in total profit. This dashboard identified that 48% of sales come from individual consumers and 43% prefer Cash on Delivery. I tracked return statuses, showing a 95.14% acceptance rate, and mapped global sales density. These projects demonstrate my expertise in handling large-scale commercial datasets to extract actionable business insights.
             </p>
-            <img src="1000239452.jpg" class="project-img" style="margin-bottom: 20px;">
-            <img src="1000227044.jpg" class="project-img">
+            <img src="swiggy_dashboard.jpg" alt="Swiggy Analysis" class="project-img">
+            <img src="amazon_dashboard.jpg" alt="Amazon Dashboard" class="project-img">
         </div>
     </section>
 
-    <section class="page-section" id="contact">
+    <section id="contact" class="contact-section">
         <h2>Get In Touch</h2>
         <div class="contact-container">
-            <div class="contact-info">
-                <div><i class="fas fa-envelope" style="color:var(--primary)"></i> psabharish14@gmail.com</div>
-                <div><i class="fas fa-phone" style="color:var(--primary)"></i> +91 7550149526</div>
+            <div class="contact-row">
+                <a href="mailto:psabharish14@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> psabharish14@gmail.com</a>
+                <a href="tel:7550149526" class="contact-item"><i class="fas fa-phone"></i> +91 7550149526</a>
             </div>
-            <div class="social-grid">
-                <a href="#" class="social-link"><i class="fab fa-linkedin"></i><strong>LinkedIn</strong></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i><strong>GitHub</strong></a>
+            <div class="contact-row">
+                <a href="https://www.linkedin.com/in/sabharishraaja" target="_blank" class="contact-item"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                <a href="https://github.com/sabharish14" target="_blank" class="contact-item"><i class="fab fa-github"></i> GitHub Profile</a>
             </div>
         </div>
     </section>
@@ -150,6 +105,5 @@
     <footer>
         <p>&copy; 2026 Sabharish Raaja. All rights reserved.</p>
     </footer>
-
 </body>
 </html>
