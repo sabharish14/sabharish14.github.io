@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabharish Raaja | Portfolio</title>
+    <title>Sabharish Raaja | Data & Automation Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #38bdf8;
@@ -14,7 +15,8 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--bg); color: var(--text-main); line-height: 1.8; }
-        nav { display: flex; justify-content: space-between; padding: 1.5rem 10%; background: rgba(15, 23, 42, 0.9); position: sticky; top: 0; z-index: 1000; }
+        
+        nav { display: flex; justify-content: space-between; padding: 1.5rem 10%; background: rgba(15, 23, 42, 0.95); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
         .logo { font-size: 1.2rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
         .nav-links a { margin-left: 20px; text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; font-weight: 500; }
         .nav-links a:hover { color: var(--primary); }
@@ -22,23 +24,23 @@
         section { padding: 80px 10%; border-bottom: 1px solid #1e293b; }
         h2 { font-size: 2.2rem; margin-bottom: 2.5rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero & About */
-        .hero { text-align: center; padding-top: 100px; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .hero { text-align: center; padding-top: 120px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
         .about-text { max-width: 900px; margin: 2rem auto; text-align: justify; color: var(--text-dim); font-size: 1.05rem; }
-
-        /* Skills */
-        .skill-item { margin-bottom: 1.5rem; padding: 1.2rem; background: var(--card-bg); border-left: 4px solid var(--primary); border-radius: 8px; }
-        .skill-item strong { color: var(--primary); display: block; font-size: 1.2rem; margin-bottom: 5px; }
-
-        /* Experience Box */
-        .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 2rem; border: 1px solid #334155; }
-        .project-img { width: 100%; max-width: 800px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); box-shadow: 0 15px-40px rgba(0,0,0,0.6); }
         
-        /* Contact Section */
+        .cv-btn { 
+            display: inline-block; padding: 12px 30px; background: var(--primary); color: var(--bg); 
+            text-decoration: none; font-weight: bold; border-radius: 8px; margin-top: 20px; transition: 0.3s;
+        }
+        .cv-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3); }
+
+        .work-box { background: var(--card-bg); padding: 2.5rem; border-radius: 15px; margin-bottom: 3rem; border: 1px solid #334155; }
+        .project-img { width: 100%; max-width: 850px; border-radius: 12px; margin: 2rem 0; border: 2px solid var(--primary); display: block; margin-left: auto; margin-right: auto; }
+        h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--primary); }
+
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
         .contact-link { padding: 1.5rem; background: #111827; border-radius: 12px; text-decoration: none; color: var(--text-main); transition: 0.3s; border: 1px solid #334155; text-align: center; }
-        .contact-link:hover { border-color: var(--primary); background: #1e293b; transform: translateY(-5px); }
+        .contact-link:hover { border-color: var(--primary); transform: translateY(-5px); }
 
         footer { text-align: center; padding: 3rem; color: #475569; font-size: 0.9rem; }
     </style>
@@ -49,74 +51,66 @@
         <div class="logo">SABHARISH RAAJA</div>
         <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#skills">Skills</a>
             <a href="#internship">Internship</a>
             <a href="#automation">Automation</a>
-            <a href="#projects">E-Commerce</a>
+            <a href="#ecommerce">E-Commerce</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section class="hero" id="about">
-        <h1>Hi, I'm <span style="color:var(--primary)">Sabharish Raaja</span></h1>
+        <h1>Sabharish <span style="color:var(--primary)">Raaja</span></h1>
         <p style="font-size: 1.5rem; color: var(--text-dim);">Data Analyst & Automation Professional</p>
-        
         <div class="about-text">
-            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. I believe in continuous learning and staying updated with the latest industry trends to deliver cutting-edge results. My approach combines technical rigor with a creative mindset to tackle complex challenges effectively. I thrive in collaborative environments where I can contribute to meaningful projects and grow alongside a team. I am dedicated to writing clean, maintainable code and building seamless user experiences. Beyond technical skills, I value integrity, clear communication, and a strong work ethic in every task I undertake. My goal is to leverage my expertise to drive innovation and make a positive impact in the digital landscape. I am currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
+            I am a highly motivated professional with a deep passion for technology and data-driven problem-solving. My journey in the tech world is driven by a desire to create efficient, scalable, and user-centric digital solutions. Over the years, I have developed a strong foundation in various programming languages and modern frameworks. Currently seeking opportunities to apply my skills in automation and data analytics to real-world problems.
         </div>
-    </section>
-
-    <section id="skills">
-        <h2>Technical Expertise</h2>
-        <div class="skill-item">
-            <strong>SQL & Data Management</strong>
-            <span>Advanced querying and data cleaning to prepare complex datasets for visualization and analysis.</span>
-        </div>
-        <div class="skill-item">
-            <strong>Power BI Dashboards</strong>
-            <span>Creating high-impact visual reports that track KPI metrics like employee attrition, performance, and regional trends.</span>
-        </div>
-        <div class="skill-item">
-            <strong>Python Automation</strong>
-            <span>Developing custom scripts to automate data collection and repetitive system tasks for maximum efficiency.</span>
+        <div>
+            <a href="your-resume.pdf" class="cv-btn" download><i class="fa-solid fa-file-arrow-down"></i> Download My CV</a>
         </div>
     </section>
 
     <section id="internship">
-        <h2>Internship: People Management Project</h2>
+        <h2>Internship: People Management</h2>
         <div class="work-box">
             <p style="color: var(--text-dim);">
-                During my internship, I was trained in SQL and Power BI to solve business intelligence problems. I spearheaded a <strong>People Management & Company Dashboard</strong> project, where I took full ownership of finding and sourcing the dataset myself. Using SQL, I structured data for 200+ employees to analyze metrics like active headcount, attrition rates, and average age. I built a dual-dashboard system in Power BI: an <strong>Employee Dashboard</strong> focusing on department-wise performance and salary distribution, and a <strong>Company Dashboard</strong> tracking hiring trends and performance scores across 20 different branch locations including Chennai, Delhi, and Bangalore. This project involved complex visualizations such as sunburst charts for gender distribution and geographical maps for branch locations. My work provided a clear, visual way to monitor the health of an organization and identify high-performing regions and roles. This end-to-end process from data sourcing to final visualization significantly improved my analytical decision-making skills.
+                I underwent intensive training in SQL and Power BI, applying these skills to a comprehensive People Management project. I personally sourced the dataset to build a dual-dashboard system that tracks hiring trends and salary distributions for 200+ employees. I visualized branch performance across 20 locations, identifying key performance hubs like Delhi and Chennai.
             </p>
-            <img src="dashboard.jpg" alt="Sabharish's Power BI Dashboard" class="project-img">
+            <img src="employee_dashboard.jpg" alt="Company Dashboard" class="project-img">
         </div>
     </section>
 
-    <section id="automation" style="background: #111827;">
-        <h2>Automation Work</h2>
+    <section id="automation">
+        <h2>Automation Projects</h2>
         <div class="work-box">
+            <h3>Custom Data Cleaning Application</h3>
             <p style="color: var(--text-dim);">
-                My work in automation focuses on reducing manual intervention by developing intelligent scripts and workflows. I have built tools that handle data extraction and processing, saving hours of manual entry every week. By implementing automated testing suites, I ensured that software updates could be deployed with zero regression errors. These solutions were designed to be modular, allowing them to be easily adapted for different departments and tasks. My goal with every automation project is to maximize accuracy while minimizing human effort and time.
+                Developed a full-stack Data Cleaning App that supports CSV, Excel, TXT, and ZIP folder uploads. The tool features an automatic duplicate check that removed 320 duplicate rows from a 500-row dataset in a single click, resulting in a clean 180-row output. I integrated a KPI Builder, column filters, and text transformation modules to streamline the pre-analysis workflow. This automation drastically reduces manual data preparation time, allowing analysts to focus on generating insights.
             </p>
+            <img src="automation_app.jpg" alt="Data Cleaning App" class="project-img">
         </div>
     </section>
 
-    <section id="projects">
-        <h2>E-Commerce Projects</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <div class="work-box">
-                <h3 style="color:var(--primary); margin-bottom:1rem;">Swiggy Logistics Analysis</h3>
-                <p style="color: var(--text-dim);">Analyzed the food delivery ecosystem to understand user behavior and logistics optimization. I focused on identifying bottlenecks in the delivery partner assignment and peak-hour demand management. The project highlighted data-driven strategies for improving customer retention through better service timing.</p>
-            </div>
-            <div class="work-box">
-                <h3 style="color:var(--primary); margin-bottom:1rem;">Amazon System Analysis</h3>
-                <p style="color: var(--text-dim);">Explored high-scale data handling through an analysis of Amazon's purchasing flow. I recreated mock-ups of search filtering systems and "One-Click" checkout logic. This project helped me master the UI/UX standards required for global e-commerce platforms and large-scale product grids.</p>
-            </div>
+    <section id="ecommerce">
+        <h2>E-Commerce Data Analysis</h2>
+        <div class="work-box">
+            <h3>Swiggy Sales Dashboard</h3>
+            <p style="color: var(--text-dim);">
+                Processed 52.12M in total sales and 193.78K orders, identifying Bengaluru as the revenue leader with 4.6M in sales. I analyzed food-type sales showing that Non-Veg items account for 64.48% of revenue and identified top-performing restaurants with ratings up to 4.82.
+            </p>
+            <img src="swiggy_dashboard.jpg" alt="Swiggy Analysis" class="project-img">
+        </div>
+
+        <div class="work-box">
+            <h3>Amazon Store Sales</h3>
+            <p style="color: var(--text-dim);">
+                Tracked $2M in global sales and $175K in profit, maintaining an accepted order status of 95.14%. I identified that 43% of customers prefer Cash on Delivery (COD) and Phones are the most profitable sub-category at $0.20M.
+            </p>
+            <img src="amazon_dashboard.jpg" alt="Amazon Dashboard" class="project-img">
         </div>
     </section>
 
     <section id="contact">
-        <h2>Let's Connect</h2>
+        <h2>Connect With Me</h2>
         <div class="contact-grid">
             <a href="mailto:psabharish14@gmail.com" class="contact-link"><strong>Email</strong><br>psabharish14@gmail.com</a>
             <a href="tel:7550149526" class="contact-link"><strong>Phone</strong><br>+91 7550149526</a>
