@@ -7,82 +7,88 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@300;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Outfit:wght@400;900&display=swap');
         
         :root { --accent: #ff4d00; }
-        body { background-color: #050505; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
+        body { background-color: #000; color: #fff; font-family: 'Outfit', sans-serif; overflow: hidden; margin: 0; }
 
-        /* Cricket-Specific Background Layer */
+        /* Cricket Stadium Backgrounds */
         .stadium-bg {
             position: fixed; inset: 0;
             background-size: cover; background-position: center;
-            z-index: -2; transition: opacity 1.2s ease-in-out;
+            z-index: -2; transition: opacity 1s ease-in-out;
             opacity: 0;
-            background-color: #0a110a; /* Dark green fallback */
+            background-color: #0a0a0a;
         }
         .stadium-bg.active { opacity: 1; }
         
+        /* Lightened overlay so you can actually see the background AND the text */
         .overlay { 
             position: fixed; inset: 0; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.95)); 
+            background: rgba(0,0,0,0.65); 
             z-index: -1; 
         }
 
-        /* Nav Top Right */
         nav {
             position: fixed; top: 25px; right: 40px; z-index: 500;
-            display: flex; gap: 20px; background: rgba(0,0,0,0.85);
+            display: flex; gap: 20px; background: rgba(0,0,0,0.8);
             padding: 10px 25px; border-radius: 50px; backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,77,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        nav a { font-size: 0.7rem; font-weight: 900; letter-spacing: 1px; color: #888; transition: 0.3s; cursor: pointer; }
-        nav a:hover, nav a.active { color: var(--accent); }
+        nav a { font-size: 0.75rem; font-weight: 900; color: #bbb; cursor: pointer; }
+        nav a.active { color: var(--accent); }
 
-        .huge-title { 
-            font-family: 'Syne', sans-serif; 
-            font-size: clamp(2.5rem, 8vw, 9rem); 
-            line-height: 0.9; text-transform: uppercase; 
-        }
-        
         .slide {
             position: absolute; inset: 0; display: none;
-            flex-direction: column; justify-content: center; padding: 0 10%;
-            z-index: 10;
+            flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px 10%; z-index: 10;
         }
-        .slide.active { display: flex; animation: slideIn 0.8s ease-out forwards; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .slide.active { display: flex; animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+        /* FIXED CONTAINER: No fixed height, ensures text is visible */
         .glass { 
-            background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(25px); 
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; 
+            background: rgba(15, 15, 15, 0.85); 
+            backdrop-filter: blur(20px); 
+            border: 1px solid rgba(255,255,255,0.2); 
+            border-radius: 24px; 
+            padding: 40px; 
+            width: 100%; 
+            max-width: 1000px;
+            max-height: 80vh; 
+            overflow-y: auto; /* Adds scroll if text is too long */
         }
 
         .project-img { 
-            width: 100%; height: auto; max-height: 320px;
-            object-fit: contain; border-radius: 12px; 
-            background: #000; margin-bottom: 20px; border: 1px solid #333;
+            width: 100%; height: auto; border-radius: 12px; 
+            border: 2px solid #333; margin-bottom: 20px;
+        }
+
+        /* Brightened text for better visibility */
+        .desc-text {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-weight: 400;
         }
 
         .action-btn {
             position: fixed; bottom: 5%; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: white; padding: 15px 50px;
-            border-radius: 4px; font-weight: 900; cursor: pointer; z-index: 1000;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            letter-spacing: 2px; border: none;
-            box-shadow: 0 10px 20px rgba(255, 77, 0, 0.3);
+            background: var(--accent); color: white; padding: 16px 50px;
+            border-radius: 8px; font-weight: 900; cursor: pointer; z-index: 1000;
+            border: none; text-transform: uppercase;
         }
-        .action-btn:hover { background: #fff; color: #000; transform: translateX(-50%) translateY(-5px); }
     </style>
 </head>
 <body>
 
-    <div class="stadium-bg active" id="bg1" style="background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg2" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg3" style="background-image: url('https://images.unsplash.com/photo-1599327311431-d96a55e040f9?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg4" style="background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg5" style="background-image: url('https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg6" style="background-image: url('https://images.unsplash.com/photo-1562077772-3bd90403f7f0?q=80&w=2000');"></div>
-    <div class="stadium-bg" id="bg7" style="background-image: url('https://images.unsplash.com/photo-1512716676300-5d60698287bc?q=80&w=2000');"></div>
+    <div class="stadium-bg active" id="bg1" style="background-image: url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=1600');"></div>
+    <div class="stadium-bg" id="bg2" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600');"></div>
+    <div class="stadium-bg" id="bg3" style="background-image: url('https://images.unsplash.com/photo-1599327311431-d96a55e040f9?w=1600');"></div>
+    <div class="stadium-bg" id="bg4" style="background-image: url('https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=1600');"></div>
+    <div class="stadium-bg" id="bg5" style="background-image: url('https://images.unsplash.com/photo-1562077772-3bd90403f7f0?w=1600');"></div>
+    <div class="stadium-bg" id="bg6" style="background-image: url('https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?w=1600');"></div>
+    <div class="stadium-bg" id="bg7" style="background-image: url('https://images.unsplash.com/photo-1512716676300-5d60698287bc?w=1600');"></div>
     
     <div class="overlay"></div>
 
@@ -97,44 +103,74 @@
     </nav>
 
     <div class="slide active" id="s1">
-        <h1 class="huge-title">SABHARISH<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">RAAJA.</span></h1>
-        <p class="text-xl mt-4 text-orange-500 font-bold uppercase tracking-[0.4em] italic">Data Analyst | ECE Engineer</p>
+        <h1 class="text-7xl md:text-9xl font-black uppercase leading-none">SABHARISH<br><span class="text-transparent" style="-webkit-text-stroke: 1px #fff">RAAJA.</span></h1>
+        <p class="text-2xl mt-6 text-orange-500 font-bold italic tracking-widest">DATA ANALYST | ECE ENGINEER</p>
     </div>
 
     <div class="slide" id="s2">
-        <div class="max-w-4xl glass">
-            <h2 class="text-3xl font-black mb-6 uppercase text-orange-500 italic">The Professional Journey</h2>
-            <p class="text-lg leading-relaxed text-gray-200">I hold a degree in Electronics and Communication Engineering... [Full Bio Here]</p>
+        <div class="glass">
+            <h2 class="text-4xl font-black mb-6 text-orange-500 uppercase italic">The Professional Journey</h2>
+            <p class="desc-text">
+                I hold a degree in Electronics and Communication Engineering, which built my logic and analytical mindset. My engineering background provided a strong foundation in solving complex problems through statistical thinking. My passion for uncovering stories in data led me to Data Analytics, where I combine technical skills with BI tools to drive value. During my internship, I specialized in high-speed data cleaning and building interactive dashboards using Power BI and Tableau. I am proficient in Python, particularly using Pandas for efficient data manipulation.
+            </p>
         </div>
     </div>
-    
-    <div class="slide" id="s3"><div class="max-w-3xl glass"><h2 class="text-3xl font-black mb-8 uppercase text-orange-500">Technical Arsenal</h2><p>Python, SQL, BI Tools...</p></div></div>
-    <div class="slide" id="s4"><div class="max-w-3xl glass text-center mx-auto"><h2 class="text-3xl font-black mb-6 uppercase text-orange-500">Data Automation Tool</h2><p>Custom Python ETL engine...</p></div></div>
-    
+
+    <div class="slide" id="s3">
+        <div class="glass">
+            <h2 class="text-4xl font-black mb-8 text-orange-500 uppercase">Technical Arsenal</h2>
+            <ul class="space-y-6 desc-text">
+                <li><strong class="text-orange-500">PYTHON:</strong> Pandas and NumPy for high-speed data cleaning and duplicate removal.</li>
+                <li><strong class="text-orange-500">SQL:</strong> Writing complex queries for database management and ETL operations.</li>
+                <li><strong class="text-orange-500">BI TOOLS:</strong> Creating interactive dashboards in Power BI and Tableau.</li>
+                <li><strong class="text-orange-500">EXCEL:</strong> Advanced Pivot Tables, VLOOKUP, and automated formulas.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slide" id="s4">
+        <div class="glass text-center">
+            <h2 class="text-4xl font-black mb-6 text-orange-500 uppercase">Data Automation Tool</h2>
+            <p class="desc-text text-xl">
+                I developed a custom Python-based ETL engine that performs automated data cleaning. This tool instantly detects missing values and removes duplicate entries without manual coding, ensuring 100% data integrity for large-scale analytical projects.
+            </p>
+        </div>
+    </div>
+
     <div class="slide" id="s5">
-        <div class="max-w-5xl glass mx-auto">
+        <div class="glass">
             <div class="grid md:grid-cols-2 gap-10 items-center">
-                <img src="1000239452.jpg" class="project-img" alt="Swiggy">
-                <div><h2 class="text-3xl font-black mb-4 uppercase text-orange-500">Swiggy Sales Analysis</h2><p class="text-gray-200">Detailed 4-line description of sales analysis...</p></div>
+                <img src="1000239452.jpg" class="project-img" alt="Swiggy Dashboard">
+                <div>
+                    <h2 class="text-3xl font-black mb-4 text-orange-500 uppercase">Swiggy Sales Analysis</h2>
+                    <p class="desc-text">
+                        I processed over 50 million records to identify peak ordering hours and regional food preferences across various cities. My analysis revealed critical delivery bottlenecks during high-demand windows, leading to better resource planning. The resulting dashboard allowed for optimized supply chain allocation, helping to reduce delivery times and improve customer satisfaction.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s6">
-        <div class="max-w-5xl glass mx-auto">
+        <div class="glass">
             <div class="grid md:grid-cols-2 gap-10 items-center">
-                <img src="1000227044.jpg" class="project-img" alt="Amazon">
-                <div><h2 class="text-3xl font-black mb-4 uppercase text-orange-500">Amazon Financials</h2><p class="text-gray-200">Detailed 4-line description of financial forecasting...</p></div>
+                <img src="1000227044.jpg" class="project-img" alt="Amazon Dashboard">
+                <div>
+                    <h2 class="text-3xl font-black mb-4 text-orange-500 uppercase">Amazon Financials</h2>
+                    <p class="desc-text">
+                        I built a comprehensive financial tracking model to forecast profit and loss based on historical shipping and regional sales trends. The analysis identified specific logistical routes that were underperforming in terms of cost-to-revenue ratios, enabling strategic changes. Using advanced Excel and Tableau, I visualized regional revenue growth with high accuracy.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="slide" id="s7">
-        <div class="glass text-center max-w-xl mx-auto">
-            <h2 class="text-4xl font-black mb-10 uppercase text-orange-500 italic">Contact the Captain</h2>
-            <div class="space-y-8">
-                <a href="mailto:psabharish14@gmail.com" class="flex items-center justify-center gap-5 text-2xl hover:text-orange-500"><i class="fas fa-envelope text-orange-500"></i> psabharish14@gmail.com</a>
-                <a href="tel:+917550149526" class="flex items-center justify-center gap-5 text-2xl hover:text-orange-500"><i class="fas fa-phone-alt text-orange-500"></i> +91 75501 49526</a>
+        <div class="glass text-center">
+            <h2 class="text-4xl font-black mb-10 text-orange-500 uppercase italic">Contact the Captain</h2>
+            <div class="space-y-6 text-2xl font-bold">
+                <p><i class="fas fa-envelope text-orange-500 mr-4"></i> psabharish14@gmail.com</p>
+                <p><i class="fas fa-phone-alt text-orange-500 mr-4"></i> +91 75501 49526</p>
             </div>
         </div>
     </div>
@@ -145,13 +181,8 @@
         let current = 1;
         const total = 7;
         const buttonTexts = [
-            "STEP ONTO THE PITCH", // Page 1
-            "CHECK THE LINEUP",    // Page 2
-            "GEAR UP",             // Page 3
-            "READY THE ENGINE",    // Page 4
-            "FACE THE FIRST BALL", // Page 5
-            "HIT THE BOUNDARY",    // Page 6
-            "POST-MATCH PRESS"     // Page 7
+            "STEP ONTO THE PITCH", "CHECK THE LINEUP", "GEAR UP", 
+            "READY THE ENGINE", "FACE THE FIRST BALL", "HIT THE BOUNDARY", "POST-MATCH PRESS"
         ];
 
         function goToSlide(num) { current = num; updateUI(); }
@@ -165,7 +196,7 @@
             document.getElementById('bg' + current).classList.add('active');
 
             document.querySelectorAll('nav a').forEach((a, i) => {
-                a.style.color = (i + 1 === current) ? '#ff4d00' : '#888';
+                a.classList.toggle('active', i + 1 === current);
             });
 
             document.getElementById('ctl-btn').innerText = buttonTexts[current - 1];
