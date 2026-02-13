@@ -5,7 +5,10 @@
 <title>Sabharish Raaja | Data Analyst</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -32,6 +35,12 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
+}
+
+nav .logo {
+  font-weight: 600;
+  font-size: 16px;
 }
 
 nav a {
@@ -39,9 +48,12 @@ nav a {
   text-decoration: none;
   margin-left: 25px;
   font-size: 14px;
+  transition: 0.3s;
 }
 
-nav a:hover { color: white; }
+nav a:hover {
+  color: white;
+}
 
 /* HEADER */
 header {
@@ -49,12 +61,23 @@ header {
   padding: 90px 20px 60px;
 }
 
-header h1 { font-size: 42px; }
+header h1 {
+  font-size: 42px;
+}
 
-.role { margin-top: 10px; color: #94a3b8; }
-.tagline { margin-top: 10px; color: #64748b; }
+.role {
+  margin-top: 10px;
+  color: #94a3b8;
+}
 
-.buttons { margin-top: 25px; }
+.tagline {
+  margin-top: 10px;
+  color: #64748b;
+}
+
+.buttons {
+  margin-top: 25px;
+}
 
 .buttons a {
   display: inline-block;
@@ -92,9 +115,14 @@ section {
   transition: 0.3s;
 }
 
-.card:hover { transform: translateY(-4px); }
+.card:hover {
+  transform: translateY(-4px);
+}
 
-h2 { margin-bottom: 18px; font-size: 24px; }
+h2 {
+  margin-bottom: 18px;
+  font-size: 24px;
+}
 
 /* TEXT */
 .text-block p {
@@ -103,7 +131,11 @@ h2 { margin-bottom: 18px; font-size: 24px; }
 }
 
 /* SKILLS */
-.skills { display: flex; flex-direction: column; gap: 12px; }
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .skill {
   background: rgba(255,255,255,0.08);
@@ -119,7 +151,10 @@ h2 { margin-bottom: 18px; font-size: 24px; }
   transform: translateX(6px);
 }
 
-.skill i { margin-right: 10px; color: #38bdf8; }
+.skill i {
+  margin-right: 10px;
+  color: #38bdf8;
+}
 
 /* IMAGE */
 .card img {
@@ -129,19 +164,67 @@ h2 { margin-bottom: 18px; font-size: 24px; }
   transition: 0.3s;
 }
 
-.card img:hover { transform: scale(1.02); }
+.card img:hover {
+  transform: scale(1.02);
+}
 
-/* PROJECT */
-.project-title { font-size: 18px; font-weight: 600; }
-.tools { font-size: 13px; color: #94a3b8; margin: 6px 0 10px; }
+/* PROJECT GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}
 
-ul {
+.project-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 22px;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(56,189,248,0.25);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.project-card ul {
   margin-left: 18px;
+  margin-top: 10px;
   color: #cbd5f5;
 }
 
-ul li { margin-bottom: 6px; }
+.project-card ul li {
+  margin-bottom: 6px;
+}
 
+.project-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tools {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* CONTACT */
+.contact p {
+  margin-bottom: 10px;
+  color: #cbd5f5;
+}
+
+/* FOOTER */
 footer {
   text-align: center;
   padding: 25px;
@@ -152,8 +235,9 @@ footer {
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <div><b>Sabharish Raaja</b></div>
+  <div class="logo">Sabharish Raaja</div>
   <div>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -164,6 +248,7 @@ footer {
   </div>
 </nav>
 
+<!-- HEADER -->
 <header>
   <h1>Sabharish Raaja</h1>
   <div class="role">Data Analyst | SQL • Python • Power BI</div>
@@ -208,13 +293,13 @@ footer {
   <div class="card text-block">
     <h2>Experience</h2>
     <p><b>Data Analyst Intern – Besant Technologies</b></p>
-    <p>Developed analytical dashboards and structured reports.</p>
-    <p>Performed data cleaning for improved dataset accuracy.</p>
-    <p>Built Employee Analytics Dashboard.</p>
-    <p>Analyzed attrition and productivity patterns.</p>
-    <p>Used Power BI, DAX, and Excel tools.</p>
+    <p>Developed analytical dashboards and structured performance reports.</p>
+    <p>Performed data cleaning to improve dataset accuracy and consistency.</p>
+    <p>Designed Employee Analytics Dashboard for workforce insights.</p>
+    <p>Analyzed attrition trends and productivity correlations.</p>
+    <p>Used Power BI, DAX, and Excel for reporting and visualization.</p>
 
-    <img src="experience-dashboard.jpg" alt="Experience Image">
+    <img src="experience-dashboard.jpg" alt="Experience Dashboard">
   </div>
 </section>
 
@@ -222,50 +307,68 @@ footer {
 <section id="automation">
   <div class="card text-block">
     <h2>Automation</h2>
-    <p>Built automated data-cleaning workflows.</p>
-    <p>Handled missing values and duplicates using Pandas.</p>
-    <p>Designed repeatable preprocessing pipelines.</p>
-    <p>Improved efficiency and reduced manual effort.</p>
-    <p>Focused on structured data transformation.</p>
+    <p>Built automated data-cleaning and preprocessing workflows.</p>
+    <p>Handled missing values and duplicates using Python (Pandas).</p>
+    <p>Designed repeatable pipelines for structured transformations.</p>
+    <p>Reduced manual effort and improved dataset reliability.</p>
+    <p>Focused on workflow efficiency and faster reporting.</p>
 
-    <img src="automation-workflow.jpg" alt="Automation Image">
+    <img src="automation-workflow.jpg" alt="Automation Workflow">
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS GRID -->
 <section id="projects">
-  <h2 style="margin-bottom:20px;">Projects</h2>
+  <h2>Projects</h2>
 
-  <div class="card">
-    <div class="project-title">Amazon Sales Dashboard</div>
-    <div class="tools">Power BI | DAX | Data Modeling</div>
+  <div class="projects-grid">
 
-    <ul>
-      <li>Developed interactive sales performance dashboard</li>
-      <li>Analyzed $2M+ revenue and profit metrics</li>
-      <li>Implemented dynamic filters for segmentation</li>
-      <li>Tracked KPIs including sales, profit, and orders</li>
-      <li>Identified revenue drivers and trends</li>
-    </ul>
+    <div class="project-card">
+      <div class="project-title">Amazon Sales Dashboard</div>
+      <div class="tools">Power BI | DAX | Data Modeling</div>
 
-    <img src="amazon-dashboard.jpg" alt="Amazon Dashboard">
+      <ul>
+        <li>Developed interactive sales dashboard</li>
+        <li>Analyzed $2M+ revenue performance</li>
+        <li>Tracked KPIs and profit metrics</li>
+        <li>Implemented dynamic filters</li>
+        <li>Identified revenue drivers</li>
+      </ul>
+
+      <img src="amazon-dashboard.jpg" alt="Amazon Dashboard">
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Swiggy Sales Analysis</div>
+      <div class="tools">Excel | Power BI</div>
+
+      <ul>
+        <li>Cleaned and transformed dataset</li>
+        <li>Analyzed ₹52.12M sales data</li>
+        <li>Evaluated rating patterns</li>
+        <li>Identified top restaurants</li>
+        <li>Visualized trends & insights</li>
+      </ul>
+
+      <img src="swiggy-dashboard.jpg" alt="Swiggy Dashboard">
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">AI-Assisted Data Cleaning App</div>
+      <div class="tools">Python | Pandas</div>
+
+      <ul>
+        <li>Automated preprocessing workflows</li>
+        <li>Handled missing values & duplicates</li>
+        <li>Built repeatable cleaning pipeline</li>
+        <li>Improved dataset reliability</li>
+        <li>Accelerated analysis preparation</li>
+      </ul>
+
+      <img src="automation-workflow.jpg" alt="Automation Project">
+    </div>
+
   </div>
-
-  <div class="card">
-    <div class="project-title">Swiggy Sales Analysis</div>
-    <div class="tools">Excel | Power BI</div>
-
-    <ul>
-      <li>Cleaned and processed large dataset</li>
-      <li>Analyzed ₹52.12M sales performance</li>
-      <li>Evaluated customer ratings and trends</li>
-      <li>Identified top-performing restaurants</li>
-      <li>Visualized weekly and monthly patterns</li>
-    </ul>
-
-    <img src="swiggy-dashboard.jpg" alt="Swiggy Dashboard">
-  </div>
-
 </section>
 
 <!-- CONTACT -->
