@@ -117,7 +117,6 @@ section {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
 }
 
 h2 {
@@ -157,17 +156,13 @@ h2 {
   color: #38bdf8;
 }
 
-/* EXPERIENCE */
-.experience p {
+/* EXPERIENCE / AUTOMATION */
+.text-block p {
   margin-bottom: 8px;
   color: #cbd5f5;
 }
 
 /* PROJECTS */
-.project {
-  margin-bottom: 25px;
-}
-
 .project-title {
   font-size: 18px;
   font-weight: 600;
@@ -219,6 +214,7 @@ footer {
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
+    <a href="#automation">Automation</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
@@ -254,23 +250,21 @@ footer {
     <h2>Skills</h2>
 
     <div class="skills">
-      <div class="skill"><i class="fas fa-database"></i><b>SQL</b> – Used for querying, filtering, and data extraction.</div>
-      <div class="skill"><i class="fab fa-python"></i><b>Python (Pandas)</b> – Used for data cleaning and preprocessing workflows.</div>
-      <div class="skill"><i class="fas fa-table"></i><b>Excel</b> – Used for data preparation, pivot analysis, and calculations.</div>
-      <div class="skill"><i class="fas fa-chart-column"></i><b>Power BI</b> – Used for dashboard development and KPI visualization.</div>
-      <div class="skill"><i class="fas fa-chart-line"></i><b>DAX</b> – Used for calculated measures and analytical logic.</div>
-      <div class="skill"><i class="fas fa-server"></i><b>MySQL</b> – Used for relational database management and queries.</div>
-      <div class="skill"><i class="fas fa-chart-pie"></i><b>Tableau</b> – Used for interactive data visualization.</div>
-      <div class="skill"><i class="fas fa-broom"></i><b>Data Cleaning</b> – Handling missing values, duplicates, inconsistencies.</div>
-      <div class="skill"><i class="fas fa-eye"></i><b>Data Visualization</b> – Presenting insights through dashboards and charts.</div>
-      <div class="skill"><i class="fas fa-gears"></i><b>Data Automation</b> – Building workflows to reduce manual preprocessing effort.</div>
+      <div class="skill"><i class="fas fa-database"></i><b>SQL</b> – Querying and data extraction</div>
+      <div class="skill"><i class="fab fa-python"></i><b>Python (Pandas)</b> – Data cleaning & preprocessing</div>
+      <div class="skill"><i class="fas fa-table"></i><b>Excel</b> – Data preparation & analysis</div>
+      <div class="skill"><i class="fas fa-chart-column"></i><b>Power BI</b> – Dashboard development</div>
+      <div class="skill"><i class="fas fa-chart-line"></i><b>DAX</b> – Calculated measures & logic</div>
+      <div class="skill"><i class="fas fa-server"></i><b>MySQL</b> – Database queries</div>
+      <div class="skill"><i class="fas fa-chart-pie"></i><b>Tableau</b> – Data visualization</div>
+      <div class="skill"><i class="fas fa-gears"></i><b>Data Automation</b> – Workflow optimization</div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <div class="card experience">
+  <div class="card text-block">
     <h2>Experience</h2>
     <p><b>Data Analyst Intern – Besant Technologies</b></p>
     <p>Developed analytical dashboards and structured performance reports.</p>
@@ -281,6 +275,18 @@ footer {
   </div>
 </section>
 
+<!-- AUTOMATION (NOW AFTER EXPERIENCE) -->
+<section id="automation">
+  <div class="card text-block">
+    <h2>Automation</h2>
+    <p>Built automated data-cleaning and preprocessing workflows.</p>
+    <p>Used Python (Pandas) for missing values and duplicate handling.</p>
+    <p>Designed repeatable pipelines for structured transformations.</p>
+    <p>Reduced manual effort and improved data reliability.</p>
+    <p>Focused on workflow efficiency and faster reporting processes.</p>
+  </div>
+</section>
+
 <!-- PROJECTS -->
 <section id="projects">
   <h2 style="margin-bottom:20px;">Projects</h2>
@@ -288,9 +294,8 @@ footer {
   <div class="card project">
     <div class="project-title">Amazon Sales Dashboard</div>
     <div class="tools">Power BI | DAX | Data Modeling</div>
-    <p>Developed an interactive dashboard analyzing sales and profit KPIs.</p>
-    <p>Tracked $2M+ revenue and performance metrics.</p>
-    <p>Implemented filters to identify trends and revenue drivers.</p>
+    <p>Interactive dashboard analyzing sales and profit KPIs.</p>
+    <p>Tracked revenue trends and performance metrics.</p>
 
     <img src="amazon-dashboard.jpg" alt="Amazon Dashboard">
   </div>
@@ -298,9 +303,8 @@ footer {
   <div class="card project">
     <div class="project-title">Swiggy Sales Analysis</div>
     <div class="tools">Excel | Power BI</div>
-    <p>Processed and cleaned a large-scale food delivery dataset.</p>
-    <p>Analyzed ₹52.12M sales and customer rating behavior.</p>
-    <p>Identified top-performing restaurants and weekly demand patterns.</p>
+    <p>Cleaned and analyzed large-scale sales dataset.</p>
+    <p>Identified demand patterns and top performers.</p>
 
     <img src="swiggy-dashboard.jpg" alt="Swiggy Dashboard">
   </div>
