@@ -5,10 +5,7 @@
 <title>Sabharish Raaja | Data Analyst</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -35,12 +32,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
-}
-
-nav .logo {
-  font-weight: 600;
-  font-size: 16px;
 }
 
 nav a {
@@ -48,12 +39,9 @@ nav a {
   text-decoration: none;
   margin-left: 25px;
   font-size: 14px;
-  transition: 0.3s;
 }
 
-nav a:hover {
-  color: white;
-}
+nav a:hover { color: white; }
 
 /* HEADER */
 header {
@@ -61,23 +49,12 @@ header {
   padding: 90px 20px 60px;
 }
 
-header h1 {
-  font-size: 42px;
-}
+header h1 { font-size: 42px; }
 
-.role {
-  margin-top: 10px;
-  color: #94a3b8;
-}
+.role { margin-top: 10px; color: #94a3b8; }
+.tagline { margin-top: 10px; color: #64748b; }
 
-.tagline {
-  margin-top: 10px;
-  color: #64748b;
-}
-
-.buttons {
-  margin-top: 25px;
-}
+.buttons { margin-top: 25px; }
 
 .buttons a {
   display: inline-block;
@@ -115,27 +92,18 @@ section {
   transition: 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-}
+.card:hover { transform: translateY(-4px); }
 
-h2 {
-  margin-bottom: 18px;
-  font-size: 24px;
-}
+h2 { margin-bottom: 18px; font-size: 24px; }
 
-/* ABOUT */
-.about p {
+/* TEXT */
+.text-block p {
   margin-bottom: 8px;
   color: #cbd5f5;
 }
 
 /* SKILLS */
-.skills {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.skills { display: flex; flex-direction: column; gap: 12px; }
 
 .skill {
   background: rgba(255,255,255,0.08);
@@ -151,52 +119,29 @@ h2 {
   transform: translateX(6px);
 }
 
-.skill i {
-  margin-right: 10px;
-  color: #38bdf8;
-}
+.skill i { margin-right: 10px; color: #38bdf8; }
 
-/* EXPERIENCE / AUTOMATION */
-.text-block p {
-  margin-bottom: 8px;
-  color: #cbd5f5;
-}
-
-/* PROJECTS */
-.project-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.tools {
-  font-size: 13px;
-  color: #94a3b8;
-  margin: 6px 0;
-}
-
-.project p {
-  color: #cbd5f5;
-  margin-bottom: 6px;
-}
-
-.project img {
+/* IMAGE */
+.card img {
   width: 100%;
+  margin-top: 15px;
   border-radius: 12px;
-  margin-top: 12px;
   transition: 0.3s;
 }
 
-.project img:hover {
-  transform: scale(1.02);
-}
+.card img:hover { transform: scale(1.02); }
 
-/* CONTACT */
-.contact p {
-  margin-bottom: 10px;
+/* PROJECT */
+.project-title { font-size: 18px; font-weight: 600; }
+.tools { font-size: 13px; color: #94a3b8; margin: 6px 0 10px; }
+
+ul {
+  margin-left: 18px;
   color: #cbd5f5;
 }
 
-/* FOOTER */
+ul li { margin-bottom: 6px; }
+
 footer {
   text-align: center;
   padding: 25px;
@@ -207,9 +152,8 @@ footer {
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="logo">Sabharish Raaja</div>
+  <div><b>Sabharish Raaja</b></div>
   <div>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -220,7 +164,6 @@ footer {
   </div>
 </nav>
 
-<!-- HEADER -->
 <header>
   <h1>Sabharish Raaja</h1>
   <div class="role">Data Analyst | SQL • Python • Power BI</div>
@@ -234,7 +177,7 @@ footer {
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="card about">
+  <div class="card text-block">
     <h2>About Me</h2>
     <p>Data Analyst with hands-on experience in SQL, Excel, Python (Pandas), and Power BI.</p>
     <p>Focused on transforming raw data into structured, analysis-ready datasets.</p>
@@ -254,9 +197,7 @@ footer {
       <div class="skill"><i class="fab fa-python"></i><b>Python (Pandas)</b> – Data cleaning & preprocessing</div>
       <div class="skill"><i class="fas fa-table"></i><b>Excel</b> – Data preparation & analysis</div>
       <div class="skill"><i class="fas fa-chart-column"></i><b>Power BI</b> – Dashboard development</div>
-      <div class="skill"><i class="fas fa-chart-line"></i><b>DAX</b> – Calculated measures & logic</div>
-      <div class="skill"><i class="fas fa-server"></i><b>MySQL</b> – Database queries</div>
-      <div class="skill"><i class="fas fa-chart-pie"></i><b>Tableau</b> – Data visualization</div>
+      <div class="skill"><i class="fas fa-chart-line"></i><b>DAX</b> – Calculated measures</div>
       <div class="skill"><i class="fas fa-gears"></i><b>Data Automation</b> – Workflow optimization</div>
     </div>
   </div>
@@ -267,23 +208,27 @@ footer {
   <div class="card text-block">
     <h2>Experience</h2>
     <p><b>Data Analyst Intern – Besant Technologies</b></p>
-    <p>Developed analytical dashboards and structured performance reports.</p>
-    <p>Performed data cleaning to improve dataset accuracy and consistency.</p>
-    <p>Designed Employee Analytics Dashboard for workforce insights.</p>
-    <p>Analyzed attrition trends and productivity correlations.</p>
-    <p>Used Power BI, DAX, and Excel for reporting and visualization.</p>
+    <p>Developed analytical dashboards and structured reports.</p>
+    <p>Performed data cleaning for improved dataset accuracy.</p>
+    <p>Built Employee Analytics Dashboard.</p>
+    <p>Analyzed attrition and productivity patterns.</p>
+    <p>Used Power BI, DAX, and Excel tools.</p>
+
+    <img src="experience-dashboard.jpg" alt="Experience Image">
   </div>
 </section>
 
-<!-- AUTOMATION (NOW AFTER EXPERIENCE) -->
+<!-- AUTOMATION -->
 <section id="automation">
   <div class="card text-block">
     <h2>Automation</h2>
-    <p>Built automated data-cleaning and preprocessing workflows.</p>
-    <p>Used Python (Pandas) for missing values and duplicate handling.</p>
-    <p>Designed repeatable pipelines for structured transformations.</p>
-    <p>Reduced manual effort and improved data reliability.</p>
-    <p>Focused on workflow efficiency and faster reporting processes.</p>
+    <p>Built automated data-cleaning workflows.</p>
+    <p>Handled missing values and duplicates using Pandas.</p>
+    <p>Designed repeatable preprocessing pipelines.</p>
+    <p>Improved efficiency and reduced manual effort.</p>
+    <p>Focused on structured data transformation.</p>
+
+    <img src="automation-workflow.jpg" alt="Automation Image">
   </div>
 </section>
 
@@ -291,23 +236,36 @@ footer {
 <section id="projects">
   <h2 style="margin-bottom:20px;">Projects</h2>
 
-  <div class="card project">
+  <div class="card">
     <div class="project-title">Amazon Sales Dashboard</div>
     <div class="tools">Power BI | DAX | Data Modeling</div>
-    <p>Interactive dashboard analyzing sales and profit KPIs.</p>
-    <p>Tracked revenue trends and performance metrics.</p>
+
+    <ul>
+      <li>Developed interactive sales performance dashboard</li>
+      <li>Analyzed $2M+ revenue and profit metrics</li>
+      <li>Implemented dynamic filters for segmentation</li>
+      <li>Tracked KPIs including sales, profit, and orders</li>
+      <li>Identified revenue drivers and trends</li>
+    </ul>
 
     <img src="amazon-dashboard.jpg" alt="Amazon Dashboard">
   </div>
 
-  <div class="card project">
+  <div class="card">
     <div class="project-title">Swiggy Sales Analysis</div>
     <div class="tools">Excel | Power BI</div>
-    <p>Cleaned and analyzed large-scale sales dataset.</p>
-    <p>Identified demand patterns and top performers.</p>
+
+    <ul>
+      <li>Cleaned and processed large dataset</li>
+      <li>Analyzed ₹52.12M sales performance</li>
+      <li>Evaluated customer ratings and trends</li>
+      <li>Identified top-performing restaurants</li>
+      <li>Visualized weekly and monthly patterns</li>
+    </ul>
 
     <img src="swiggy-dashboard.jpg" alt="Swiggy Dashboard">
   </div>
+
 </section>
 
 <!-- CONTACT -->
